@@ -1,25 +1,28 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "HXPhotoPicker",
-    platforms: [.iOS(.v12)],
+    defaultLocalization: "en",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
         .library(
             name: "HXPhotoPicker",
             targets: ["HXPhotoPicker"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.0.0"),
+        .package(url: "https://github.com/onevcat/Kingfisher", from: "8.1.3"),
     ],
     targets: [
         .target(
             name: "HXPhotoPicker",
             dependencies: ["Kingfisher"],
             resources: [
-                .process("Resources/HXPhotoPicker.bundle"),
+                .copy("Resources/HXPhotoPicker.bundle"),
                 .copy("Resources/PrivacyInfo.xcprivacy")
             ],
             swiftSettings: [
