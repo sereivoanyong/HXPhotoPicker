@@ -62,7 +62,17 @@ extension EditorViewController {
     }
     
     func imageProcessing() {
-        if editorView.isCropedImage || imageFilter != nil || filterEditFator.isApply {
+        var isSelectMusic: Bool = false
+        if selectedMusicURL != nil {
+            isSelectMusic = true
+        }
+        if !isSelectedOriginalSound {
+            isSelectMusic = true
+        }
+        if videoVolume < 1 {
+            isSelectMusic = true
+        }
+        if editorView.isCropedImage || imageFilter != nil || filterEditFator.isApply || isSelectMusic {
             PhotoManager.HUDView.show(with: .textManager.editor.processingHUDTitle.text, delay: 0, animated: true, addedTo: view)
             if editorView.isCropedImage {
                 editorView.cropImage { [weak self] result in
@@ -161,7 +171,7 @@ extension EditorViewController {
     }
     
     func imageProcessCompletion(_ result: ImageEditedResult) {
-        let imageEditedResult: ImageEditedData
+        let editedData: ImageEditedData
         var filter: PhotoEditorFilter?
         var filterEdit: EditorFilterEditFator?
         let aspectRatio = editorView.aspectRatio
@@ -171,7 +181,16 @@ extension EditorViewController {
             filter = imageFilter
             filterEdit = filterEditFator
         }
-        imageEditedResult = .init(
+        let music = musicPlayer?.music
+        editedData = .init(
+            music: .init(
+                hasOriginalSound: isSelectedOriginalSound,
+                videoSoundVolume: videoVolume,
+                backgroundMusicURL: selectedMusicURL,
+                backgroundMusicVolume: musicVolume,
+                musicIdentifier: musicPlayer?.audio?.identifier,
+                music: music
+            ),
             filter: filter,
             filterEdit: filterEdit,
             cropSize: .init(
@@ -180,7 +199,7 @@ extension EditorViewController {
                 angle: angle
             )
         )
-        let editedResult = EditedResult.image(result, imageEditedResult)
+        let editedResult = EditedResult.image(result, editedData)
         self.editedResult = editedResult
         selectedAsset.result = editedResult
         delegate?.editorViewController(self, didFinish: selectedAsset)
