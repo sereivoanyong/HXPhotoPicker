@@ -78,6 +78,9 @@ extension EditorViewController: EditorMusicViewDelegate {
             editorView.videoVolume = 0
         }
     }
+    func musicView(_ musicView: EditorMusicView, load networkAsset: NetworkAsset, completion: @escaping (URL?) -> Void) {
+        networkAsset.task = delegate?.editorViewController(self, loadMusicURLFor: networkAsset, completion: completion)
+    }
     func musicView(
         _ musicView: EditorMusicView,
         didPlay musicURL: VideoEditorMusicURL,
@@ -87,10 +90,9 @@ extension EditorViewController: EditorMusicViewDelegate {
             musicPlayer = .init()
         }
         let playURL: URL?
-        switch musicURL {
-        case .network(let url):
-            playURL = PhotoTools.getAudioTmpURL(for: url.absoluteString)
-        default:
+        if let networkURL = musicURL.networkURL {
+            playURL = PhotoTools.getAudioTmpURL(for: networkURL.absoluteString)
+        } else {
             playURL = musicURL.url
         }
         if let url = playURL {
@@ -188,6 +190,13 @@ extension EditorViewController: EditorMusicListViewControllerDelegate {
     
     func musicViewController(
         _ musicViewController: EditorMusicListViewController,
+        load networkAsset: NetworkAsset,
+        completion: @escaping (URL?) -> Void
+    ) {
+        networkAsset.task = delegate?.editorViewController(self, loadMusicURLFor: networkAsset, completion: completion)
+    }
+    func musicViewController(
+        _ musicViewController: EditorMusicListViewController,
         didPlay musicURL: VideoEditorMusicURL,
         playCompletion: @escaping (() -> Void)
     ) -> Bool {
@@ -195,10 +204,9 @@ extension EditorViewController: EditorMusicListViewControllerDelegate {
             musicPlayer = .init()
         }
         let playURL: URL?
-        switch musicURL {
-        case .network(let url):
-            playURL = PhotoTools.getAudioTmpURL(for: url.absoluteString)
-        default:
+        if let networkURL = musicURL.networkURL {
+            playURL = PhotoTools.getAudioTmpURL(for: networkURL.absoluteString)
+        } else {
             playURL = musicURL.url
         }
         if let url = playURL {

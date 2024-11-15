@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 protocol EditorMusicViewDelegate: AnyObject {
+    func musicView(_ musicView: EditorMusicView, load networkAsset: NetworkAsset, completion: @escaping (URL?) -> Void)
     func musicView(_ musicView: EditorMusicView, didSelectMusic musicURL: VideoEditorMusicURL?)
     func musicView(_ musicView: EditorMusicView, deselectMusic didStop: Bool)
     func musicView(didSearchButton musicView: EditorMusicView)
@@ -222,6 +223,8 @@ class EditorMusicView: UIView {
                 audioURL: musicInfo.audioURL,
                 lrc: musicInfo.lrc
             )
+            music.overrideSongName = musicInfo.overrideSongName
+            music.overrideSinger = musicInfo.overrideSinger
             musicArray.append(music)
         }
         musics = musicArray
@@ -529,6 +532,11 @@ extension EditorMusicView: UICollectionViewDataSource,
 }
 
 extension EditorMusicView: EditorMusicViewCellDelegate {
+
+    func musicViewCell(_ viewCell: EditorMusicViewCell, load networkAsset: NetworkAsset, completion: @escaping (URL?) -> Void) {
+        delegate?.musicView(self, load: networkAsset, completion: completion)
+    }
+
     func musicViewCell(
         _ viewCell: EditorMusicViewCell,
         didPlay musicURL: VideoEditorMusicURL,

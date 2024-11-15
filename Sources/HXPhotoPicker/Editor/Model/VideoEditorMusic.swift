@@ -17,7 +17,11 @@ public struct VideoEditorMusicInfo {
     /// 每段歌词必须包含时间点 [00:00.000]
     /// 如果不包含的话那么显示歌词功能将会出错
     public let lrc: String
-    
+
+    public var overrideSongName: String?
+
+    public var overrideSinger: String?
+
     public init(
         audioURL: VideoEditorMusicURL,
         lrc: String
@@ -51,8 +55,10 @@ public class VideoEditorMusic: Equatable, Codable {
     var metaData: [String: String] = [:]
     var lyrics: [VideoEditorLyric] = []
     var lyricIsEmpty = false
-    var songName: String? { metaData["ti"] }
-    var singer: String? { metaData["ar"] }
+    var songName: String? { overrideSongName ?? metaData["ti"] }
+    var overrideSongName: String?
+    var singer: String? { overrideSinger ?? metaData["ar"] }
+    var overrideSinger: String?
     var time: TimeInterval? {
         if let time = metaData["t_time"]?.replacingOccurrences(
             of: "(",

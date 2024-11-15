@@ -183,13 +183,36 @@ public struct EditorStickerText {
     }
 }
 
+final public class NetworkAsset {
+
+    public let id: String
+    public internal(set) var url: URL?
+    internal var task: AnyObject?
+
+    public init(id: String) {
+        self.id = id
+    }
+}
+
 public enum VideoEditorMusicURL: Equatable {
     case document(fileName: String)
     case caches(fileName: String)
     case temp(fileName: String)
     case bundle(resource: String, type: String?)
     case network(url: URL)
-    
+    case networkAsset(NetworkAsset)
+
+    public var networkURL: URL? {
+        switch self {
+        case .network(let url):
+            return url
+        case .networkAsset(let networkAsset):
+            return networkAsset.url
+        default:
+            return nil
+        }
+    }
+
     public var url: URL? {
         switch self {
         case .document(let fileName):
@@ -208,6 +231,8 @@ public enum VideoEditorMusicURL: Equatable {
             return nil
         case .network(url: let url):
             return url
+        case .networkAsset:
+            return nil
         }
     }
     
@@ -251,6 +276,13 @@ public enum VideoEditorMusicURL: Equatable {
             default:
                 return false
             }
+        case .networkAsset(let asset):
+            switch rhs {
+            case .networkAsset(let _asset):
+                return asset.id == _asset.id
+            default:
+                return false
+            }
         }
     }
 }
@@ -263,6 +295,7 @@ extension VideoEditorMusicURL: Codable {
         case bundleResource
         case bundleType
         case network
+        case networkAsset
         case error
     }
     public init(from decoder: Decoder) throws {
@@ -288,6 +321,10 @@ extension VideoEditorMusicURL: Codable {
             self = .network(url: url)
             return
         }
+        if let id = try? container.decode(String.self, forKey: .networkAsset) {
+            self = .networkAsset(NetworkAsset(id: id))
+            return
+        }
         throw DecodingError.dataCorruptedError(
             forKey: CodingKeys.error,
             in: container,
@@ -311,6 +348,8 @@ extension VideoEditorMusicURL: Codable {
             }
         case .network(let url):
             try container.encode(url, forKey: .network)
+        case .networkAsset(let asset):
+            try container.encode(asset.id, forKey: .networkAsset)
         }
     }
 }

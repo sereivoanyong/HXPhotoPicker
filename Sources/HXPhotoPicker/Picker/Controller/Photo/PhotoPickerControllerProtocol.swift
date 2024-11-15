@@ -203,7 +203,14 @@ public protocol PhotoPickerControllerDelegate: AnyObject {
         _ pickerController: PhotoPickerController,
         videoEditorShouldClickMusicTool editorViewController: EditorViewController
     ) -> Bool
-    
+
+    func pickerController(
+        _ pickerController: PhotoPickerController,
+        videoEditor editorViewController: EditorViewController,
+        loadMusicURLFor networkAsset: NetworkAsset,
+        completion: @escaping (URL?) -> Void
+    ) -> AnyObject?
+
     /// 视频编辑器加载配乐信息，当music.infos为空时触发
     /// 返回 true 内部会显示加载状态，调用 completionHandler 后恢复
     /// - Parameters:
@@ -617,7 +624,14 @@ public extension PhotoPickerControllerDelegate {
         videoEditorShouldClickMusicTool
         editorViewController: EditorViewController
     ) -> Bool { true }
-    
+    func pickerController(
+        _ pickerController: PhotoPickerController,
+        videoEditor editorViewController: EditorViewController,
+        loadMusicURLFor networkAsset: NetworkAsset,
+        completion: @escaping (URL?) -> Void
+    ) -> AnyObject? {
+        return nil
+    }
     func pickerController(
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,

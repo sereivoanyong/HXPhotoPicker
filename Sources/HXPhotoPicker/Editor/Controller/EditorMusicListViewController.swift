@@ -27,6 +27,11 @@ protocol EditorMusicListViewControllerDelegate: AnyObject {
     )
     func musicViewController(deselectItem musicViewController: EditorMusicListViewController)
     
+    func musicViewController(
+        _ musicViewController: EditorMusicListViewController,
+        load networkAsset: NetworkAsset,
+        completion: @escaping (URL?) -> Void
+    )
     @discardableResult
     func musicViewController(
         _ musicViewController: EditorMusicListViewController,
@@ -245,6 +250,8 @@ class EditorMusicListViewController: HXBaseViewController {
         for musicInfo in infos {
             let music = VideoEditorMusic(audioURL: musicInfo.audioURL,
                                          lrc: musicInfo.lrc)
+            music.overrideSongName = musicInfo.overrideSongName
+            music.overrideSinger = musicInfo.overrideSinger
             musicArray.append(music)
         }
         return musicArray
@@ -407,6 +414,9 @@ extension EditorMusicListViewController: UICollectionViewDataSource,
     }
 }
 extension EditorMusicListViewController: EditorMusicViewCellDelegate {
+    func musicViewCell(_ viewCell: EditorMusicViewCell, load networkAsset: NetworkAsset, completion: @escaping (URL?) -> Void) {
+        delegate?.musicViewController(self, load: networkAsset, completion: completion)
+    }
     func musicViewCell(
         _ viewCell: EditorMusicViewCell,
         didPlay musicURL: VideoEditorMusicURL,

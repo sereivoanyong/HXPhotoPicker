@@ -231,10 +231,9 @@ extension EditorViewController {
             if let musicURL = selectedMusicURL {
                 let volume = musicPlayer?.volume ?? 1
                 let audioURL: URL?
-                switch musicURL {
-                case .network(let url):
-                    audioURL = PhotoTools.getAudioTmpURL(for: url.absoluteString)
-                default:
+                if let networkURL = musicURL.networkURL {
+                    audioURL = PhotoTools.getAudioTmpURL(for: networkURL.absoluteString)
+                } else {
                     audioURL = musicURL.url
                 }
                 if let audioURL = audioURL {

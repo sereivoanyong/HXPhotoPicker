@@ -128,6 +128,25 @@ extension EditorViewController {
                                 self.musicPlayer?.volume = self.musicVolume
                             }
                         }
+                    case .networkAsset(let networkAsset):
+                        networkAsset.task = delegate?.editorViewController(self, loadMusicURLFor: networkAsset) { [weak self] url in
+                            guard let self, let url else { return }
+                            let key = url.absoluteString
+                            let audioTmpURL = PhotoTools.getAudioTmpURL(for: key)
+                            if PhotoTools.isCached(forAudio: key) {
+                                self.musicPlayer?.play(audioTmpURL)
+                                self.musicPlayer?.volume = self.musicVolume
+                            } else {
+                                self.lastMusicDownloadTask = PhotoManager.shared.downloadTask(
+                                    with: url,
+                                    toFile: audioTmpURL
+                                ) { [weak self] audioURL, _, _ in
+                                    guard let self, let audioURL else { return }
+                                    self.musicPlayer?.play(audioURL)
+                                    self.musicPlayer?.volume = self.musicVolume
+                                }
+                            }
+                        }
                     default:
                         if let url = musicURL.url {
                             self.musicPlayer?.play(url)

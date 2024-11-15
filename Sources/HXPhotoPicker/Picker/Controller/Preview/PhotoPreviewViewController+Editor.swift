@@ -135,7 +135,14 @@ extension PhotoPreviewViewController: EditorViewControllerDelegate {
         }
         return true
     }
-    
+
+    public func editorViewController(_ editorViewController: EditorViewController, loadMusicURLFor networkAset: NetworkAsset, completion: @escaping (URL?) -> Void) -> AnyObject? {
+        guard let pickerDelegate = pickerController.pickerDelegate else {
+            return nil
+        }
+        return pickerDelegate.pickerController(pickerController, videoEditor: editorViewController, loadMusicURLFor: networkAset, completion: completion)
+    }
+
     public func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void

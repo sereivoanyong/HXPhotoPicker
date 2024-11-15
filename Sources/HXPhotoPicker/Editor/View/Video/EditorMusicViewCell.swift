@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 
 protocol EditorMusicViewCellDelegate: AnyObject {
+    func musicViewCell(_ viewCell: EditorMusicViewCell, load networkAsset: NetworkAsset, completion: @escaping (URL?) -> Void)
     @discardableResult
     func musicViewCell(
         _ viewCell: EditorMusicViewCell,
@@ -129,8 +130,10 @@ class EditorMusicViewCell: UICollectionViewCell {
     func playMusic(completion: @escaping (VideoEditorMusicURL, VideoEditorMusic) -> Void) {
         hideLoading()
         switch music.audioURL {
-        case .network:
-            playNetworkMusic(completion: completion)
+        case .network(let url):
+            playNetworkMusic(url, completion: completion)
+        case .networkAsset(let asset):
+            playNetworkAsset(asset, completion: completion)
         default:
             playLocalMusic(completion: completion)
         }
@@ -144,10 +147,7 @@ class EditorMusicViewCell: UICollectionViewCell {
         music.isSelected = true
         completion(music.audioURL, music)
     }
-    func playNetworkMusic(completion: @escaping (VideoEditorMusicURL, VideoEditorMusic) -> Void) {
-        guard let url = music.audioURL.url else {
-            return
-        }
+    func playNetworkMusic(_ url: URL, completion: @escaping (VideoEditorMusicURL, VideoEditorMusic) -> Void) {
         let key = url.absoluteString
         let audioTmpURL = PhotoTools.getAudioTmpURL(for: key)
         if PhotoTools.isCached(forAudio: key) {
@@ -177,6 +177,16 @@ class EditorMusicViewCell: UICollectionViewCell {
             }else {
                 self.resetStatus()
             }
+        }
+    }
+    func playNetworkAsset(_ asset: NetworkAsset, completion: @escaping (VideoEditorMusicURL, VideoEditorMusic) -> Void) {
+        delegate?.musicViewCell(self, load: asset) { [weak asset, weak self] url in
+            guard let url else { return }
+            if let asset {
+              asset.url = url
+            }
+            guard let self else { return }
+            playNetworkMusic(url, completion: completion)
         }
     }
     func showLoading() {
