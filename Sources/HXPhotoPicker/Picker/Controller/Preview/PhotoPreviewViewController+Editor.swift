@@ -146,10 +146,10 @@ extension PhotoPreviewViewController: EditorViewControllerDelegate {
     public func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         guard let pickerDelegate = pickerController.pickerDelegate else {
             completionHandler(PhotoTools.defaultMusicInfos())
-            return false
+            return nil
         }
         return pickerDelegate.pickerController(
             pickerController,
@@ -162,12 +162,12 @@ extension PhotoPreviewViewController: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         didSearchMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         guard let pickerDelegate = pickerController.pickerDelegate else {
             completionHandler([], false)
-            return
+            return nil
         }
-        pickerDelegate.pickerController(
+        return pickerDelegate.pickerController(
             pickerController,
             videoEditor: editorViewController,
             didSearch: text,
@@ -179,12 +179,12 @@ extension PhotoPreviewViewController: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         loadMoreMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         guard let pickerDelegate = pickerController.pickerDelegate else {
             completionHandler([], false)
-            return
+            return nil
         }
-        pickerDelegate.pickerController(
+        return pickerDelegate.pickerController(
             pickerController,
             videoEditor: editorViewController,
             loadMore: text,

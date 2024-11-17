@@ -129,7 +129,7 @@ extension EditorViewController {
                             }
                         }
                     case .networkAsset(let networkAsset):
-                        networkAsset.task = delegate?.editorViewController(self, loadMusicURLFor: networkAsset) { [weak self] url in
+                        networkAsset.task = self.delegate?.editorViewController(self, loadMusicURLFor: networkAsset) { [weak self] url in
                             guard let self, let url else { return }
                             let key = url.absoluteString
                             let audioTmpURL = PhotoTools.getAudioTmpURL(for: key)

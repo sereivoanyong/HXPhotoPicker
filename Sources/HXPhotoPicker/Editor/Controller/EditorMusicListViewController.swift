@@ -19,12 +19,12 @@ protocol EditorMusicListViewControllerDelegate: AnyObject {
         _ musicViewController: EditorMusicListViewController,
         didSearch text: String?,
         completion: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     func musicViewController(
         _ musicViewController: EditorMusicListViewController,
         loadMore text: String?,
         completion: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     func musicViewController(deselectItem musicViewController: EditorMusicListViewController)
     
     func musicViewController(
@@ -69,6 +69,7 @@ class EditorMusicListViewController: HXBaseViewController {
     var isSearchData = false
     let config: EditorConfiguration.Music
     let defaultMusics: [VideoEditorMusic]
+    var searchTask: AnyObject?
     init(config: EditorConfiguration.Music, defaultMusics: [VideoEditorMusic] = []) {
         self.config = config
         self.defaultMusics = defaultMusics
@@ -356,7 +357,7 @@ extension EditorMusicListViewController: UICollectionViewDataSource,
             if !isLoadMore && !isLoading && !musics.isEmpty {
                 isLoadMore = true
                 startLoading(isMore: true)
-                delegate?.musicViewController(
+                searchTask = delegate?.musicViewController(
                     self,
                     loadMore: searchText,
                     completion: { [weak self] musicInfos, hasMore in
@@ -474,7 +475,7 @@ extension EditorMusicListViewController: UITextFieldDelegate {
         searchText = text
         startLoading(isMore: false)
         collectionView.contentOffset.y = -collectionView.contentInset.top
-        delegate?.musicViewController(
+        searchTask = delegate?.musicViewController(
             self,
             didSearch: text,
             completion: { [weak self] musicInfos, hasMore in

@@ -965,9 +965,9 @@ extension PickerResultViewController: PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         completionHandler(Tools.musicInfos)
-        return false
+        return nil
     }
     
     func gifChartlet() -> [EditorChartlet] {

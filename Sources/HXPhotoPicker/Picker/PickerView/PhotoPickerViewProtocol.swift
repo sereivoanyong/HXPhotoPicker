@@ -171,7 +171,7 @@ public protocol PhotoPickerViewDelegate: AnyObject {
         _ photoPickerView: PhotoPickerView,
         videoEditor editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool
+    ) -> AnyObject?
     
     /// 视频编辑器搜索配乐信息
     /// - Parameters:
@@ -183,7 +183,7 @@ public protocol PhotoPickerViewDelegate: AnyObject {
         videoEditor editorViewController: EditorViewController,
         didSearch text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     
     /// 视频编辑器加载更多配乐信息
     /// - Parameters:
@@ -195,7 +195,7 @@ public protocol PhotoPickerViewDelegate: AnyObject {
         videoEditor editorViewController: EditorViewController,
         loadMore text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     #endif
 }
 
@@ -304,30 +304,38 @@ public extension PhotoPickerViewDelegate {
         videoEditorShouldClickMusicTool
         editorViewController: EditorViewController
     ) -> Bool { true }
-    
+    func photoPickerView(
+        _ photoPickerView: PhotoPickerView,
+        loadMusicURLForAsset asset: NetworkAsset,
+        completion: @escaping (URL?) -> Void
+    ) -> AnyObject? {
+        return nil
+    }
     func photoPickerView(
         _ photoPickerView: PhotoPickerView,
         videoEditor editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         completionHandler(PhotoTools.defaultMusicInfos())
-        return false
+        return nil
     }
     func photoPickerView(
         _ photoPickerView: PhotoPickerView,
         videoEditor editorViewController: EditorViewController,
         didSearch text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     func photoPickerView(
         _ photoPickerView: PhotoPickerView,
         videoEditor editorViewController: EditorViewController,
         loadMore text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     #endif
 }

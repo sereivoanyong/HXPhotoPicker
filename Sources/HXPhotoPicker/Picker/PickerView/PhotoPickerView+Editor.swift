@@ -116,10 +116,10 @@ extension PhotoPickerView: EditorViewControllerDelegate {
     public func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         guard let delegate = delegate else {
             completionHandler(PhotoTools.defaultMusicInfos())
-            return false
+            return nil
         }
         return delegate.photoPickerView(
             self,
@@ -132,12 +132,12 @@ extension PhotoPickerView: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         didSearchMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         guard let delegate = delegate else {
             completionHandler([], false)
-            return
+            return nil
         }
-        delegate.photoPickerView(
+        return delegate.photoPickerView(
             self,
             videoEditor: editorViewController,
             didSearch: text,
@@ -149,12 +149,12 @@ extension PhotoPickerView: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         loadMoreMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         guard let delegate = delegate else {
             completionHandler([], false)
-            return
+            return nil
         }
-        delegate.photoPickerView(
+        return delegate.photoPickerView(
             self,
             videoEditor: editorViewController,
             loadMore: text,

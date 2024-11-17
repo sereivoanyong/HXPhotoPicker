@@ -252,12 +252,12 @@ extension EditorConfigurationViewController: EditorViewControllerDelegate {
     func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         // 模仿延迟加加载数据
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completionHandler(Tools.musicInfos)
         }
-        return true
+        return NSObject()
     }
     
     /// 搜索配乐信息
@@ -269,11 +269,12 @@ extension EditorConfigurationViewController: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         didSearchMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         // 模仿延迟加加载数据
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completionHandler(Tools.musicInfos, true)
         }
+        return nil
     }
     
     /// 加载更多配乐信息
@@ -285,10 +286,11 @@ extension EditorConfigurationViewController: EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         loadMoreMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completionHandler(Tools.musicInfos, false)
         }
+        return nil
     }
     
     func getChartletTitles() -> [EditorChartlet] {

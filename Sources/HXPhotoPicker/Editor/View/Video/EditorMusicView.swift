@@ -364,26 +364,26 @@ class EditorMusicView: UIView {
         if !backgroundButton.isHidden {
             totalWidth = bgButtonWidth + margin + totalWidth
         }
-        if showLyricButton.isHidden {
+        if !showLyricButton.isHidden {
             totalWidth = totalWidth + margin + showLyricWidth
         }
         originalSoundButton.frame = CGRect(
-            x: (width - originalButtonWidth) / 2,
-            y: backgroundButton.y,
+            x: totalWidth > originalButtonWidth ? (width - totalWidth) / 2 : (width - originalButtonWidth) / 2,
+            y: collectionView.frame.maxY + 20,
             width: originalButtonWidth,
             height: buttonHeight
         )
         
         backgroundButton.frame = CGRect(
             x: originalSoundButton.frame.minX - margin - bgButtonWidth,
-            y: collectionView.frame.maxY + 20,
+            y: originalSoundButton.y,
             width: bgButtonWidth,
             height: buttonHeight
         )
         
         showLyricButton.frame = CGRect(
             x: originalSoundButton.frame.maxX + margin,
-            y: backgroundButton.y,
+            y: originalSoundButton.y,
             width: showLyricWidth,
             height: buttonHeight
         )

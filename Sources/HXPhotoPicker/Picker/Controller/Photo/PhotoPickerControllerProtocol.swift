@@ -221,7 +221,7 @@ public protocol PhotoPickerControllerDelegate: AnyObject {
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool
+    ) -> AnyObject?
     
     /// 视频编辑器搜索配乐信息
     /// - Parameters:
@@ -233,7 +233,7 @@ public protocol PhotoPickerControllerDelegate: AnyObject {
         videoEditor editorViewController: EditorViewController,
         didSearch text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     
     /// 视频编辑器加载更多配乐信息
     /// - Parameters:
@@ -245,7 +245,7 @@ public protocol PhotoPickerControllerDelegate: AnyObject {
         videoEditor editorViewController: EditorViewController,
         loadMore text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     #endif
     
     /// Asset 编辑完后调用
@@ -636,25 +636,27 @@ public extension PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         completionHandler(PhotoTools.defaultMusicInfos())
-        return false
+        return nil
     }
     func pickerController(
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,
         didSearch text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     func pickerController(
         _ pickerController: PhotoPickerController,
         videoEditor editorViewController: EditorViewController,
         loadMore text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     #endif
     

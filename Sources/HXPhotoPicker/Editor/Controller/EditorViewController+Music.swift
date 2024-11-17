@@ -164,16 +164,16 @@ extension EditorViewController: EditorMusicListViewControllerDelegate {
         _ musicViewController: EditorMusicListViewController,
         didSearch text: String?,
         completion: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
-        delegate?.editorViewController(self, didSearchMusic: text, completionHandler: completion)
+    ) -> AnyObject? {
+        return delegate?.editorViewController(self, didSearchMusic: text, completionHandler: completion)
     }
     
     func musicViewController(
         _ musicViewController: EditorMusicListViewController,
         loadMore text: String?,
         completion: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
-        delegate?.editorViewController(self, loadMoreMusic: text, completionHandler: completion)
+    ) -> AnyObject? {
+        return delegate?.editorViewController(self, loadMoreMusic: text, completionHandler: completion)
     }
     
     func musicViewController(clearSearch musicViewController: EditorMusicListViewController) {

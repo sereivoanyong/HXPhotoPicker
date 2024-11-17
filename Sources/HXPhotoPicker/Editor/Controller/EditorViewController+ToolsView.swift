@@ -483,22 +483,27 @@ extension EditorViewController: EditorToolsViewDelegate {
         hideToolsView()
         if musicView.musics.isEmpty {
             if let loadHandler = config.video.music.handler {
-                let showLoading = loadHandler { [weak self] infos in
+                let musicsTask = loadHandler { [weak self] infos in
                     self?.musicView.reloadData(infos: infos)
                 }
+                lastMusicsTask = musicsTask
+                let showLoading = musicsTask != nil
                 if showLoading {
                     musicView.showLoading()
                 }
             }else {
                 if let editorDelegate = delegate {
-                    if editorDelegate.editorViewController(
+                    let musicsTask = editorDelegate.editorViewController(
                         self,
                         loadMusic: { [weak self] infos in
                             self?.musicView.reloadData(infos: infos)
-                    }) {
+                    })
+                    lastMusicsTask = musicsTask
+                    if musicsTask != nil {
                         musicView.showLoading()
                     }
                 }else {
+                    lastMusicsTask = nil
                     let infos = PhotoTools.defaultMusicInfos()
                     if infos.isEmpty {
                         PhotoManager.HUDView.showInfo(with: .textManager.editor.music.emptyHudTitle.text, delay: 1.5, animated: true, addedTo: view)

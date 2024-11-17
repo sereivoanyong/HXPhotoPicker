@@ -617,6 +617,7 @@ open class EditorViewController: HXBaseViewController {
     var imageFilterQueue: OperationQueue!
     
     var isStartFilterParameterTime: CMTime?
+    var lastMusicsTask: AnyObject?
     var lastMusicDownloadTask: URLSessionDownloadTask?
     var videoCoverView: UIImageView?
     weak var videoTool: EditorVideoTool?

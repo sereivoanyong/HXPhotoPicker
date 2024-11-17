@@ -84,7 +84,7 @@ public protocol EditorViewControllerDelegate: AnyObject {
     func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool
+    ) -> AnyObject?
 
     func editorViewController(
         _ editorViewController: EditorViewController,
@@ -107,7 +107,7 @@ public protocol EditorViewControllerDelegate: AnyObject {
         _ editorViewController: EditorViewController,
         didSearchMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     
     /// 加载更多配乐信息
     /// - Parameters:
@@ -118,7 +118,7 @@ public protocol EditorViewControllerDelegate: AnyObject {
         _ editorViewController: EditorViewController,
         loadMoreMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    )
+    ) -> AnyObject?
     
     /*
     /// 完成编辑
@@ -241,9 +241,9 @@ public extension EditorViewControllerDelegate {
     func editorViewController(
         _ editorViewController: EditorViewController,
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
-    ) -> Bool {
+    ) -> AnyObject? {
         completionHandler(PhotoTools.defaultMusicInfos())
-        return false
+        return nil
     }
 
     func editorViewController(
@@ -262,16 +262,18 @@ public extension EditorViewControllerDelegate {
         _ editorViewController: EditorViewController,
         didSearchMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     
     func editorViewController(
         _ editorViewController: EditorViewController,
         loadMoreMusic text: String?,
         completionHandler: @escaping ([VideoEditorMusicInfo], Bool) -> Void
-    ) {
+    ) -> AnyObject? {
         completionHandler([], false)
+        return nil
     }
     
     func editorViewController(
