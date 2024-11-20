@@ -127,7 +127,7 @@ public final class SelectBoxView: UIControl {
             textLayer.string = nil
         }
         
-        let font: UIFont = .mediumPingFang(ofSize: config.titleFontSize)
+        let font: UIFont = .systemFont(ofSize: config.titleFontSize, weight: .medium)
         var textHeight: CGFloat
         var textWidth: CGFloat
         if textSize.equalTo(CGSize.zero) {

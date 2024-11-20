@@ -271,14 +271,14 @@ class EditorFilterEditViewCell: UICollectionViewCell {
         contentView.addSubview(bgView)
         titleLb = UILabel()
         titleLb.textColor = .white
-        titleLb.font = .regularPingFang(ofSize: 13)
+        titleLb.font = .systemFont(ofSize: 13)
         titleLb.textAlignment = .center
         titleLb.adjustsFontSizeToFitWidth = true
         contentView.addSubview(titleLb)
         parameterLb = UILabel()
         parameterLb.text = "0"
         parameterLb.textColor = .white
-        parameterLb.font = .regularPingFang(ofSize: 11)
+        parameterLb.font = .systemFont(ofSize: 11)
         parameterLb.textAlignment = .center
         parameterLb.isHidden = true
         contentView.addSubview(parameterLb)

@@ -56,7 +56,7 @@ public extension HX.TextManager {
         
         /// 相册列表、照片列表界面导航栏的取消按钮
         public var navigationCancelTitle: TextType = .localized("取消")
-        public var navigationCancelTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 17)
+        public var navigationCancelTitleFont: UIFont = .systemFont(ofSize: 17)
         
         /// 所有相册
         public var albumCameraRollTitle: TextType = .localized("HXAlbumCameraRoll")
@@ -106,11 +106,11 @@ public extension HX.TextManager {
         
         public struct NotAuthorized {
             public var title: TextType = .localized("无法访问相册中照片")
-            public var titleFont: UIFont = HXPickerWrapper<UIFont>.semiboldPingFang(ofSize: 20)
+            public var titleFont: UIFont = .systemFont(ofSize: 20, weight: .semibold)
             public var subTitle: TextType = .localized("当前无照片访问权限，建议前往系统设置，\n允许访问「照片」中的「所有照片」。")
-            public var subTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var subTitleFont: UIFont = .systemFont(ofSize: 17)
             public var buttonTitle: TextType = .localized("前往系统设置")
-            public var buttonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var buttonTitleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
             
             /// 相册未授权时Alert弹出的内容
             public var alertTitle: TextType = .localized("无法访问相册中照片")
@@ -150,9 +150,9 @@ public extension HX.TextManager {
             public var hapticTouchRemoveEditTitle: TextType = .localized("清空已编辑的内容")
             
             public var emptyTitle: TextType = .localized("没有照片")
-            public var emptyTitleFont: UIFont = HXPickerWrapper<UIFont>.semiboldPingFang(ofSize: 20)
+            public var emptyTitleFont: UIFont = .systemFont(ofSize: 20, weight: .semibold)
             public var emptySubTitle: TextType = .localized("你可以使用相机拍些照片")
-            public var emptySubTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var emptySubTitleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
             
             public var videoExportFailedHudTitle: TextType = .localized("视频导出失败")
             public var saveSystemAlbumFailedHudTitle: TextType = .localized("保存失败")
@@ -206,7 +206,7 @@ public extension HX.TextManager {
             public var permissionsTitle: TextType = .localized("无法访问相册中所有照片，\n请允许访问「照片」中的「所有照片」")
             public var permissionsTitleFont: UIFont = .systemFont(ofSize: 15)
             public var finishTitle: TextType = .localized("完成")
-            public var finishTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var finishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
             public var previewTitle: TextType = .localized("预览")
             public var previewTitleFont: UIFont = .systemFont(ofSize: 17)
             public var editTitle: TextType = .localized("编辑")
@@ -241,25 +241,25 @@ public extension HX.TextManager {
         
         public struct Tools {
             public var cancelTitle: TextType = .localized("取消")
-            public var cancelTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var cancelTitleFont: UIFont = .systemFont(ofSize: 17)
             public var finishTitle: TextType = .localized("完成")
-            public var finishTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var finishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
             public var resetTitle: TextType = .localized("还原")
-            public var resetTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var resetTitleFont: UIFont = .systemFont(ofSize: 17)
         }
         
         public struct Brush {
             public var cancelTitle: TextType = .localized("取消")
-            public var cancelTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var cancelTitleFont: UIFont = .systemFont(ofSize: 17)
             public var finishTitle: TextType = .localized("完成")
-            public var finishTitleFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 17)
+            public var finishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
         }
         
         public struct Text {
             public var cancelTitle: TextType = .localized("取消")
             public var cancelTitleFont: UIFont = .systemFont(ofSize: 17)
             public var finishTitle: TextType = .localized("完成")
-            public var finishTitleFont: UIFont = .systemFont(ofSize: 17)
+            public var finishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
         }
         
         public struct Sticker {
@@ -270,7 +270,7 @@ public extension HX.TextManager {
         public struct Crop {
             public var maskListTitle: TextType = .localized("蒙版素材")
             public var maskListFinishTitle: TextType = .localized("完成")
-            public var maskListFinishTitleFont: UIFont = .systemFont(ofSize: 17)
+            public var maskListFinishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
             
         }
         
@@ -279,24 +279,24 @@ public extension HX.TextManager {
             public var lyricEmptyTitle: TextType = .localized("此歌曲暂无歌词，请您欣赏")
             
             public var searchButtonTitle: TextType = .localized("搜索")
-            public var searchButtonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 14) 
+            public var searchButtonTitleFont: UIFont = .systemFont(ofSize: 14, weight: .medium)
             public var volumeButtonTitle: TextType = .localized("音量")
-            public var volumeButtonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 14)
+            public var volumeButtonTitleFont: UIFont = .systemFont(ofSize: 14, weight: .medium)
             public var volumeMusicButtonTitle: TextType = .localized("配乐")
             public var volumeMusicButtonTitleFont: UIFont = .systemFont(ofSize: 15)
             public var volumeOriginalButtonTitle: TextType = .localized("视频原声")
             public var volumeOriginalButtonTitleFont: UIFont = .systemFont(ofSize: 15)
             
             public var musicButtonTitle: TextType = .localized("配乐")
-            public var musicButtonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var musicButtonTitleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
             public var originalButtonTitle: TextType = .localized("视频原声")
-            public var originalButtonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var originalButtonTitleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
             public var lyricButtonTitle: TextType = .localized("歌词")
-            public var lyricButtonTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+            public var lyricButtonTitleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
             
             public var listTitle: TextType = .localized("背景音乐")
             public var finishTitle: TextType = .localized("完成")
-            public var finishTitleFont: UIFont = .systemFont(ofSize: 17)
+            public var finishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
             public var searchPlaceholder: TextType = .localized("搜索歌名")
             public var searchPlaceholderFont: UIFont = .systemFont(ofSize: 17)
         }
@@ -317,8 +317,8 @@ public extension HX.TextManager {
             public var originalPhotoTitle: TextType = .localized("原图")
             public var originalVideoTitle: TextType = .localized("原片")
             
-            public var nameFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 13)
-            public var parameterFont: UIFont = HXPickerWrapper<UIFont>.regularPingFang(ofSize: 11)
+            public var nameFont: UIFont = .systemFont(ofSize: 13)
+            public var parameterFont: UIFont = .systemFont(ofSize: 11)
         }
     }
     #endif
@@ -345,7 +345,7 @@ public extension HX.TextManager {
         public var captureTipTitle: TextType = .localized("轻触拍照，按住摄像")
         
         public var resultFinishTitle: TextType = .localized("完成")
-        public var resultFinishTitleFont: UIFont = HXPickerWrapper<UIFont>.mediumPingFang(ofSize: 16)
+        public var resultFinishTitleFont: UIFont = .systemFont(ofSize: 17, weight: .semibold)
         
         public var notAuthorized: NotAuthorized = .init()
         

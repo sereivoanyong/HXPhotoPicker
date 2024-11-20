@@ -67,7 +67,7 @@ open class PhotoPickerViewCell: PhotoPickerBaseViewCell {
         photoView.layer.addSublayer(selectMaskLayer)
         
         assetTypeLb = UILabel()
-        assetTypeLb.font = .mediumPingFang(ofSize: 14)
+        assetTypeLb.font = .systemFont(ofSize: 14, weight: .medium)
         assetTypeLb.textColor = .white
         assetTypeLb.textAlignment = .right
         contentView.addSubview(assetTypeLb)

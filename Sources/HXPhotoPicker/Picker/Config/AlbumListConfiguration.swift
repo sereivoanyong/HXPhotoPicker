@@ -113,7 +113,7 @@ public struct AlbumListConfiguration {
     public var tickDarkColor: UIColor = .systemBlue
     
     public init() {
-        albumNameFont = .mediumPingFang(ofSize: 15)
+        albumNameFont = .systemFont(ofSize: 15, weight: .medium)
         photoCountFont = .systemFont(ofSize: 13, weight: .medium)
     }
     

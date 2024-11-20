@@ -112,7 +112,7 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
         let titleTextAttributes: [NSAttributedString.Key : Any] = [
             .foregroundColor:
                 isDark ? config.navigationTitleDarkColor : config.navigationTitleColor,
-            .font: UIFont.semiboldPingFang(ofSize: 18)
+            .font: UIFont.systemFont(ofSize: 18, weight: .semibold)
         ]
         view.backgroundColor = isDark ? config.albumController.backgroundDarkColor : config.albumController.backgroundColor
         tableView.backgroundColor = view.backgroundColor
