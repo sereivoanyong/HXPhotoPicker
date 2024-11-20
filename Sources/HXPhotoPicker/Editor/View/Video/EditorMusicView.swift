@@ -341,36 +341,41 @@ class EditorMusicView: UIView {
     func setBottomButtonFrame() {
         
         let buttonHeight: CGFloat = 25
-        let imageWidth = backgroundButton.currentImage?.width ?? 0
         let bgTextWidth = backgroundButton.currentTitle?.width(
-            ofFont: .systemFont(ofSize: 16, weight: .medium),
+            ofFont: .textManager.editor.music.musicButtonTitleFont,
             maxHeight: buttonHeight
         ) ?? 0
-        let bgButtonWidth = imageWidth + bgTextWidth + 10
+        let bgButtonWidth = (backgroundButton.currentImage?.width ?? 0) + bgTextWidth + 10
         
         let originalTextWidth = originalSoundButton.currentTitle?.width(
-            ofFont: .systemFont(ofSize: 16, weight: .medium),
+            ofFont: .textManager.editor.music.originalButtonTitleFont,
             maxHeight: buttonHeight
         ) ?? 0
-        let originalButtonWidth = imageWidth + originalTextWidth + 10
+        let originalButtonWidth = (originalSoundButton.currentImage?.width ?? 0) + originalTextWidth + 10
         
         let showLyricTextWidth = showLyricButton.currentTitle?.width(
-            ofFont: .systemFont(ofSize: 16, weight: .medium),
+            ofFont: .textManager.editor.music.lyricButtonTitleFont,
             maxHeight: buttonHeight
         ) ?? 0
-        let showLyricWidth = imageWidth + showLyricTextWidth + 10
+        let showLyricWidth = (showLyricButton.currentImage?.width ?? 0) + showLyricTextWidth + 10
         
+        let margin: CGFloat = 25
+        var totalWidth = originalButtonWidth
+        if !backgroundButton.isHidden {
+            totalWidth = bgButtonWidth + margin + totalWidth
+        }
+        if showLyricButton.isHidden {
+            totalWidth = totalWidth + margin + showLyricWidth
+        }
         originalSoundButton.frame = CGRect(
-            x: 0,
+            x: (width - originalButtonWidth) / 2,
             y: backgroundButton.y,
             width: originalButtonWidth,
             height: buttonHeight
         )
-        originalSoundButton.centerX = width * 0.5
         
-        let margin: CGFloat = 35
         backgroundButton.frame = CGRect(
-            x: originalSoundButton.x - margin - bgButtonWidth,
+            x: originalSoundButton.frame.minX - margin - bgButtonWidth,
             y: collectionView.frame.maxY + 20,
             width: bgButtonWidth,
             height: buttonHeight
