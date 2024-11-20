@@ -23,7 +23,7 @@ public class PhotoPickerFinishItemView: UIView, PhotoNavigationItem {
     func initView() {
         button = UIButton(type: .custom)
         button.setTitle("完成".localized, for: .normal)
-        button.titleLabel?.font = .mediumPingFang(ofSize: 16)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 3
         button.layer.masksToBounds = true
         button.isEnabled = false

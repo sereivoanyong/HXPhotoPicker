@@ -94,7 +94,7 @@ public class AlbumTitleView: UIControl, PhotoPickerNavigationTitle {
     
     private func initViews() {
         let text: String = .textManager.picker.albumList.navigationTitle.text
-        let font = UIFont.semiboldPingFang(ofSize: 18)
+        let font: UIFont = .systemFont(ofSize: 18, weight: .semibold)
         titleLb = UILabel(
             frame: CGRect(
                 x: 0,

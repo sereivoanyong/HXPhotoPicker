@@ -16,7 +16,7 @@ open class PhotoPickerWeChatViewCell: PhotoPickerSelectableViewCell {
         titleLb = UILabel()
         titleLb.textAlignment = .center
         titleLb.textColor = .white
-        titleLb.font = .semiboldPingFang(ofSize: 15)
+        titleLb.font = .systemFont(ofSize: 15, weight: .semibold)
         titleLb.isHidden = true
         contentView.insertSubview(titleLb, belowSubview: selectControl)
     }

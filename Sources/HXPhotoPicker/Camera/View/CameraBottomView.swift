@@ -108,7 +108,7 @@ class CameraBottomView: UIView {
         tipLb = UILabel()
         tipLb.textColor = .white
         tipLb.textAlignment = .center
-        tipLb.font = .mediumPingFang(ofSize: 14)
+        tipLb.font = .systemFont(ofSize: 14, weight: .medium)
         tipLb.numberOfLines = 0
         tipLb.adjustsFontSizeToFitWidth = true
         tipLb.shadowColor = .black.withAlphaComponent(0.6)
@@ -140,7 +140,7 @@ class CameraBottomView: UIView {
         videoTimeLb.text = "00:00"
         videoTimeLb.textColor = .white
         videoTimeLb.textAlignment = .center
-        videoTimeLb.font = .mediumPingFang(ofSize: 16)
+        videoTimeLb.font = .systemFont(ofSize: 16, weight: .medium)
         videoTimeLb.numberOfLines = 0
         videoTimeLb.shadowColor = .black.withAlphaComponent(0.4)
         videoTimeLb.shadowOffset = CGSize(width: 0, height: 1)
