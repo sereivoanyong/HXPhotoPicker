@@ -330,7 +330,7 @@ extension PhotoListConfiguration {
         public var titleFont: UIFont
         
         public init() {
-            titleFont = .mediumPingFang(ofSize: 14)
+            titleFont = .systemFont(ofSize: 14, weight: .medium)
         }
     }
 }
@@ -348,8 +348,8 @@ extension PhotoListConfiguration {
         public var filterContentDarkColor: UIColor = .systemBlue
         public var filterFont: UIFont
         public init() {
-            textFont = .mediumPingFang(ofSize: 15)
-            filterFont = .regularPingFang(ofSize: 13)
+            textFont = .systemFont(ofSize: 15, weight: .medium)
+            filterFont = .systemFont(ofSize: 13)
         }
         
         public mutating func setThemeColor(_ color: UIColor) {

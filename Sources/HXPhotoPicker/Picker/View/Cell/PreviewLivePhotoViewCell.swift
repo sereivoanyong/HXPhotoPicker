@@ -92,7 +92,7 @@ class PreviewLivePhotoViewCell: PhotoPreviewViewCell, PhotoPreviewContentViewDel
         label.text = .textManager.picker.preview.livePhotoTitle.text
         label.textColor = "#666666".color
         label.textAlignment = .center
-        label.font = .regularPingFang(ofSize: 15)
+        label.font = .systemFont(ofSize: 15)
         label.x = imageView.frame.maxX + 5
         label.height = liveMarkView.height
         label.width = label.textWidth

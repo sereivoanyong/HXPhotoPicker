@@ -78,7 +78,7 @@ open class PhotoPickerSelectableViewCell: PhotoPickerViewCell {
             selectMaskLayer.isHidden = false
             if config.selectBox.style == .number {
                 let text = selectedTitle
-                let font = UIFont.mediumPingFang(ofSize: config.selectBox.titleFontSize)
+                let font: UIFont = .systemFont(ofSize: config.selectBox.titleFontSize, weight: .medium)
                 let textHeight = text.height(ofFont: font, maxWidth: CGFloat(MAXFLOAT))
                 var textWidth = text.width(ofFont: font, maxHeight: textHeight)
                 selectControl.textSize = CGSize(width: textWidth, height: textHeight)

@@ -122,7 +122,7 @@ class EditorMusicViewCell: UICollectionViewCell {
         contentView.addSubview(animationView)
         
         songNameLb = UILabel()
-        songNameLb.font = .mediumPingFang(ofSize: 16)
+        songNameLb.font = .systemFont(ofSize: 16, weight: .medium)
         contentView.addSubview(songNameLb)
     }
     
@@ -378,7 +378,7 @@ extension EditorMusicViewCell: UICollectionViewDataSource,
     ) -> CGSize {
         let lyric = music.lyrics[indexPath.item]
         let cellWidth = lyric.lyric.width(
-            ofFont: UIFont.mediumPingFang(ofSize: 16),
+            ofFont: .systemFont(ofSize: 16, weight: .medium),
             maxHeight: shadeView.height
         )
         return CGSize(width: cellWidth, height: shadeView.height)
