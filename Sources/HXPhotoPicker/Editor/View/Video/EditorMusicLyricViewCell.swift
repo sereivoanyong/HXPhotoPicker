@@ -19,7 +19,7 @@ class EditorMusicLyricViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         lyricLb = UILabel()
-        lyricLb.font = .mediumPingFang(ofSize: 16)
+        lyricLb.font = .systemFont(ofSize: 16, weight: .medium)
         lyricLb.textColor = .white
         contentView.addSubview(lyricLb)
     }

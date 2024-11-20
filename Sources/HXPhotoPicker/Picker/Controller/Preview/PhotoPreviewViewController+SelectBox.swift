@@ -151,8 +151,9 @@ extension PhotoPreviewViewController {
                     format: "%d",
                     arguments: [photoAsset.selectIndex + 1]
                 )
-                let font = UIFont.mediumPingFang(
-                    ofSize: config.selectBox.titleFontSize
+                let font: UIFont = .systemFont(
+                    ofSize: config.selectBox.titleFontSize,
+                    weight: .medium
                 )
                 let textHeight = text.height(
                     ofFont: font,

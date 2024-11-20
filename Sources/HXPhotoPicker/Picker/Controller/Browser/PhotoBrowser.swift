@@ -765,7 +765,7 @@ open class PhotoBrowserDefaultPageIndicator: UIView, PhotoBrowserPageIndicator {
         super.init(frame: frame)
         titleLabel = UILabel()
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.semiboldPingFang(ofSize: 17)
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
     }

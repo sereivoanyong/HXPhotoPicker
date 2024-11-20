@@ -136,7 +136,7 @@ class EditorMusicView: UIView {
         originalSoundButton.setTitle(.textManager.editor.music.originalButtonTitle.text, for: .normal)
         originalSoundButton.setTitleColor(.white, for: .normal)
         originalSoundButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        originalSoundButton.titleLabel?.font = .textManager.editor.music.musicButtonTitleFont
+        originalSoundButton.titleLabel?.font = .textManager.editor.music.originalButtonTitleFont
         originalSoundButton.setImage(.imageResource.editor.music.selectionBoxNormal.image, for: .normal)
         originalSoundButton.setImage(.imageResource.editor.music.selectionBoxSelected.image, for: .selected)
         originalSoundButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
@@ -299,7 +299,7 @@ class EditorMusicView: UIView {
         
         let margin: CGFloat = 30
         let volumeTextWidth = volumeButton.currentTitle?.width(
-            ofFont: UIFont.mediumPingFang(ofSize: 14),
+            ofFont: .systemFont(ofSize: 14, weight: .medium),
             maxHeight: 30
         ) ?? 0
         var volumeButtonWidth = volumeTextWidth + (volumeButton.currentImage?.width ?? 0) + 20
@@ -309,7 +309,7 @@ class EditorMusicView: UIView {
         volumeBgView.frame = .init(x: 0, y: 0, width: volumeButtonWidth, height: 30)
         if config.showSearch {
             let searchTextWidth = searchButton.currentTitle?.width(
-                ofFont: UIFont.mediumPingFang(ofSize: 14),
+                ofFont: .systemFont(ofSize: 14, weight: .medium),
                 maxHeight: 30
             ) ?? 0
             var searchButtonWidth = searchTextWidth + (searchButton.currentImage?.width ?? 0) + 20
@@ -340,19 +340,19 @@ class EditorMusicView: UIView {
         let buttonHeight: CGFloat = 25
         let imageWidth = backgroundButton.currentImage?.width ?? 0
         let bgTextWidth = backgroundButton.currentTitle?.width(
-            ofFont: UIFont.mediumPingFang(ofSize: 16),
+            ofFont: .systemFont(ofSize: 16, weight: .medium),
             maxHeight: buttonHeight
         ) ?? 0
         let bgButtonWidth = imageWidth + bgTextWidth + 10
         
         let originalTextWidth = originalSoundButton.currentTitle?.width(
-            ofFont: UIFont.mediumPingFang(ofSize: 16),
+            ofFont: .systemFont(ofSize: 16, weight: .medium),
             maxHeight: buttonHeight
         ) ?? 0
         let originalButtonWidth = imageWidth + originalTextWidth + 10
         
         let showLyricTextWidth = showLyricButton.currentTitle?.width(
-            ofFont: UIFont.mediumPingFang(ofSize: 16),
+            ofFont: .systemFont(ofSize: 16, weight: .medium),
             maxHeight: buttonHeight
         ) ?? 0
         let showLyricWidth = imageWidth + showLyricTextWidth + 10
