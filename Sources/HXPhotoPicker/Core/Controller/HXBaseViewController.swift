@@ -8,6 +8,23 @@
 import UIKit
 
 open class HXBaseViewController: UIViewController {
+
+    public override init(nibName: String?, bundle: Bundle?) {
+        super.init(nibName: nibName, bundle: bundle)
+        commonInit()
+    }
+
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
+    func commonInit() {
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .dark
+        }
+    }
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {

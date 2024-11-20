@@ -594,6 +594,7 @@
 		2CB0DAB4A2D3E75DDFE83C618E0C3C57 /* PhotoPickerController+Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PhotoPickerController+Internal.swift"; sourceTree = "<group>"; };
 		2CF7B1E334502F0240661620A7B805E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2D7882C256D420B52F25CDC02F7121D8 /* PickerResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerResult.swift; path = Sources/HXPhotoPicker/Picker/PickerResult.swift; sourceTree = "<group>"; };
+		2DBC46112CEDDE2B00E4C719 /* HXBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HXBaseNavigationController.swift; sourceTree = "<group>"; };
 		2DD46EEDEDB9D62E26A878ACA2D78397 /* AlbumListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlbumListView.swift; sourceTree = "<group>"; };
 		2E22CC752FF0E7C496DB7B1ED6D47D42 /* Picker+PhotoTools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Picker+PhotoTools.swift"; sourceTree = "<group>"; };
 		2E7CB30F9A54E4735D193CCC78882CD3 /* Pods-SwiftUIExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftUIExample-frameworks.sh"; sourceTree = "<group>"; };
@@ -2595,6 +2596,7 @@
 				96114DE39FF6501A95FE34B9CABD23EF /* EditorContentView.swift in Sources */,
 				AC651D902C6E9389AAFDF6886A973447 /* EditorControlView.swift in Sources */,
 				07B34716A38FBFFFE2972883BACE60EF /* EditorDrawTool.swift in Sources */,
+				2DBC46122CEDDE2B00E4C719 /* HXBaseNavigationController.swift in Sources */,
 				108073DB179421267CF7258D5852099F /* EditorDrawView.swift in Sources */,
 				21C45629539303BFB0705325081F6BC9 /* EditorFilterEditView.swift in Sources */,
 				D1953613AB264FA67505CB073F0A6200 /* EditorFilterParameterView.swift in Sources */,

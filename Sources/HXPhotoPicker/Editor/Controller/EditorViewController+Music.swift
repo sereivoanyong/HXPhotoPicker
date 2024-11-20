@@ -63,7 +63,7 @@ extension EditorViewController: EditorMusicViewDelegate {
     func musicView(didSearchButton musicView: EditorMusicView) {
         let vc = EditorMusicListViewController(config: config.video.music, defaultMusics: musicView.musics)
         vc.delegate = self
-        let nav = UINavigationController(rootViewController: vc)
+        let nav = HXBaseNavigationController(rootViewController: vc)
         nav.view.backgroundColor = .clear
         present(nav, animated: true)
     }

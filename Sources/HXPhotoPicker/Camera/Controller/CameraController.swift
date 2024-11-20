@@ -11,7 +11,7 @@ import AVFoundation
 import Photos
 
 #if !targetEnvironment(macCatalyst)
-open class CameraController: UINavigationController {
+open class CameraController: HXBaseNavigationController {
     
     public enum CameraType {
         case normal

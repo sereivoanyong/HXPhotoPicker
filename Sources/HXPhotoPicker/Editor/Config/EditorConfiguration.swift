@@ -366,13 +366,17 @@ public extension EditorConfiguration {
         /// 文本光标颜色
         public var tintColor: UIColor = "#FDCC00".hx.color
         
+        /// Text color of cancel button
+        /// 取消按钮的文字颜色
+        public var cancelTitleColor: UIColor = .white
+
         /// OK button text color
         /// 确定按钮文字颜色
-        public var doneTitleColor: UIColor = "#FDCC00".hx.color
-        
+        public var finishTitleColor: UIColor = "#FDCC00".hx.color
+
         /// OK button background color
         /// 确定按钮背景颜色
-        public var doneBackgroundColor: UIColor = .clear
+        public var finishBackgroundColor: UIColor = .clear
         
         /// text font
         /// 文本字体

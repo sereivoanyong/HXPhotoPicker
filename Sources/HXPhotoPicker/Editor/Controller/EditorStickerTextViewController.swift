@@ -18,7 +18,7 @@ protocol EditorStickerTextViewControllerDelegate: AnyObject {
     )
 }
 
-class EditorStickerTextController: UINavigationController {
+class EditorStickerTextController: HXBaseNavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
@@ -62,7 +62,7 @@ final class EditorStickerTextViewController: HXBaseViewController {
         
         cancelButton = UIButton(type: .system)
         cancelButton.setTitle(.textManager.editor.text.cancelTitle.text, for: .normal)
-        cancelButton.setTitleColor(.white, for: .normal)
+        cancelButton.setTitleColor(config.cancelTitleColor, for: .normal)
         cancelButton.titleLabel?.font = .textManager.editor.text.cancelTitleFont
         cancelButton.size = CGSize(width: 60, height: 30)
         cancelButton.addTarget(self, action: #selector(didCancelButtonClick), for: .touchUpInside)
@@ -71,7 +71,7 @@ final class EditorStickerTextViewController: HXBaseViewController {
         let text: String = .textManager.editor.text.finishTitle.text
         let finishFont: UIFont = .textManager.editor.text.finishTitleFont
         finishButton.setTitle(text, for: .normal)
-        finishButton.setTitleColor(config.doneTitleColor, for: .normal)
+        finishButton.setTitleColor(config.finishTitleColor, for: .normal)
         finishButton.titleLabel?.font = finishFont
         var textWidth = text.width(ofFont: finishFont, maxHeight: 30)
         if textWidth < 60 {
@@ -80,10 +80,10 @@ final class EditorStickerTextViewController: HXBaseViewController {
             textWidth += 10
         }
         finishButton.size = CGSize(width: textWidth, height: 30)
-        if config.doneBackgroundColor != UIColor.clear {
+        if config.finishBackgroundColor != UIColor.clear {
             finishButton.setBackgroundImage(
                 UIImage.image(
-                    for: config.doneBackgroundColor,
+                    for: config.finishBackgroundColor,
                     havingSize: finishButton.size,
                     radius: 3
                 ),

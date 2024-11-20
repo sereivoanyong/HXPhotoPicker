@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-open class PhotoPickerController: UINavigationController {
+open class PhotoPickerController: HXBaseNavigationController {
     public weak var pickerDelegate: PhotoPickerControllerDelegate?
     public var finishHandler: FinishHandler?
     public var cancelHandler: CancelHandler?
