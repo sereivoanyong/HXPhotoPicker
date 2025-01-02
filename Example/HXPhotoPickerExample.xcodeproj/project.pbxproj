@@ -1,0 +1,1079 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2DBBE3532D27CBC700FD1C50 /* HXPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2DBBE3522D27CBC700FD1C50 /* HXPhotoPicker */; };
+		2DBBE3552D27CBCC00FD1C50 /* HXPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2DBBE3542D27CBCC00FD1C50 /* HXPhotoPicker */; };
+		7B08596224FA58DF00E93091 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B08592524FA58DE00E93091 /* ViewController.m */; };
+		7B20B41527A2A94D00375FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B20B3A327A2A94C00375FB6 /* Assets.xcassets */; };
+		7B64186124F76C67003A5723 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B64186024F76C67003A5723 /* README.md */; };
+		7B7E3E7B1E4AACD1002234EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E3E7A1E4AACD1002234EE /* main.m */; };
+		7B7E3E7E1E4AACD1002234EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7E3E7D1E4AACD1002234EE /* AppDelegate.m */; };
+		7B7E3E861E4AACD1002234EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B7E3E851E4AACD1002234EE /* Assets.xcassets */; };
+		D30ED4372A3C55B10074525C /* c81.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D30ED4362A3C55B10074525C /* c81.mp4 */; };
+		D30ED43D2A3C5D7D0074525C /* livephoto_image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D30ED43C2A3C5D7D0074525C /* livephoto_image.jpeg */; };
+		D30ED4402A3C5F2D0074525C /* IMG_0168.GIF in Resources */ = {isa = PBXBuildFile; fileRef = D30ED43F2A3C5F2D0074525C /* IMG_0168.GIF */; };
+		D35962952A3EC175009CCD94 /* SwiftPickerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35962902A3EC175009CCD94 /* SwiftPickerResult.swift */; };
+		D35962972A3EC175009CCD94 /* SwiftAssetURLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35962912A3EC175009CCD94 /* SwiftAssetURLResult.swift */; };
+		D35962992A3EC175009CCD94 /* SwiftPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35962922A3EC175009CCD94 /* SwiftPickerConfiguration.swift */; };
+		D359629B2A3EC175009CCD94 /* SwiftPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35962932A3EC175009CCD94 /* SwiftPicker.swift */; };
+		D359629D2A3EC175009CCD94 /* SwiftPhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35962942A3EC175009CCD94 /* SwiftPhotoAsset.swift */; };
+		D35D3CAC2AAC0B8B004CBC30 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D3CAB2AAC0B8B004CBC30 /* PhotoView.swift */; };
+		D35D3CB42AAC5B5B004CBC30 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D3CB32AAC5B5B004CBC30 /* ConfigView.swift */; };
+		D35D3CD52AAC5D9C004CBC30 /* Core+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742A2A39744200E70910 /* Core+UIColor.swift */; };
+		D35D3CD62AAC5D9C004CBC30 /* RowTypeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874292A39744200E70910 /* RowTypeRule.swift */; };
+		D35D3CD72AAC5D9C004CBC30 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874282A39744200E70910 /* String+Extension.swift */; };
+		D35D3CD82AAC5D9C004CBC30 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874252A39744200E70910 /* UIDevice+Extension.swift */; };
+		D35D3CD92AAC5D9C004CBC30 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874262A39744200E70910 /* UIFont+Extension.swift */; };
+		D35D3CDB2AAC5D9C004CBC30 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3837B2D2AA4312400F4D64E /* Extension.swift */; };
+		D35D3CDE2AAC5D9C004CBC30 /* EditorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742D2A39744200E70910 /* EditorConfigurationViewController.swift */; };
+		D35D3CE12AAC5D9C004CBC30 /* PickerColorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874352A39744200E70910 /* PickerColorConfigurationViewController.swift */; };
+		D35D3CE22AAC5D9C004CBC30 /* PickerConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874372A39744200E70910 /* PickerConfigurationViewController.swift */; };
+		D35D3CEC2AAC5D9C004CBC30 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368743C2A39744200E70910 /* Tools.swift */; };
+		D35D3CED2AAC5D9C004CBC30 /* ConfigurationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368743F2A39744200E70910 /* ConfigurationViewCell.swift */; };
+		D35D3CEE2AAC5D9C004CBC30 /* CustomPickerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874402A39744200E70910 /* CustomPickerCellView.swift */; };
+		D35D3D072AAC61D7004CBC30 /* IMG_0168.GIF in Resources */ = {isa = PBXBuildFile; fileRef = D30ED43F2A3C5F2D0074525C /* IMG_0168.GIF */; };
+		D35D3D082AAC61D7004CBC30 /* c81.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D30ED4362A3C55B10074525C /* c81.mp4 */; };
+		D35D3D092AAC61E3004CBC30 /* livephoto_image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D30ED43C2A3C5D7D0074525C /* livephoto_image.jpeg */; };
+		D35D3D0A2AAC61E3004CBC30 /* hx_sticker_yuanqimanman.png in Resources */ = {isa = PBXBuildFile; fileRef = D368740F2A39744200E70910 /* hx_sticker_yuanqimanman.png */; };
+		D35D3D0B2AAC61E3004CBC30 /* hx_sticker_housailei.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874102A39744200E70910 /* hx_sticker_housailei.png */; };
+		D35D3D0C2AAC61E3004CBC30 /* portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874112A39744200E70910 /* portrait.png */; };
+		D35D3D0D2AAC61E3004CBC30 /* hx_sticker_woxiangfazipai.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874122A39744200E70910 /* hx_sticker_woxiangfazipai.png */; };
+		D35D3D0E2AAC61E3004CBC30 /* hx_sticker_xiaochuzhujiao.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874132A39744200E70910 /* hx_sticker_xiaochuzhujiao.png */; };
+		D35D3D0F2AAC61E3004CBC30 /* hx_sticker_chongya.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874142A39744200E70910 /* hx_sticker_chongya.png */; };
+		D35D3D102AAC61E3004CBC30 /* qiy.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874162A39744200E70910 /* qiy.png */; };
+		D35D3D112AAC61E3004CBC30 /* hx_sticker_wow.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874172A39744200E70910 /* hx_sticker_wow.png */; };
+		D35D3D122AAC61E3004CBC30 /* hx_sticker_yuanqishaonv.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874182A39744200E70910 /* hx_sticker_yuanqishaonv.png */; };
+		D35D3D132AAC61E3004CBC30 /* hx_sticker_kehaixing.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874192A39744200E70910 /* hx_sticker_kehaixing.png */; };
+		D35D3D142AAC61E3004CBC30 /* hx_sticker_zaizaijia.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741A2A39744200E70910 /* hx_sticker_zaizaijia.png */; };
+		D35D3D152AAC61E3004CBC30 /* hx_sticker_saihong.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741B2A39744200E70910 /* hx_sticker_saihong.png */; };
+		D35D3D162AAC61E3004CBC30 /* hx_sticker_jintianfenkeai.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741C2A39744200E70910 /* hx_sticker_jintianfenkeai.png */; };
+		D35D3D172AAC61E3004CBC30 /* hx_sticker_keaibiaoq.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741D2A39744200E70910 /* hx_sticker_keaibiaoq.png */; };
+		D35D3D182AAC61E3004CBC30 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741E2A39744200E70910 /* love.png */; };
+		D35D3D192AAC61E3004CBC30 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741F2A39744200E70910 /* stars.png */; };
+		D35D3D1A2AAC61E3004CBC30 /* text.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874202A39744200E70910 /* text.png */; };
+		D35D3D1B2AAC61E3004CBC30 /* love_text.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874212A39744200E70910 /* love_text.png */; };
+		D35D3D1C2AAC61E3004CBC30 /* hx_sticker_haoxinqing.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874222A39744200E70910 /* hx_sticker_haoxinqing.png */; };
+		D35D3D1D2AAC61E3004CBC30 /* 世间美好与你环环相扣 in Resources */ = {isa = PBXBuildFile; fileRef = D368744A2A39744200E70910 /* 世间美好与你环环相扣 */; };
+		D35D3D1E2AAC61E3004CBC30 /* 世间美好与你环环相扣.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D36874502A39744200E70910 /* 世间美好与你环环相扣.mp3 */; };
+		D36874582A39744300E70910 /* hx_sticker_yuanqimanman.png in Resources */ = {isa = PBXBuildFile; fileRef = D368740F2A39744200E70910 /* hx_sticker_yuanqimanman.png */; };
+		D368745A2A39744300E70910 /* hx_sticker_housailei.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874102A39744200E70910 /* hx_sticker_housailei.png */; };
+		D368745C2A39744300E70910 /* portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874112A39744200E70910 /* portrait.png */; };
+		D368745E2A39744300E70910 /* hx_sticker_woxiangfazipai.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874122A39744200E70910 /* hx_sticker_woxiangfazipai.png */; };
+		D36874602A39744300E70910 /* hx_sticker_xiaochuzhujiao.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874132A39744200E70910 /* hx_sticker_xiaochuzhujiao.png */; };
+		D36874622A39744300E70910 /* hx_sticker_chongya.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874142A39744200E70910 /* hx_sticker_chongya.png */; };
+		D36874662A39744300E70910 /* qiy.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874162A39744200E70910 /* qiy.png */; };
+		D36874682A39744300E70910 /* hx_sticker_wow.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874172A39744200E70910 /* hx_sticker_wow.png */; };
+		D368746A2A39744300E70910 /* hx_sticker_yuanqishaonv.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874182A39744200E70910 /* hx_sticker_yuanqishaonv.png */; };
+		D368746C2A39744300E70910 /* hx_sticker_kehaixing.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874192A39744200E70910 /* hx_sticker_kehaixing.png */; };
+		D368746E2A39744300E70910 /* hx_sticker_zaizaijia.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741A2A39744200E70910 /* hx_sticker_zaizaijia.png */; };
+		D36874702A39744300E70910 /* hx_sticker_saihong.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741B2A39744200E70910 /* hx_sticker_saihong.png */; };
+		D36874722A39744300E70910 /* hx_sticker_jintianfenkeai.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741C2A39744200E70910 /* hx_sticker_jintianfenkeai.png */; };
+		D36874742A39744300E70910 /* hx_sticker_keaibiaoq.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741D2A39744200E70910 /* hx_sticker_keaibiaoq.png */; };
+		D36874762A39744300E70910 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741E2A39744200E70910 /* love.png */; };
+		D36874782A39744300E70910 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = D368741F2A39744200E70910 /* stars.png */; };
+		D368747A2A39744300E70910 /* text.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874202A39744200E70910 /* text.png */; };
+		D368747C2A39744300E70910 /* love_text.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874212A39744200E70910 /* love_text.png */; };
+		D368747E2A39744300E70910 /* hx_sticker_haoxinqing.png in Resources */ = {isa = PBXBuildFile; fileRef = D36874222A39744200E70910 /* hx_sticker_haoxinqing.png */; };
+		D36874802A39744300E70910 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874252A39744200E70910 /* UIDevice+Extension.swift */; };
+		D36874822A39744300E70910 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874262A39744200E70910 /* UIFont+Extension.swift */; };
+		D36874842A39744300E70910 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874272A39744200E70910 /* UIImage+Extension.swift */; };
+		D36874862A39744300E70910 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874282A39744200E70910 /* String+Extension.swift */; };
+		D36874882A39744300E70910 /* RowTypeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874292A39744200E70910 /* RowTypeRule.swift */; };
+		D368748A2A39744300E70910 /* Core+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742A2A39744200E70910 /* Core+UIColor.swift */; };
+		D368748C2A39744300E70910 /* WeChatMometViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742C2A39744200E70910 /* WeChatMometViewController.swift */; };
+		D368748E2A39744300E70910 /* EditorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742D2A39744200E70910 /* EditorConfigurationViewController.swift */; };
+		D36874902A39744300E70910 /* WindowPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742E2A39744200E70910 /* WindowPickerViewController.swift */; };
+		D36874922A39744300E70910 /* WeChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368742F2A39744200E70910 /* WeChatViewController.swift */; };
+		D36874942A39744300E70910 /* TestEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874302A39744200E70910 /* TestEditorViewController.swift */; };
+		D36874962A39744300E70910 /* PickerResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874312A39744200E70910 /* PickerResultViewController.swift */; };
+		D36874982A39744300E70910 /* AvatarPickerConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874322A39744200E70910 /* AvatarPickerConfigurationViewController.swift */; };
+		D368749A2A39744300E70910 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874332A39744200E70910 /* HomeViewController.swift */; };
+		D368749C2A39744300E70910 /* CustomPickerCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874342A39744200E70910 /* CustomPickerCellViewController.swift */; };
+		D368749E2A39744300E70910 /* PickerColorConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874352A39744200E70910 /* PickerColorConfigurationViewController.swift */; };
+		D36874A02A39744300E70910 /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874362A39744200E70910 /* PhotoBrowserViewController.swift */; };
+		D36874A22A39744300E70910 /* PickerConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874372A39744200E70910 /* PickerConfigurationViewController.swift */; };
+		D36874A42A39744300E70910 /* PickerResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36874382A39744200E70910 /* PickerResultViewController.xib */; };
+		D36874A62A39744300E70910 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D368743A2A39744200E70910 /* GPUImageBeautifyFilter.m */; };
+		D36874A82A39744300E70910 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368743C2A39744200E70910 /* Tools.swift */; };
+		D36874AA2A39744300E70910 /* ImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368743D2A39744200E70910 /* ImageFilter.swift */; };
+		D36874AC2A39744300E70910 /* ConfigurationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368743F2A39744200E70910 /* ConfigurationViewCell.swift */; };
+		D36874AE2A39744300E70910 /* CustomPickerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36874402A39744200E70910 /* CustomPickerCellView.swift */; };
+		D36874C02A39744300E70910 /* 世间美好与你环环相扣 in Resources */ = {isa = PBXBuildFile; fileRef = D368744A2A39744200E70910 /* 世间美好与你环环相扣 */; };
+		D36874CC2A39744300E70910 /* 世间美好与你环环相扣.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D36874502A39744200E70910 /* 世间美好与你环环相扣.mp3 */; };
+		D36874E52A39760500E70910 /* RELEASE_NOTE.md in Resources */ = {isa = PBXBuildFile; fileRef = D36874D62A39760500E70910 /* RELEASE_NOTE.md */; };
+		D36874FB2A39760500E70910 /* README_EN.md in Resources */ = {isa = PBXBuildFile; fileRef = D36874E32A39760500E70910 /* README_EN.md */; };
+		D36874FD2A39760500E70910 /* RELEASE_NOTE_CN.md in Resources */ = {isa = PBXBuildFile; fileRef = D36874E42A39760500E70910 /* RELEASE_NOTE_CN.md */; };
+		D36879B32A399FDC00E70910 /* OCPickerExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36879B22A399FDC00E70910 /* OCPickerExampleViewController.m */; };
+		D3837B2E2AA4312400F4D64E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3837B2D2AA4312400F4D64E /* Extension.swift */; };
+		D38AF2022BB660560094BBF6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D38AF2012BB660560094BBF6 /* Localizable.strings */; };
+		D3CBE6462AAAD5340031802A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CBE6412AAAD5340031802A /* Assets.xcassets */; };
+		D3CBE6472AAAD5340031802A /* SwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE6422AAAD5340031802A /* SwiftUIExampleApp.swift */; };
+		D3CBE6482AAAD5340031802A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CBE6442AAAD5340031802A /* Preview Assets.xcassets */; };
+		D3CBE6492AAAD5340031802A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE6452AAAD5340031802A /* ContentView.swift */; };
+		D3CBE64B2AAAD5E80031802A /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE64A2AAAD5E80031802A /* PhotoPickerView.swift */; };
+		D3CBE6512AAB13450031802A /* PhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE6502AAB13450031802A /* PhotoBrowser.swift */; };
+		D3EF65BD2AAD653100084E87 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE6452AAAD5340031802A /* ContentView.swift */; };
+		D3EF65BE2AAD653100084E87 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D3CAB2AAC0B8B004CBC30 /* PhotoView.swift */; };
+		D3EF65BF2AAD653100084E87 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE64A2AAAD5E80031802A /* PhotoPickerView.swift */; };
+		D3EF65C02AAD653100084E87 /* PhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBE6502AAB13450031802A /* PhotoBrowser.swift */; };
+		D3EF65C12AAD653100084E87 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D3CB32AAC5B5B004CBC30 /* ConfigView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D360E6F62A6B712400740B6B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7B08592524FA58DE00E93091 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7B08594F24FA58DE00E93091 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7B20B36327A2A94000375FB6 /* HXPhotoPickerExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HXPhotoPickerExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B20B3A327A2A94C00375FB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B20B3A527A2A94C00375FB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7B20B3A827A2A94C00375FB6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		7B20B3A927A2A94C00375FB6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7B20B3AA27A2A94C00375FB6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B64186024F76C67003A5723 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7B7E3E761E4AACD1002234EE /* HXPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HXPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B7E3E7A1E4AACD1002234EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B7E3E7C1E4AACD1002234EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7B7E3E7D1E4AACD1002234EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7B7E3E851E4AACD1002234EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B7E3E8A1E4AACD1002234EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9BA7CA27C0E3EA009326C1 /* HXPHPickerExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HXPHPickerExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		D30ED4362A3C55B10074525C /* c81.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = c81.mp4; sourceTree = "<group>"; };
+		D30ED43C2A3C5D7D0074525C /* livephoto_image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = livephoto_image.jpeg; sourceTree = "<group>"; };
+		D30ED43F2A3C5F2D0074525C /* IMG_0168.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = IMG_0168.GIF; sourceTree = "<group>"; };
+		D312305D2A73A7C000316B62 /* HXPhotoPickerExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HXPhotoPickerExample.entitlements; sourceTree = "<group>"; };
+		D35962902A3EC175009CCD94 /* SwiftPickerResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPickerResult.swift; sourceTree = "<group>"; };
+		D35962912A3EC175009CCD94 /* SwiftAssetURLResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAssetURLResult.swift; sourceTree = "<group>"; };
+		D35962922A3EC175009CCD94 /* SwiftPickerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPickerConfiguration.swift; sourceTree = "<group>"; };
+		D35962932A3EC175009CCD94 /* SwiftPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPicker.swift; sourceTree = "<group>"; };
+		D35962942A3EC175009CCD94 /* SwiftPhotoAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPhotoAsset.swift; sourceTree = "<group>"; };
+		D35D3CAB2AAC0B8B004CBC30 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		D35D3CB32AAC5B5B004CBC30 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		D361BB1A2AAAD3E500A4D4F7 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D368740F2A39744200E70910 /* hx_sticker_yuanqimanman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_yuanqimanman.png; sourceTree = "<group>"; };
+		D36874102A39744200E70910 /* hx_sticker_housailei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_housailei.png; sourceTree = "<group>"; };
+		D36874112A39744200E70910 /* portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portrait.png; sourceTree = "<group>"; };
+		D36874122A39744200E70910 /* hx_sticker_woxiangfazipai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_woxiangfazipai.png; sourceTree = "<group>"; };
+		D36874132A39744200E70910 /* hx_sticker_xiaochuzhujiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_xiaochuzhujiao.png; sourceTree = "<group>"; };
+		D36874142A39744200E70910 /* hx_sticker_chongya.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_chongya.png; sourceTree = "<group>"; };
+		D36874162A39744200E70910 /* qiy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qiy.png; sourceTree = "<group>"; };
+		D36874172A39744200E70910 /* hx_sticker_wow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_wow.png; sourceTree = "<group>"; };
+		D36874182A39744200E70910 /* hx_sticker_yuanqishaonv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_yuanqishaonv.png; sourceTree = "<group>"; };
+		D36874192A39744200E70910 /* hx_sticker_kehaixing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_kehaixing.png; sourceTree = "<group>"; };
+		D368741A2A39744200E70910 /* hx_sticker_zaizaijia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_zaizaijia.png; sourceTree = "<group>"; };
+		D368741B2A39744200E70910 /* hx_sticker_saihong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_saihong.png; sourceTree = "<group>"; };
+		D368741C2A39744200E70910 /* hx_sticker_jintianfenkeai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_jintianfenkeai.png; sourceTree = "<group>"; };
+		D368741D2A39744200E70910 /* hx_sticker_keaibiaoq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_keaibiaoq.png; sourceTree = "<group>"; };
+		D368741E2A39744200E70910 /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
+		D368741F2A39744200E70910 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
+		D36874202A39744200E70910 /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text.png; sourceTree = "<group>"; };
+		D36874212A39744200E70910 /* love_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love_text.png; sourceTree = "<group>"; };
+		D36874222A39744200E70910 /* hx_sticker_haoxinqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hx_sticker_haoxinqing.png; sourceTree = "<group>"; };
+		D36874252A39744200E70910 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		D36874262A39744200E70910 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		D36874272A39744200E70910 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		D36874282A39744200E70910 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		D36874292A39744200E70910 /* RowTypeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowTypeRule.swift; sourceTree = "<group>"; };
+		D368742A2A39744200E70910 /* Core+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Core+UIColor.swift"; sourceTree = "<group>"; };
+		D368742C2A39744200E70910 /* WeChatMometViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatMometViewController.swift; sourceTree = "<group>"; };
+		D368742D2A39744200E70910 /* EditorConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorConfigurationViewController.swift; sourceTree = "<group>"; };
+		D368742E2A39744200E70910 /* WindowPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowPickerViewController.swift; sourceTree = "<group>"; };
+		D368742F2A39744200E70910 /* WeChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatViewController.swift; sourceTree = "<group>"; };
+		D36874302A39744200E70910 /* TestEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEditorViewController.swift; sourceTree = "<group>"; };
+		D36874312A39744200E70910 /* PickerResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerResultViewController.swift; sourceTree = "<group>"; };
+		D36874322A39744200E70910 /* AvatarPickerConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPickerConfigurationViewController.swift; sourceTree = "<group>"; };
+		D36874332A39744200E70910 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D36874342A39744200E70910 /* CustomPickerCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCellViewController.swift; sourceTree = "<group>"; };
+		D36874352A39744200E70910 /* PickerColorConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerColorConfigurationViewController.swift; sourceTree = "<group>"; };
+		D36874362A39744200E70910 /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		D36874372A39744200E70910 /* PickerConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerConfigurationViewController.swift; sourceTree = "<group>"; };
+		D36874382A39744200E70910 /* PickerResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerResultViewController.xib; sourceTree = "<group>"; };
+		D368743A2A39744200E70910 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		D368743B2A39744200E70910 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		D368743C2A39744200E70910 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		D368743D2A39744200E70910 /* ImageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFilter.swift; sourceTree = "<group>"; };
+		D368743F2A39744200E70910 /* ConfigurationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewCell.swift; sourceTree = "<group>"; };
+		D36874402A39744200E70910 /* CustomPickerCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCellView.swift; sourceTree = "<group>"; };
+		D368744A2A39744200E70910 /* 世间美好与你环环相扣 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "世间美好与你环环相扣"; sourceTree = "<group>"; };
+		D36874502A39744200E70910 /* 世间美好与你环环相扣.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "世间美好与你环环相扣.mp3"; sourceTree = "<group>"; };
+		D36874D62A39760500E70910 /* RELEASE_NOTE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTE.md; sourceTree = "<group>"; };
+		D36874E32A39760500E70910 /* README_EN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README_EN.md; sourceTree = "<group>"; };
+		D36874E42A39760500E70910 /* RELEASE_NOTE_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTE_CN.md; sourceTree = "<group>"; };
+		D36879B12A399FDC00E70910 /* OCPickerExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCPickerExampleViewController.h; sourceTree = "<group>"; };
+		D36879B22A399FDC00E70910 /* OCPickerExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCPickerExampleViewController.m; sourceTree = "<group>"; };
+		D3837B2D2AA4312400F4D64E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		D38AF2012BB660560094BBF6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D3CBE6412AAAD5340031802A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3CBE6422AAAD5340031802A /* SwiftUIExampleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleApp.swift; sourceTree = "<group>"; };
+		D3CBE6442AAAD5340031802A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3CBE6452AAAD5340031802A /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D3CBE64A2AAAD5E80031802A /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		D3CBE6502AAB13450031802A /* PhotoBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowser.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B7E3E731E4AACD1002234EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBBE3532D27CBC700FD1C50 /* HXPhotoPicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D361BB172AAAD3E500A4D4F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DBBE3552D27CBCC00FD1C50 /* HXPhotoPicker in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DBBE3512D27CBC700FD1C50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B08590B24FA58DE00E93091 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7B08594324FA58DE00E93091 /* assets */,
+				7B08594F24FA58DE00E93091 /* ViewController.h */,
+				7B08592524FA58DE00E93091 /* ViewController.m */,
+				D36879B12A399FDC00E70910 /* OCPickerExampleViewController.h */,
+				D36879B22A399FDC00E70910 /* OCPickerExampleViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7B08594324FA58DE00E93091 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				D30ED43F2A3C5F2D0074525C /* IMG_0168.GIF */,
+				D30ED4362A3C55B10074525C /* c81.mp4 */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		7B20B36627A2A94C00375FB6 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				D36874232A39744200E70910 /* Classes */,
+				D368740C2A39744200E70910 /* Images */,
+				D36874412A39744200E70910 /* Music */,
+				7B20B3A327A2A94C00375FB6 /* Assets.xcassets */,
+				7B9BA7CA27C0E3EA009326C1 /* HXPHPickerExample-Bridging-Header.h */,
+				7B20B3A427A2A94C00375FB6 /* LaunchScreen.storyboard */,
+				7B20B3A827A2A94C00375FB6 /* Reachability.swift */,
+				7B20B3A927A2A94C00375FB6 /* AppDelegate.swift */,
+				D38AF2042BB678890094BBF6 /* Resources */,
+				7B20B3AA27A2A94C00375FB6 /* Info.plist */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
+		7B7E3E6D1E4AACD1002234EE = {
+			isa = PBXGroup;
+			children = (
+				D312305D2A73A7C000316B62 /* HXPhotoPickerExample.entitlements */,
+				7B64186024F76C67003A5723 /* README.md */,
+				D36874D52A39760500E70910 /* Documentation */,
+				7B7E3E781E4AACD1002234EE /* Objective-C */,
+				7B20B36627A2A94C00375FB6 /* Swift */,
+				D3CBE6402AAAD5340031802A /* SwiftUI */,
+				2DBBE3512D27CBC700FD1C50 /* Frameworks */,
+				7B7E3E771E4AACD1002234EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B7E3E771E4AACD1002234EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B7E3E761E4AACD1002234EE /* HXPhotoPickerExample.app */,
+				D361BB1A2AAAD3E500A4D4F7 /* SwiftUIExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B7E3E781E4AACD1002234EE /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				D359628F2A3EC175009CCD94 /* SwiftPhotoPicker */,
+				7B08590B24FA58DE00E93091 /* Classes */,
+				7B7E3E7C1E4AACD1002234EE /* AppDelegate.h */,
+				7B7E3E7D1E4AACD1002234EE /* AppDelegate.m */,
+				7B7E3E851E4AACD1002234EE /* Assets.xcassets */,
+				7B7E3E8A1E4AACD1002234EE /* Info.plist */,
+				7B7E3E791E4AACD1002234EE /* Supporting Files */,
+				7B20B36327A2A94000375FB6 /* HXPhotoPickerExample-Bridging-Header.h */,
+			);
+			path = "Objective-C";
+			sourceTree = "<group>";
+		};
+		7B7E3E791E4AACD1002234EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B7E3E7A1E4AACD1002234EE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D359628F2A3EC175009CCD94 /* SwiftPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D35962902A3EC175009CCD94 /* SwiftPickerResult.swift */,
+				D35962912A3EC175009CCD94 /* SwiftAssetURLResult.swift */,
+				D35962922A3EC175009CCD94 /* SwiftPickerConfiguration.swift */,
+				D35962932A3EC175009CCD94 /* SwiftPicker.swift */,
+				D35962942A3EC175009CCD94 /* SwiftPhotoAsset.swift */,
+			);
+			path = SwiftPhotoPicker;
+			sourceTree = "<group>";
+		};
+		D368740C2A39744200E70910 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D30ED43C2A3C5D7D0074525C /* livephoto_image.jpeg */,
+				D368740F2A39744200E70910 /* hx_sticker_yuanqimanman.png */,
+				D36874102A39744200E70910 /* hx_sticker_housailei.png */,
+				D36874112A39744200E70910 /* portrait.png */,
+				D36874122A39744200E70910 /* hx_sticker_woxiangfazipai.png */,
+				D36874132A39744200E70910 /* hx_sticker_xiaochuzhujiao.png */,
+				D36874142A39744200E70910 /* hx_sticker_chongya.png */,
+				D36874162A39744200E70910 /* qiy.png */,
+				D36874172A39744200E70910 /* hx_sticker_wow.png */,
+				D36874182A39744200E70910 /* hx_sticker_yuanqishaonv.png */,
+				D36874192A39744200E70910 /* hx_sticker_kehaixing.png */,
+				D368741A2A39744200E70910 /* hx_sticker_zaizaijia.png */,
+				D368741B2A39744200E70910 /* hx_sticker_saihong.png */,
+				D368741C2A39744200E70910 /* hx_sticker_jintianfenkeai.png */,
+				D368741D2A39744200E70910 /* hx_sticker_keaibiaoq.png */,
+				D368741E2A39744200E70910 /* love.png */,
+				D368741F2A39744200E70910 /* stars.png */,
+				D36874202A39744200E70910 /* text.png */,
+				D36874212A39744200E70910 /* love_text.png */,
+				D36874222A39744200E70910 /* hx_sticker_haoxinqing.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D36874232A39744200E70910 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D36874242A39744200E70910 /* Extension */,
+				D368742B2A39744200E70910 /* Controller */,
+				D36874392A39744200E70910 /* Model */,
+				D368743E2A39744200E70910 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D36874242A39744200E70910 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D368742A2A39744200E70910 /* Core+UIColor.swift */,
+				D36874292A39744200E70910 /* RowTypeRule.swift */,
+				D36874282A39744200E70910 /* String+Extension.swift */,
+				D36874252A39744200E70910 /* UIDevice+Extension.swift */,
+				D36874262A39744200E70910 /* UIFont+Extension.swift */,
+				D36874272A39744200E70910 /* UIImage+Extension.swift */,
+				D3837B2D2AA4312400F4D64E /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D368742B2A39744200E70910 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D36874322A39744200E70910 /* AvatarPickerConfigurationViewController.swift */,
+				D36874342A39744200E70910 /* CustomPickerCellViewController.swift */,
+				D368742D2A39744200E70910 /* EditorConfigurationViewController.swift */,
+				D36874332A39744200E70910 /* HomeViewController.swift */,
+				D36874362A39744200E70910 /* PhotoBrowserViewController.swift */,
+				D36874352A39744200E70910 /* PickerColorConfigurationViewController.swift */,
+				D36874372A39744200E70910 /* PickerConfigurationViewController.swift */,
+				D36874312A39744200E70910 /* PickerResultViewController.swift */,
+				D36874382A39744200E70910 /* PickerResultViewController.xib */,
+				D36874302A39744200E70910 /* TestEditorViewController.swift */,
+				D368742C2A39744200E70910 /* WeChatMometViewController.swift */,
+				D368742F2A39744200E70910 /* WeChatViewController.swift */,
+				D368742E2A39744200E70910 /* WindowPickerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D36874392A39744200E70910 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D368743B2A39744200E70910 /* GPUImageBeautifyFilter.h */,
+				D368743A2A39744200E70910 /* GPUImageBeautifyFilter.m */,
+				D368743D2A39744200E70910 /* ImageFilter.swift */,
+				D368743C2A39744200E70910 /* Tools.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D368743E2A39744200E70910 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D368743F2A39744200E70910 /* ConfigurationViewCell.swift */,
+				D36874402A39744200E70910 /* CustomPickerCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D36874412A39744200E70910 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				D368744A2A39744200E70910 /* 世间美好与你环环相扣 */,
+				D36874502A39744200E70910 /* 世间美好与你环环相扣.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		D36874D52A39760500E70910 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				D36874D62A39760500E70910 /* RELEASE_NOTE.md */,
+				D36874E32A39760500E70910 /* README_EN.md */,
+				D36874E42A39760500E70910 /* RELEASE_NOTE_CN.md */,
+			);
+			name = Documentation;
+			path = ../Documentation;
+			sourceTree = "<group>";
+		};
+		D38AF2032BB677770094BBF6 /* custom.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				D38AF2012BB660560094BBF6 /* Localizable.strings */,
+			);
+			path = custom.lproj;
+			sourceTree = "<group>";
+		};
+		D38AF2042BB678890094BBF6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D38AF2032BB677770094BBF6 /* custom.lproj */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D3CBE6402AAAD5340031802A /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D3CBE6422AAAD5340031802A /* SwiftUIExampleApp.swift */,
+				D3CBE6452AAAD5340031802A /* ContentView.swift */,
+				D35D3CAB2AAC0B8B004CBC30 /* PhotoView.swift */,
+				D3CBE64A2AAAD5E80031802A /* PhotoPickerView.swift */,
+				D3CBE6502AAB13450031802A /* PhotoBrowser.swift */,
+				D35D3CB32AAC5B5B004CBC30 /* ConfigView.swift */,
+				D3CBE6412AAAD5340031802A /* Assets.xcassets */,
+				D3CBE6432AAAD5340031802A /* Preview Content */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		D3CBE6432AAAD5340031802A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D3CBE6442AAAD5340031802A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B7E3E751E4AACD1002234EE /* HXPhotoPickerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B7E3E8D1E4AACD1002234EE /* Build configuration list for PBXNativeTarget "HXPhotoPickerExample" */;
+			buildPhases = (
+				7B7E3E721E4AACD1002234EE /* Sources */,
+				7B7E3E731E4AACD1002234EE /* Frameworks */,
+				7B7E3E741E4AACD1002234EE /* Resources */,
+				D360E6F62A6B712400740B6B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HXPhotoPickerExample;
+			productName = "照片选择";
+			productReference = 7B7E3E761E4AACD1002234EE /* HXPhotoPickerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D361BB192AAAD3E500A4D4F7 /* SwiftUIExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D361BB272AAAD3E600A4D4F7 /* Build configuration list for PBXNativeTarget "SwiftUIExample" */;
+			buildPhases = (
+				D361BB162AAAD3E500A4D4F7 /* Sources */,
+				D361BB172AAAD3E500A4D4F7 /* Frameworks */,
+				D361BB182AAAD3E500A4D4F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftUIExample;
+			productName = SwiftUIExample;
+			productReference = D361BB1A2AAAD3E500A4D4F7 /* SwiftUIExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B7E3E6E1E4AACD1002234EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				DefaultBuildSystemTypeForWorkspace = Latest;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1620;
+				ORGANIZATIONNAME = Silence;
+				TargetAttributes = {
+					7B7E3E751E4AACD1002234EE = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1320;
+						ProvisioningStyle = Automatic;
+					};
+					D361BB192AAAD3E500A4D4F7 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 7B7E3E711E4AACD1002234EE /* Build configuration list for PBXProject "HXPhotoPickerExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7B7E3E6D1E4AACD1002234EE;
+			packageReferences = (
+				2DBBE3502D27CBC000FD1C50 /* XCLocalSwiftPackageReference "../../HXPhotoPicker" */,
+			);
+			productRefGroup = 7B7E3E771E4AACD1002234EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B7E3E751E4AACD1002234EE /* HXPhotoPickerExample */,
+				D361BB192AAAD3E500A4D4F7 /* SwiftUIExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B7E3E741E4AACD1002234EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D30ED43D2A3C5D7D0074525C /* livephoto_image.jpeg in Resources */,
+				D368745C2A39744300E70910 /* portrait.png in Resources */,
+				D368746E2A39744300E70910 /* hx_sticker_zaizaijia.png in Resources */,
+				D36874FB2A39760500E70910 /* README_EN.md in Resources */,
+				D36874742A39744300E70910 /* hx_sticker_keaibiaoq.png in Resources */,
+				D36874602A39744300E70910 /* hx_sticker_xiaochuzhujiao.png in Resources */,
+				D368747A2A39744300E70910 /* text.png in Resources */,
+				D368746C2A39744300E70910 /* hx_sticker_kehaixing.png in Resources */,
+				D36874722A39744300E70910 /* hx_sticker_jintianfenkeai.png in Resources */,
+				D368745E2A39744300E70910 /* hx_sticker_woxiangfazipai.png in Resources */,
+				D36874CC2A39744300E70910 /* 世间美好与你环环相扣.mp3 in Resources */,
+				D30ED4402A3C5F2D0074525C /* IMG_0168.GIF in Resources */,
+				D36874682A39744300E70910 /* hx_sticker_wow.png in Resources */,
+				7B64186124F76C67003A5723 /* README.md in Resources */,
+				D368747C2A39744300E70910 /* love_text.png in Resources */,
+				D36874C02A39744300E70910 /* 世间美好与你环环相扣 in Resources */,
+				D368746A2A39744300E70910 /* hx_sticker_yuanqishaonv.png in Resources */,
+				D30ED4372A3C55B10074525C /* c81.mp4 in Resources */,
+				D38AF2022BB660560094BBF6 /* Localizable.strings in Resources */,
+				D36874FD2A39760500E70910 /* RELEASE_NOTE_CN.md in Resources */,
+				D36874782A39744300E70910 /* stars.png in Resources */,
+				D368747E2A39744300E70910 /* hx_sticker_haoxinqing.png in Resources */,
+				D36874582A39744300E70910 /* hx_sticker_yuanqimanman.png in Resources */,
+				D36874662A39744300E70910 /* qiy.png in Resources */,
+				7B7E3E861E4AACD1002234EE /* Assets.xcassets in Resources */,
+				7B20B41527A2A94D00375FB6 /* Assets.xcassets in Resources */,
+				D36874622A39744300E70910 /* hx_sticker_chongya.png in Resources */,
+				D36874E52A39760500E70910 /* RELEASE_NOTE.md in Resources */,
+				D36874702A39744300E70910 /* hx_sticker_saihong.png in Resources */,
+				D368745A2A39744300E70910 /* hx_sticker_housailei.png in Resources */,
+				D36874A42A39744300E70910 /* PickerResultViewController.xib in Resources */,
+				D36874762A39744300E70910 /* love.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D361BB182AAAD3E500A4D4F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35D3D092AAC61E3004CBC30 /* livephoto_image.jpeg in Resources */,
+				D35D3D0A2AAC61E3004CBC30 /* hx_sticker_yuanqimanman.png in Resources */,
+				D35D3D0B2AAC61E3004CBC30 /* hx_sticker_housailei.png in Resources */,
+				D35D3D0C2AAC61E3004CBC30 /* portrait.png in Resources */,
+				D35D3D0D2AAC61E3004CBC30 /* hx_sticker_woxiangfazipai.png in Resources */,
+				D35D3D0E2AAC61E3004CBC30 /* hx_sticker_xiaochuzhujiao.png in Resources */,
+				D35D3D0F2AAC61E3004CBC30 /* hx_sticker_chongya.png in Resources */,
+				D35D3D102AAC61E3004CBC30 /* qiy.png in Resources */,
+				D35D3D112AAC61E3004CBC30 /* hx_sticker_wow.png in Resources */,
+				D35D3D122AAC61E3004CBC30 /* hx_sticker_yuanqishaonv.png in Resources */,
+				D35D3D132AAC61E3004CBC30 /* hx_sticker_kehaixing.png in Resources */,
+				D35D3D142AAC61E3004CBC30 /* hx_sticker_zaizaijia.png in Resources */,
+				D35D3D152AAC61E3004CBC30 /* hx_sticker_saihong.png in Resources */,
+				D35D3D162AAC61E3004CBC30 /* hx_sticker_jintianfenkeai.png in Resources */,
+				D35D3D172AAC61E3004CBC30 /* hx_sticker_keaibiaoq.png in Resources */,
+				D35D3D182AAC61E3004CBC30 /* love.png in Resources */,
+				D35D3D192AAC61E3004CBC30 /* stars.png in Resources */,
+				D35D3D1A2AAC61E3004CBC30 /* text.png in Resources */,
+				D35D3D1B2AAC61E3004CBC30 /* love_text.png in Resources */,
+				D35D3D1C2AAC61E3004CBC30 /* hx_sticker_haoxinqing.png in Resources */,
+				D35D3D1D2AAC61E3004CBC30 /* 世间美好与你环环相扣 in Resources */,
+				D35D3D1E2AAC61E3004CBC30 /* 世间美好与你环环相扣.mp3 in Resources */,
+				D35D3D072AAC61D7004CBC30 /* IMG_0168.GIF in Resources */,
+				D35D3D082AAC61D7004CBC30 /* c81.mp4 in Resources */,
+				D3CBE6482AAAD5340031802A /* Preview Assets.xcassets in Resources */,
+				D3CBE6462AAAD5340031802A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B7E3E721E4AACD1002234EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3EF65BD2AAD653100084E87 /* ContentView.swift in Sources */,
+				D3EF65BE2AAD653100084E87 /* PhotoView.swift in Sources */,
+				D3EF65BF2AAD653100084E87 /* PhotoPickerView.swift in Sources */,
+				D3EF65C02AAD653100084E87 /* PhotoBrowser.swift in Sources */,
+				D3EF65C12AAD653100084E87 /* ConfigView.swift in Sources */,
+				D36874982A39744300E70910 /* AvatarPickerConfigurationViewController.swift in Sources */,
+				D36874802A39744300E70910 /* UIDevice+Extension.swift in Sources */,
+				D36874AA2A39744300E70910 /* ImageFilter.swift in Sources */,
+				D368748A2A39744300E70910 /* Core+UIColor.swift in Sources */,
+				D36874882A39744300E70910 /* RowTypeRule.swift in Sources */,
+				D368748E2A39744300E70910 /* EditorConfigurationViewController.swift in Sources */,
+				D36874AE2A39744300E70910 /* CustomPickerCellView.swift in Sources */,
+				D359629D2A3EC175009CCD94 /* SwiftPhotoAsset.swift in Sources */,
+				7B7E3E7E1E4AACD1002234EE /* AppDelegate.m in Sources */,
+				D36874A22A39744300E70910 /* PickerConfigurationViewController.swift in Sources */,
+				D36879B32A399FDC00E70910 /* OCPickerExampleViewController.m in Sources */,
+				D36874902A39744300E70910 /* WindowPickerViewController.swift in Sources */,
+				D36874962A39744300E70910 /* PickerResultViewController.swift in Sources */,
+				D35962992A3EC175009CCD94 /* SwiftPickerConfiguration.swift in Sources */,
+				D35962972A3EC175009CCD94 /* SwiftAssetURLResult.swift in Sources */,
+				D3837B2E2AA4312400F4D64E /* Extension.swift in Sources */,
+				7B08596224FA58DF00E93091 /* ViewController.m in Sources */,
+				D359629B2A3EC175009CCD94 /* SwiftPicker.swift in Sources */,
+				D368749C2A39744300E70910 /* CustomPickerCellViewController.swift in Sources */,
+				D36874A82A39744300E70910 /* Tools.swift in Sources */,
+				D36874A02A39744300E70910 /* PhotoBrowserViewController.swift in Sources */,
+				D35962952A3EC175009CCD94 /* SwiftPickerResult.swift in Sources */,
+				D36874AC2A39744300E70910 /* ConfigurationViewCell.swift in Sources */,
+				D36874822A39744300E70910 /* UIFont+Extension.swift in Sources */,
+				D36874842A39744300E70910 /* UIImage+Extension.swift in Sources */,
+				D368749A2A39744300E70910 /* HomeViewController.swift in Sources */,
+				7B7E3E7B1E4AACD1002234EE /* main.m in Sources */,
+				D36874862A39744300E70910 /* String+Extension.swift in Sources */,
+				D368748C2A39744300E70910 /* WeChatMometViewController.swift in Sources */,
+				D368749E2A39744300E70910 /* PickerColorConfigurationViewController.swift in Sources */,
+				D36874922A39744300E70910 /* WeChatViewController.swift in Sources */,
+				D36874A62A39744300E70910 /* GPUImageBeautifyFilter.m in Sources */,
+				D36874942A39744300E70910 /* TestEditorViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D361BB162AAAD3E500A4D4F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35D3CD52AAC5D9C004CBC30 /* Core+UIColor.swift in Sources */,
+				D35D3CD62AAC5D9C004CBC30 /* RowTypeRule.swift in Sources */,
+				D35D3CD72AAC5D9C004CBC30 /* String+Extension.swift in Sources */,
+				D35D3CD82AAC5D9C004CBC30 /* UIDevice+Extension.swift in Sources */,
+				D35D3CD92AAC5D9C004CBC30 /* UIFont+Extension.swift in Sources */,
+				D35D3CDB2AAC5D9C004CBC30 /* Extension.swift in Sources */,
+				D35D3CDE2AAC5D9C004CBC30 /* EditorConfigurationViewController.swift in Sources */,
+				D35D3CE12AAC5D9C004CBC30 /* PickerColorConfigurationViewController.swift in Sources */,
+				D35D3CE22AAC5D9C004CBC30 /* PickerConfigurationViewController.swift in Sources */,
+				D35D3CEC2AAC5D9C004CBC30 /* Tools.swift in Sources */,
+				D35D3CED2AAC5D9C004CBC30 /* ConfigurationViewCell.swift in Sources */,
+				D35D3CEE2AAC5D9C004CBC30 /* CustomPickerCellView.swift in Sources */,
+				D3CBE6512AAB13450031802A /* PhotoBrowser.swift in Sources */,
+				D3CBE6492AAAD5340031802A /* ContentView.swift in Sources */,
+				D35D3CB42AAC5B5B004CBC30 /* ConfigView.swift in Sources */,
+				D3CBE64B2AAAD5E80031802A /* PhotoPickerView.swift in Sources */,
+				D35D3CAC2AAC0B8B004CBC30 /* PhotoView.swift in Sources */,
+				D3CBE6472AAAD5340031802A /* SwiftUIExampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7B20B3A427A2A94C00375FB6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B20B3A527A2A94C00375FB6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B7E3E8B1E4AACD1002234EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = "";
+			};
+			name = Debug;
+		};
+		7B7E3E8C1E4AACD1002234EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B7E3E8E1E4AACD1002234EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HXPhotoPickerExample.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHQ974WAF6;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					DEBUG,
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Objective-C/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.2.3.2;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -debug-time-function-bodies";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silence.example27;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = OCEXAMPLE;
+				SWIFT_OBJC_BRIDGING_HEADER = "Objective-C/HXPhotoPickerExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 arm64 armv7s x86_64 i386";
+			};
+			name = Debug;
+		};
+		7B7E3E8F1E4AACD1002234EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HXPhotoPickerExample.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QHQ974WAF6;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Objective-C/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 4.2.3.2;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -debug-time-function-bodies";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silence.example27;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = OCEXAMPLE;
+				SWIFT_OBJC_BRIDGING_HEADER = "Objective-C/HXPhotoPickerExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 arm64 armv7s x86_64 i386";
+			};
+			name = Release;
+		};
+		D361BB252AAAD3E600A4D4F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = QHQ974WAF6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此App使用你的相机";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "是否允许此App后台获取定位信息";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "是否允许此App获取定位信息";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许此App使用你的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此App访问你的媒体资料库";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silence13.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D361BB262AAAD3E600A4D4F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = QHQ974WAF6;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "是否允许此App使用你的相机";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "是否允许此App后台获取定位信息";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "是否允许此App获取定位信息";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "是否允许此App使用你的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "是否允许此App访问你的媒体资料库";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silence13.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B7E3E711E4AACD1002234EE /* Build configuration list for PBXProject "HXPhotoPickerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B7E3E8B1E4AACD1002234EE /* Debug */,
+				7B7E3E8C1E4AACD1002234EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B7E3E8D1E4AACD1002234EE /* Build configuration list for PBXNativeTarget "HXPhotoPickerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B7E3E8E1E4AACD1002234EE /* Debug */,
+				7B7E3E8F1E4AACD1002234EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D361BB272AAAD3E600A4D4F7 /* Build configuration list for PBXNativeTarget "SwiftUIExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D361BB252AAAD3E600A4D4F7 /* Debug */,
+				D361BB262AAAD3E600A4D4F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		2DBBE3502D27CBC000FD1C50 /* XCLocalSwiftPackageReference "../../HXPhotoPicker" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../HXPhotoPicker;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2DBBE3522D27CBC700FD1C50 /* HXPhotoPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DBBE3502D27CBC000FD1C50 /* XCLocalSwiftPackageReference "../../HXPhotoPicker" */;
+			productName = HXPhotoPicker;
+		};
+		2DBBE3542D27CBCC00FD1C50 /* HXPhotoPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DBBE3502D27CBC000FD1C50 /* XCLocalSwiftPackageReference "../../HXPhotoPicker" */;
+			productName = HXPhotoPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7B7E3E6E1E4AACD1002234EE /* Project object */;
+}

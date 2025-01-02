@@ -297,7 +297,6 @@ extension PhotoPickerViewCell {
 extension PhotoPickerViewCell {
     
     private func setupState() {
-      print(photoAsset.mediaType, photoAsset.mediaSubType)
         if !didLoadCompletion {
             return
         }
