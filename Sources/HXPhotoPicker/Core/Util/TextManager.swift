@@ -164,7 +164,8 @@ public extension HX.TextManager {
             public var pageAllTitle: TextType = .localized("全部")
             public var pagePhotoTitle: TextType = .localized("照片")
             public var pageVideoTitle: TextType = .localized("视频")
-            public var pageGifTitle: TextType = .custom("GIF")
+            public var pageGIFPhotoTitle: TextType = .custom("GIF")
+            public var pageHDRPhotoTitle: TextType = .custom("HDR")
             public var pageLivePhotoTitle: TextType = .custom("LivePhoto")
             
             public struct Filter {
@@ -175,7 +176,8 @@ public extension HX.TextManager {
                 public var anyTitle: TextType = .localized("所有项目")
                 public var editedTitle: TextType = .localized("已编辑")
                 public var photoTitle: TextType = .localized("筛选照片")
-                public var gifTitle: TextType = .custom("GIF")
+                public var gifPhotoTitle: TextType = .custom("GIF")
+                public var hdrPhotoTitle: TextType = .custom("HDR")
                 public var livePhotoTitle: TextType = .custom("LivePhoto")
                 public var videoTitle: TextType = .localized("筛选视频")
                 
@@ -185,8 +187,9 @@ public extension HX.TextManager {
             }
             
             public struct Cell {
-                public var gifTitle: TextType = .custom("GIF")
-                public var LivePhotoTitle: TextType = .custom("Live")
+                public var gifPhotoTitle: TextType = .custom("GIF")
+                public var hdrPhotoTitle: TextType = .custom("HDR")
+                public var livePhotoTitle: TextType = .custom("Live")
             }
         }
         

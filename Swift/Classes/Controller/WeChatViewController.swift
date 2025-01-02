@@ -188,7 +188,7 @@ class WeChatViewCell: UITableViewCell {
             avAsset?.cancelLoading()
             pictureView.cancelRequest()
             pictureView.photoAsset = photoAsset
-            if photoAsset.isGifAsset {
+            if photoAsset.isGIFPhotoAsset {
                 if let photoEdit = photoAsset.photoEditedResult {
                     stateLb.text = photoEdit.imageType == .gif ? "GIF" : nil
                     stateMaskLayer.isHidden = photoEdit.imageType != .gif
@@ -196,11 +196,13 @@ class WeChatViewCell: UITableViewCell {
                     stateLb.text = "GIF"
                     stateMaskLayer.isHidden = false
                 }
-            }else if photoAsset.mediaSubType == .livePhoto ||
-                        photoAsset.mediaSubType == .localLivePhoto {
+            } else if photoAsset.isHDRPhotoAsset {
+                stateLb.text = "HDR"
+                stateMaskLayer.isHidden = false
+            } else if photoAsset.isLivePhotoAsset {
                 stateLb.text = "Live"
                 stateMaskLayer.isHidden = false
-            }else {
+            } else {
                 if photoAsset.mediaType == .video {
                     if let videoTime = photoAsset.videoTime {
                         stateLb.text = videoTime

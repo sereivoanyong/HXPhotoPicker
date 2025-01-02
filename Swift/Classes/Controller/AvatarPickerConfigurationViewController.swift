@@ -155,9 +155,14 @@ extension AvatarPickerConfigurationViewController {
             self.config.selectOptions = .photo
             self.tableView.reloadRows(at: [indexPath], with: .fade)
         }))
-        alert.addAction(UIAlertAction.init(title: "gif+photo", style: .default, handler: { [weak self] (action) in
+        alert.addAction(UIAlertAction.init(title: "gifPhoto+photo", style: .default, handler: { [weak self] (action) in
             guard let self = self else { return }
             self.config.selectOptions = [.gifPhoto]
+            self.tableView.reloadRows(at: [indexPath], with: .fade)
+        }))
+        alert.addAction(UIAlertAction.init(title: "hdrPhoto+photo", style: .default, handler: { [weak self] (action) in
+            guard let self = self else { return }
+            self.config.selectOptions = [.hdrPhoto]
             self.tableView.reloadRows(at: [indexPath], with: .fade)
         }))
         alert.addAction(UIAlertAction.init(title: "livePhoto+photo", style: .default, handler: { [weak self] (action) in

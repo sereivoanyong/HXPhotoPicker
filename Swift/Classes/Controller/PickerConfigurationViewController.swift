@@ -29,6 +29,7 @@ class PickerConfigurationViewController: UITableViewController {
             target: self,
             action: #selector(openPickerController)
         )
+        config.selectOptions = [.photo, .gifPhoto, .hdrPhoto, .livePhoto]
     }
     
     @objc func openPickerController() {
@@ -360,50 +361,49 @@ extension PickerConfigurationViewController {
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
     func selectOptionsAction(_ indexPath: IndexPath) {
-        let alert = UIAlertController.init(title: "selectOptions", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction.init(title: "photo", style: .default, handler: { [weak self](action) in
-            guard let self = self else { return }
-            self.config.selectOptions = .photo
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "gif+photo", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.gifPhoto]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "livePhoto+photo", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.livePhoto]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "video", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = .video
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "photo+video", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.photo, .video]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "photo+gif+video", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.gifPhoto, .video]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(
-            UIAlertAction(title: "photo+livephoto+video", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.livePhoto, .video]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(
-            UIAlertAction(title: "photo+gif+livephoto+video", style: .default, handler: { [weak self] (action) in
-            guard let self = self else { return }
-            self.config.selectOptions = [.gifPhoto, .livePhoto, .video]
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-        }))
-        alert.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "selectOptions", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "photo", style: .default) { [unowned self] _ in
+            config.selectOptions = .photo
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "gifPhoto+photo", style: .default) { [unowned self] _ in
+            config.selectOptions = [.gifPhoto]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "hdrPhoto+photo", style: .default) { [unowned self] _ in
+            config.selectOptions = [.hdrPhoto]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "livePhoto+photo", style: .default) { [unowned self] _ in
+            config.selectOptions = [.livePhoto]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "video", style: .default) { [unowned self] _ in
+            config.selectOptions = .video
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "photo+video", style: .default) { [unowned self] _ in
+            config.selectOptions = [.photo, .video]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "photo+gifPhoto+video", style: .default) { [unowned self] _ in
+            config.selectOptions = [.gifPhoto, .video]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "photo+hdrPhoto+video", style: .default) { [unowned self] _ in
+            config.selectOptions = [.hdrPhoto, .video]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "photo+livePhoto+video", style: .default) { [unowned self] _ in
+            config.selectOptions = [.livePhoto, .video]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "photo+gifPhoto+hdrPhoto+livePhoto+video", style: .default) { [unowned self] _ in
+            config.selectOptions = [.gifPhoto, .hdrPhoto, .livePhoto, .video]
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        })
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        presendAlert(alert)
         presendAlert(alert)
     }
     func selectModeAction(_ indexPath: IndexPath) {
@@ -964,22 +964,30 @@ extension PickerAssetOptions {
         if self == [
             .photo,
             .gifPhoto,
+            .hdrPhoto,
             .livePhoto,
             .video] ||
             self == [
             .gifPhoto,
+            .hdrPhoto,
             .livePhoto,
             .video] {
-            return "photo+gif+livePhoto+video"
+            return "photo+gifPhoto+hdrPhoto+livePhoto+video"
         }
         if self == [.photo, .gifPhoto, .video] || self == [.gifPhoto, .video] {
-            return "photo+gif+video"
+            return "photo+gifPhoto+video"
+        }
+        if self == [.photo, .hdrPhoto, .video] || self == [.hdrPhoto, .video] {
+            return "photo+hdrPhoto+video"
         }
         if self == [.photo, .livePhoto, .video] || self == [.livePhoto, .video] {
             return "photo+livePhoto+video"
         }
         if self == [.photo, .gifPhoto] {
-            return "photo+gif"
+            return "photo+gifPhoto"
+        }
+        if self == [.photo, .hdrPhoto] {
+            return "photo+hdrPhoto"
         }
         if self == [.photo, .livePhoto] {
             return "photo+livePhoto"
@@ -987,11 +995,16 @@ extension PickerAssetOptions {
         if self == [.photo, .video] {
             return "photo+video"
         }
+        if self == [.photo, .gifPhoto, .hdrPhoto, .livePhoto] {
+          return "photo+gifPhoto+hdrPhoto+livePhoto"
+        }
         switch self {
         case .photo:
             return "photo"
         case .gifPhoto:
             return "photo+gifPhoto"
+        case .hdrPhoto:
+            return "photo+hdrPhoto"
         case .livePhoto:
             return "photo+livePhoto"
         case .video:

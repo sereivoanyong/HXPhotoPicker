@@ -190,7 +190,7 @@ extension UIImageView {
             switch result {
             case .success(let value):
                 switch asset.mediaSubType {
-                case .networkImage:
+                case .networkPhoto:
                     let cacheKey = value.originalSource.cacheKey
                     if let networkAsset = asset.networkImageAsset, networkAsset.imageSize.equalTo(.zero) {
                         ImageCache.default.retrieveImage(forKey: cacheKey, options: []) { [weak asset] result in

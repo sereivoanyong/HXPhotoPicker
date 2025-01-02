@@ -766,7 +766,7 @@ extension PickerResultViewController: PhotoPickerControllerDelegate {
             var config = editorConfig
             createEditorDocumentPath()
             var fileName = "hxphotopicker_editor/"
-            fileName += String.fileName(suffix: photoAsset.isGifAsset ? "gif" : "png")
+            fileName += String.fileName(suffix: photoAsset.isGIFPhotoAsset ? "gif" : "png")
             config.urlConfig = .init(fileName: fileName, type: .document)
             return config
         }

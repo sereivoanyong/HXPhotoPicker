@@ -25,7 +25,7 @@ open class PhotoAsset: Equatable {
     public var mediaType: MediaType = .photo
     
     /// 媒体子类型
-    public var mediaSubType: MediaSubType = .image
+    public var mediaSubType: MediaSubType = .photo
     
     #if HXPICKER_ENABLE_EDITOR
     /// 编辑之后的数据
@@ -103,7 +103,9 @@ open class PhotoAsset: Equatable {
     /// 选中时的下标
     public var selectIndex: Int = 0
     
-    public var isGifAsset: Bool { mediaSubType.isGif }
+    public var isGIFPhotoAsset: Bool { mediaSubType.isGIFPhoto }
+    public var isHDRPhotoAsset: Bool { mediaSubType.isHDRPhoto }
+    public var isLivePhotoAsset: Bool { mediaSubType.isLivePhoto }
     public var isLocalAsset: Bool { mediaSubType.isLocal }
     public var isNetworkAsset: Bool { mediaSubType.isNetwork }
     
@@ -139,11 +141,11 @@ open class PhotoAsset: Equatable {
         self.localImageAsset = localImageAsset
         mediaType = .photo
         if let imageData = localImageAsset.imageData {
-            mediaSubType = imageData.isGif ? .localGifImage : .localImage
+            mediaSubType = imageData.isGIF ? .localGIFPhoto : .localPhoto
         }else if let imageURL = localImageAsset.imageURL {
-            mediaSubType = imageURL.isGif ? .localGifImage : .localImage
+            mediaSubType = imageURL.isGIF ? .localGIFPhoto : .localPhoto
         }else {
-            mediaSubType = .localImage
+            mediaSubType = .localPhoto
         }
     }
     
@@ -198,8 +200,8 @@ open class PhotoAsset: Equatable {
     public init(networkImageAsset: NetworkImageAsset) {
         self.networkImageAsset = networkImageAsset
         mediaType = .photo
-        let isGif = networkImageAsset.originalURL?.isGif ?? false
-        mediaSubType = .networkImage(isGif)
+        let isGIF = networkImageAsset.originalURL?.isGIF ?? false
+        mediaSubType = .networkPhoto(isGIF: isGIF)
     }
     
     public convenience init(_ networkImageAsset: NetworkImageAsset) {
@@ -284,7 +286,7 @@ extension PhotoAsset {
         }
         if phAsset.mediaType == .image {
             mediaType = .photo
-            mediaSubType = .image
+            mediaSubType = .photo
         }else if phAsset.mediaType == .video {
             mediaType = .video
             mediaSubType = .video

@@ -42,7 +42,8 @@ public extension PhotoFetchAsset {
         }
         var selectedAsset: PhotoAsset?
         var normalAssets: [PhotoAsset] = []
-        var gifAssets: [PhotoAsset] = []
+        var gifPhotoAssets: [PhotoAsset] = []
+        var hdrPhotoAssets: [PhotoAsset] = []
         var livePhotoAssets: [PhotoAsset] = []
         var videoAssets: [PhotoAsset] = []
         var photoCount = 0
@@ -58,7 +59,12 @@ public extension PhotoFetchAsset {
             }
             if config.selectOptions.contains(.gifPhoto) {
                 if phAsset.isImageAnimated {
-                    photoAsset.mediaSubType = .imageAnimated
+                    photoAsset.mediaSubType = .gifPhoto
+                }
+            }
+            if config.selectOptions.contains(.hdrPhoto) {
+                if phAsset.isHDRPhoto {
+                    photoAsset.mediaSubType = .hdrPhoto
                 }
             }
             if config.selectOptions.contains(.livePhoto) {
@@ -93,11 +99,14 @@ public extension PhotoFetchAsset {
                 if asset.mediaSubType.isNormalPhoto {
                     normalAssets.append(asset)
                 }
+                if asset.mediaSubType.isGIFPhoto {
+                    gifPhotoAssets.append(asset)
+                }
+                if asset.mediaSubType.isHDRPhoto {
+                    hdrPhotoAssets.append(asset)
+                }
                 if asset.mediaSubType.isLivePhoto {
                     livePhotoAssets.append(asset)
-                }
-                if asset.mediaSubType.isGif {
-                    gifAssets.append(asset)
                 }
                 if asset.mediaType == .video {
                     videoAssets.append(asset)
@@ -125,11 +134,14 @@ public extension PhotoFetchAsset {
                 if asset.mediaSubType.isNormalPhoto {
                     normalAssets.append(asset)
                 }
+                if asset.mediaSubType.isGIFPhoto {
+                    gifPhotoAssets.append(asset)
+                }
+                if asset.mediaSubType.isHDRPhoto {
+                    hdrPhotoAssets.append(asset)
+                }
                 if asset.mediaSubType.isLivePhoto {
                     livePhotoAssets.append(asset)
-                }
-                if asset.mediaSubType.isGif {
-                    gifAssets.append(asset)
                 }
                 if asset.mediaType == .video {
                     videoAssets.append(asset)
@@ -147,8 +159,9 @@ public extension PhotoFetchAsset {
             photoAssets.reverse()
             if config.isFetchDeatilsAsset {
                 normalAssets.reverse()
+                gifPhotoAssets.reverse()
+                hdrPhotoAssets.reverse()
                 livePhotoAssets.reverse()
-                gifAssets.reverse()
                 videoAssets.reverse()
             }
         }
@@ -156,7 +169,8 @@ public extension PhotoFetchAsset {
             assets: photoAssets,
             selectedAsset: selectedAsset,
             normalAssets: normalAssets,
-            gifAssets: gifAssets,
+            gifPhotoAssets: gifPhotoAssets,
+            hdrPhotoAssets: hdrPhotoAssets,
             livePhotoAssets: livePhotoAssets,
             videoAssets: videoAssets,
             photoCount: photoCount,
@@ -174,7 +188,9 @@ public struct PhotoFetchAssetResult {
     /// 普通照片 Asset
     public let normalAssets: [PhotoAsset]
     /// GIF Asset
-    public let gifAssets: [PhotoAsset]
+    public let gifPhotoAssets: [PhotoAsset]
+    /// HDRPhoto Asset
+    public let hdrPhotoAssets: [PhotoAsset]
     /// LivePhoto Asset
     public let livePhotoAssets: [PhotoAsset]
     /// 视频 Asset
@@ -187,7 +203,8 @@ public struct PhotoFetchAssetResult {
         assets: [PhotoAsset] = [],
         selectedAsset: PhotoAsset? = nil,
         normalAssets: [PhotoAsset] = [],
-        gifAssets: [PhotoAsset] = [],
+        gifPhotoAssets: [PhotoAsset] = [],
+        hdrPhotoAssets: [PhotoAsset] = [],
         livePhotoAssets: [PhotoAsset] = [],
         videoAssets: [PhotoAsset] = [],
         photoCount: Int = 0,
@@ -196,7 +213,8 @@ public struct PhotoFetchAssetResult {
         self.assets = assets
         self.selectedAsset = selectedAsset
         self.normalAssets = normalAssets
-        self.gifAssets = gifAssets
+        self.gifPhotoAssets = gifPhotoAssets
+        self.hdrPhotoAssets = hdrPhotoAssets
         self.livePhotoAssets = livePhotoAssets
         self.videoAssets = videoAssets
         self.photoCount = photoCount

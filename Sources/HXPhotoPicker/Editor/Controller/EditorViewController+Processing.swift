@@ -136,7 +136,7 @@ extension EditorViewController {
                 if let config = self.config.urlConfig {
                     urlConfig = config
                 }else {
-                    let fileName = String.fileName(suffix: data.isGif ? "gif" : "png")
+                    let fileName = String.fileName(suffix: data.isGIF ? "gif" : "png")
                     urlConfig = .init(fileName: fileName, type: .temp)
                 }
                 if PhotoTools.write(toFile: urlConfig.url, imageData: data) == nil {

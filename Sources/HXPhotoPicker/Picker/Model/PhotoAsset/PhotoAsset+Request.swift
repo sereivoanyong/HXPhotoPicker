@@ -131,7 +131,7 @@ public extension PhotoAsset {
         options.isNetworkAccessAllowed = true
         return AssetManager.requestImageData(
             for: phAsset,
-            version: isGifAsset ? .original : .current
+            version: isGIFPhotoAsset ? .original : .current
         ) { (result) in
             switch result {
             case .success(let dataResult):
@@ -152,9 +152,12 @@ public extension PhotoAsset {
                     }
                     return
                 }
-                let image = UIImage(
-                    data: dataResult.imageData
-                )?.normalizedImage()
+                let image: UIImage?
+                if phAsset.isHDRPhoto {
+                    image = .hdrDecoded(dataResult.imageData)
+                } else {
+                    image = UIImage(data: dataResult.imageData)?.normalizedImage()
+                }
                 completion?(image, self)
             case .failure:
                 completion?(nil, self)
@@ -325,13 +328,13 @@ public extension PhotoAsset {
             return 0
         }
         var version = PHImageRequestOptionsVersion.current
-        if mediaSubType == .imageAnimated {
+        if mediaSubType == .gifPhoto {
             version = .original
         }
         if downloadStatus != .succeed {
             downloadStatus = .downloading
         }
-        let isGif = phAsset.isImageAnimated
+        let isGIF = phAsset.isImageAnimated
         return AssetManager.requestImageData(for: phAsset, version: version) { iCloudRequestID in
             iCloudHandler?(self, iCloudRequestID)
         } progressHandler: { progress, _, _, _ in
@@ -345,7 +348,7 @@ public extension PhotoAsset {
                 self.downloadProgress = 1
                 self.downloadStatus = .succeed
                 let imageData: Data
-                if isGif && self.mediaSubType != .imageAnimated {
+                if isGIF && self.mediaSubType != .gifPhoto {
                     if let image = UIImage(data: dataResult.imageData),
                        let data = PhotoTools.getImageData(for: image) {
                         imageData = data

@@ -31,8 +31,9 @@ class SwiftPickerConfiguration: NSObject {
    enum SelectOptions: Int {
        case photo
        case photo_gif
-       case photo_livePhoto
-       case gif_livePhoto
+       case photo_hdr
+       case photo_live
+       case photo_gif_hdr_live
        case video
        case any
        
@@ -42,14 +43,16 @@ class SwiftPickerConfiguration: NSObject {
                return .photo
            case .photo_gif:
                return .gifPhoto
-           case .photo_livePhoto:
+           case .photo_hdr:
+               return .hdrPhoto
+           case .photo_live:
                return .livePhoto
-           case .gif_livePhoto:
-               return [.livePhoto, .gifPhoto, .photo]
+           case .photo_gif_hdr_live:
+               return [.photo, .gifPhoto, .hdrPhoto, .livePhoto]
            case .video:
                return [.video]
            case .any:
-               return [.photo, .gifPhoto, .livePhoto, .video]
+               return [.photo, .gifPhoto, .hdrPhoto, .livePhoto, .video]
            }
        }
    }

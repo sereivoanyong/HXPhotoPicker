@@ -244,7 +244,7 @@ extension PhotoTools {
             config.allowSelectedTogether = true
         }
         let wxColor = "#07C160".color
-        config.selectOptions = [.gifPhoto, .video]
+        config.selectOptions = [.gifPhoto, .hdrPhoto, .livePhoto, .video]
         config.albumShowMode = .popup
         config.appearanceStyle = .normal
         config.navigationViewBackgroundColor = "#2E2F30".color
@@ -387,7 +387,7 @@ extension PhotoTools {
         var config = getWXPickerConfig()
         config.modalPresentationStyle = .fullScreen
         config.appearanceStyle = .normal
-        config.selectOptions = [.photo, .gifPhoto, .livePhoto, .video]
+        config.selectOptions = [.photo, .gifPhoto, .hdrPhoto, .livePhoto, .video]
         config.albumShowMode = .popup
         config.navigationTitleColor = .white
         config.navigationTintColor = .white

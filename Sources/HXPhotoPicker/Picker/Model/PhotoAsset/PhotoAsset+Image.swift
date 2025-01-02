@@ -56,16 +56,21 @@ public extension PhotoAsset {
         options.isSynchronous = true
         options.isNetworkAccessAllowed = true
         options.deliveryMode = .highQualityFormat
-        if mediaSubType == .imageAnimated {
+        if mediaSubType == .gifPhoto {
             options.version = .original
         }
         var originalImage: UIImage?
-        let isGif = phAsset.isImageAnimated
+        let isGIF = phAsset.isImageAnimated
         AssetManager.requestImageData(for: phAsset, options: options) { (result) in
             switch result {
             case .success(let dataResult):
-                let image = UIImage(data: dataResult.imageData)?.normalizedImage()
-                if isGif && self.mediaSubType != .imageAnimated {
+                let image: UIImage?
+                if phAsset.isHDRPhoto {
+                    image = .hdrDecoded(dataResult.imageData)
+                } else {
+                    image = UIImage(data: dataResult.imageData)?.normalizedImage()
+                }
+                if isGIF && self.mediaSubType != .gifPhoto {
                     if let data = PhotoTools.getImageData(for: image) {
                         originalImage = UIImage(data: data)
                     }
@@ -97,14 +102,14 @@ public extension PhotoAsset {
         #endif
         if isNetworkAsset && !hasEdited {
             getNetworkImage { image in
-                guard let compressionQuality = compressionQuality else {
+                guard let compressionQuality else {
                     completion(image)
                     return
                 }
                 DispatchQueue.global().async {
                     guard let imageData = PhotoTools.getImageData(for: image),
                           let data = PhotoTools.imageCompress(
-                            imageData,
+                              imageData,
                               compressionQuality: compressionQuality
                           ),
                           let image = UIImage(data: data)?.normalizedImage()
@@ -204,19 +209,19 @@ extension PhotoAsset {
             )
             return
         }
-        let isGif = phAsset.isImageAnimated
+        let isGIF = phAsset.isImageAnimated
         var imageFileURL: URL
         if let fileURL = fileURL {
             imageFileURL = fileURL
         }else {
             var suffix: String
-            if mediaSubType == .imageAnimated {
+            if mediaSubType == .gifPhoto {
                 suffix = "gif"
             }else {
-                if let compressionQuality, compressionQuality < 1, !isGif {
+                if let compressionQuality, compressionQuality < 1, !isGIF {
                     suffix = "jpeg"
                 }else {
-                    if let photoFormat = photoFormat, !isGif {
+                    if let photoFormat = photoFormat, !isGIF {
                         suffix = photoFormat
                     }else {
                         suffix = "png"
@@ -234,7 +239,7 @@ extension PhotoAsset {
                 self.requestAssetImageURL(
                     imageFileURL: imageFileURL,
                     resultURL: imageURL,
-                    isGif: isGif,
+                    isGIF: isGIF,
                     compressionQuality: compressionQuality,
                     resultHandler: resultHandler
                 )
@@ -247,7 +252,7 @@ extension PhotoAsset {
     private func requestAssetImageURL(
         imageFileURL: URL,
         resultURL: URL,
-        isGif: Bool,
+        isGIF: Bool,
         compressionQuality: CGFloat?,
         resultHandler: @escaping AssetURLCompletion
     ) {
@@ -278,7 +283,7 @@ extension PhotoAsset {
             }
             return imageURL
         }
-        if isGif && self.mediaSubType != .imageAnimated {
+        if isGIF && self.mediaSubType != .gifPhoto {
             DispatchQueue.global().async {
                 // 本质上是gif，需要变成静态图
                 guard let imageData = try? Data(contentsOf: imageURL),
@@ -288,7 +293,7 @@ extension PhotoAsset {
                     }
                     return
                 }
-                if let compressionQuality = compressionQuality, compressionQuality < 1 {
+                if let compressionQuality, compressionQuality < 1 {
                     if FileManager.default.fileExists(atPath: imageURL.path) {
                         try? FileManager.default.removeItem(at: imageURL)
                     }
@@ -324,8 +329,8 @@ extension PhotoAsset {
                 }
             }
             return
-        }else if !isGif {
-            if let compressionQuality = compressionQuality, compressionQuality < 1 {
+        } else if !isGIF {
+            if let compressionQuality, compressionQuality < 1 {
                 DispatchQueue.global().async {
                     guard let imageData = try? Data(contentsOf: imageURL) else {
                         DispatchQueue.main.async {

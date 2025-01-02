@@ -260,7 +260,7 @@ public extension PhotoTools {
         toFile fileURL: URL? = nil,
         imageData: Data
     ) -> URL? {
-        let imageURL = fileURL == nil ? getImageTmpURL(imageData.isGif ? .gif : .png) : fileURL!
+        let imageURL = fileURL == nil ? getImageTmpURL(imageData.isGIF ? .gif : .png) : fileURL!
         do {
             if FileManager.default.fileExists(atPath: imageURL.path) {
                 try FileManager.default.removeItem(at: imageURL)

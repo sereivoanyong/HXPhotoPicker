@@ -47,6 +47,9 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
     func initViews() {
         imageView = ImageView()
         imageView.size = size
+        if #available(iOS 17.0, *) {
+            imageView.preferredImageDynamicRange = .high
+        }
         addSubview(imageView)
     }
     
@@ -57,7 +60,7 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
         requestFailed(info: [PHImageCancelledKey: 1], isICloud: false)
         isAnimatedCompletion = false
         switch photoAsset.mediaSubType {
-        case .localImage:
+        case .localPhoto:
             requestCompletion = true
         default:
             break
@@ -92,7 +95,7 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
     
     func requestPreviewAsset() {
         switch photoAsset.mediaSubType {
-        case .localImage, .networkImage:
+        case .localPhoto, .networkPhoto:
             return
         default:
             break
@@ -123,7 +126,7 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
     
     func requestPreviewContent(_ canRequest: Bool) {
         #if canImport(Kingfisher)
-        if photoAsset.mediaSubType.isGif && isAnimatedCompletion {
+        if photoAsset.mediaSubType.isGIFPhoto && isAnimatedCompletion {
             startAnimated()
         }else {
             if canRequest {
@@ -131,7 +134,7 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
             }
         }
         #else
-        if photoAsset.mediaSubType.isGif && imageView.gifImage != nil {
+        if photoAsset.mediaSubType.isGIF && imageView.gifImage != nil {
             imageView.startAnimating()
         }else {
             if canRequest {
@@ -148,7 +151,7 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
             photoAsset.playerTime = 0
         }
         switch photoAsset.mediaSubType {
-        case .localImage, .networkImage:
+        case .localPhoto, .networkPhoto:
             requestCompletion = false
             requestNetworkCompletion = false
             return
@@ -170,13 +173,13 @@ class PhotoPreviewContentPhotoView: UIView, PhotoPreviewContentViewProtocol {
     }
     
     func startAnimated() {
-        if photoAsset.mediaSubType.isGif {
+        if photoAsset.mediaSubType.isGIFPhoto {
             imageView.startAnimatedImage()
         }
     }
     
     func stopAnimated() {
-        if photoAsset.mediaSubType.isGif {
+        if photoAsset.mediaSubType.isGIFPhoto {
             imageView.stopAnimatedImage()
         }
     }
@@ -364,14 +367,14 @@ extension PhotoPreviewContentPhotoView {
             return
         }
         #endif
-        if photoAsset.isGifAsset {
+        if photoAsset.isGIFPhotoAsset {
             requestPreviewImageData()
         }else {
             requestID = photoAsset.requestICloudState { [weak self] asset, inICloud in
                 guard let self = self, self.photoAsset == asset else {
                     return
                 }
-                if inICloud {
+                if inICloud || asset.isHDRPhotoAsset {
                     self.requestPreviewImageData()
                 }else {
                     self.requestPreviewImage()
@@ -457,7 +460,7 @@ extension PhotoPreviewContentPhotoView {
         }
         switch result {
         case .success(let dataResult):
-            if asset.mediaSubType.isGif {
+            if asset.mediaSubType.isGIFPhoto {
                 self.requestSucceed()
                 imageView.setImageData(dataResult.imageData)
                 isAnimatedCompletion = true
@@ -479,22 +482,26 @@ extension PhotoPreviewContentPhotoView {
                             }
                         }
                     }
-                    let dataCount = CGFloat(dataResult.imageData.count)
-                    if dataCount > 3000000 {
-                        PhotoTools.compressImageData(
-                            dataResult.imageData,
-                            compressionQuality: dataCount.compressionQuality,
-                            queueLabel: "com.hxphotopicker.previewrequest"
-                        ) {
-                            guard let imageData = $0 else {
-                                handler()
-                                return
+                    if asset.isHDRPhotoAsset {
+                        handler(.hdrDecoded(dataResult.imageData))
+                    } else {
+                        let dataCount = CGFloat(dataResult.imageData.count)
+                        if dataCount > 3000000 {
+                            PhotoTools.compressImageData(
+                                dataResult.imageData,
+                                compressionQuality: dataCount.compressionQuality,
+                                queueLabel: "com.hxphotopicker.previewrequest"
+                            ) {
+                                guard let imageData = $0 else {
+                                    handler()
+                                    return
+                                }
+                                handler(.init(data: imageData))
                             }
-                            handler(.init(data: imageData))
+                            return
                         }
-                        return
+                        handler()
                     }
-                    handler()
                 }
             }
         case .failure(let error):

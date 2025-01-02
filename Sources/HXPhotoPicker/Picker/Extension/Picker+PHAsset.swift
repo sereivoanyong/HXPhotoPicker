@@ -23,7 +23,11 @@ extension PHAsset {
         }
         return isAnimated
     }
-    
+
+    var isHDRPhoto: Bool {
+        return mediaSubtypes.contains(.photoHDR) || mediaSubtypes.rawValue == 512
+    }
+
     var isLivePhoto: Bool {
         var isLivePhoto: Bool = false
         if #available(iOS 9.1, *) {

@@ -11,7 +11,7 @@ import Kingfisher
 #endif
 
 extension URL {
-    var isGif: Bool {
+    var isGIF: Bool {
         absoluteString.hasSuffix("gif") || absoluteString.hasSuffix("GIF")
     }
     var fileSize: Int {

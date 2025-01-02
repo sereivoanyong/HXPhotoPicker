@@ -89,11 +89,17 @@ public class PhotoPickerBottomNumberView: UICollectionReusableView {
             }
             filterContent += .textPhotoList.filter.photoTitle.text
         }
-        if filterOptions.contains(.gif) {
+        if filterOptions.contains(.gifPhoto) {
             if !filterContent.isEmpty {
                 filterContent += "、"
             }
-            filterContent += .textPhotoList.filter.gifTitle.text
+            filterContent += .textPhotoList.filter.gifPhotoTitle.text
+        }
+        if filterOptions.contains(.hdrPhoto) {
+            if !filterContent.isEmpty {
+                filterContent += "、"
+            }
+            filterContent += .textPhotoList.filter.hdrPhotoTitle.text
         }
         if filterOptions.contains(.livePhoto) {
             if !filterContent.isEmpty {

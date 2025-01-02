@@ -52,8 +52,7 @@ extension PhotoAsset {
                     )
                 )
             }
-            if let compressionQuality = compressionQuality,
-               !isGifAsset {
+            if let compressionQuality, !isGIFPhotoAsset {
                 DispatchQueue.global().async {
                     guard let imageData = try? Data(contentsOf: localImageURL) else {
                         result(.failure(.imageCompressionFailed))
@@ -80,8 +79,7 @@ extension PhotoAsset {
         DispatchQueue.global().async {
             var error: AssetError?
             if let imageData = self.getLocalImageData() {
-                if let compressionQuality = compressionQuality,
-                   !self.isGifAsset {
+                if let compressionQuality, !self.isGIFPhotoAsset {
                     if let data = PhotoTools.imageCompress(
                         imageData,
                         compressionQuality: compressionQuality

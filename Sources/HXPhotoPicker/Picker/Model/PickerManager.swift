@@ -211,7 +211,12 @@ extension PickerManager {
                 }
                 if self.selectOptions.contains(.gifPhoto) {
                     if photoAsset.phAsset!.isImageAnimated {
-                        photoAsset.mediaSubType = .imageAnimated
+                        photoAsset.mediaSubType = .gifPhoto
+                    }
+                }
+                if self.selectOptions.contains(.hdrPhoto) {
+                    if photoAsset.phAsset!.isHDRPhoto {
+                        photoAsset.mediaSubType = .hdrPhoto
                     }
                 }
                 if self.config.selectOptions.contains(.livePhoto) {

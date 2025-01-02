@@ -156,6 +156,19 @@ extension UIImage {
         return repaintImage()
     }
     func repaintImage() -> UIImage? {
+        if #available(iOS 17.0, *), isHighDynamicRange, let cgImage {
+            let ciImage = CIImage(cgImage: cgImage)
+            let ciContext = CIContext()
+            if let result = ciContext.createCGImage(
+                ciImage,
+                from: ciImage.extent,
+                format: .RGB10,
+                colorSpace: cgImage.colorSpace,
+                deferred: true
+            ) {
+                return UIImage(cgImage: result, scale: scale, orientation: imageOrientation)
+            }
+        }
         let format = UIGraphicsImageRendererFormat()
         format.opaque = false
         format.scale = scale
@@ -364,6 +377,25 @@ extension UIImage {
         let image = renderer.image { context in
             layer.render(in: context.cgContext)
         }
+        return image
+    }
+
+    static func hdrDecoded(_ data: Data) -> UIImage? {
+        guard let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
+        var decodingOptions: [CFString: Any] = [
+            kCGImageSourceShouldCacheImmediately: false
+        ]
+        if #available(macOS 14.0, iOS 17.0, tvOS 17.0, watchOS 10.0, *) {
+            decodingOptions[kCGImageSourceDecodeRequest] = kCGImageSourceDecodeToHDR as CFString
+        }
+        guard let imageRef = CGImageSourceCreateImageAtIndex(source, 0, decodingOptions as CFDictionary) else { return nil }
+
+        var exifOrientation: CGImagePropertyOrientation?
+        if let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [String: Any], let exifOrientationValue = properties[kCGImagePropertyOrientation as String] as? NSNumber {
+            exifOrientation = CGImagePropertyOrientation(rawValue: exifOrientationValue.uint32Value)
+        }
+        let imageOrientation = AssetManager.transformImageOrientation(orientation: exifOrientation ?? .up)
+        let image = UIImage(cgImage: imageRef, scale: 1.0, orientation: imageOrientation)
         return image
     }
 }

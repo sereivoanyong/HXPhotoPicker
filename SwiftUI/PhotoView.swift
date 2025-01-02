@@ -44,14 +44,21 @@ struct PhotoView: View {
                                 .foregroundColor(.white)
                                 .shadow(radius: 1)
                                 .padding([.trailing, .bottom], 5)
-                        }else if asset.photoAsset.isGifAsset {
+                        } else if asset.photoAsset.isGIFPhotoAsset {
                             Spacer()
                             Text("GIF")
                                 .font(.callout)
                                 .foregroundColor(.white)
                                 .shadow(radius: 1)
                                 .padding([.trailing, .bottom], 5)
-                        }else if asset.photoAsset.mediaSubType.isLivePhoto {
+                        } else if asset.photoAsset.isHDRPhotoAsset {
+                            Spacer()
+                            Text("HDR")
+                                .font(.callout)
+                                .foregroundColor(.white)
+                                .shadow(radius: 1)
+                                .padding([.trailing, .bottom], 5)
+                        } else if asset.photoAsset.mediaSubType.isLivePhoto {
                             Spacer()
                             Text("LivePhoto")
                                 .font(.callout)

@@ -607,7 +607,7 @@ extension EditorViewController {
             }else if photoAsset.isNetworkAsset {
                 requestNetworkAsset()
             } else {
-                if photoAsset.phAsset != nil && !photoAsset.isGifAsset {
+                if photoAsset.phAsset != nil && !photoAsset.isGIFPhotoAsset {
                     requestAssetImage()
                     return
                 }
@@ -636,7 +636,7 @@ extension EditorViewController {
                          let img = UIImage(contentsOfFile: localLivePhoto.imageURL.path)?.normalizedImage() {
                     image = img
                 }
-                if photoAsset.mediaSubType.isGif {
+                if photoAsset.mediaSubType.isGIFPhoto {
                     if let imageData = photoAsset.localImageAsset?.imageData {
                         #if canImport(Kingfisher)
                         if let gifImage = DefaultImageProcessor.default.process(
@@ -754,50 +754,67 @@ extension EditorViewController {
         }else {
             loadAssetStatus = .loadding(true)
         }
-        assetRequestID = photoAsset.requestImage(
-            filterEditor: true
-        ) { [weak self] _, requestID in
-            self?.assetRequestID = requestID
-            self?.assetLoadingView?.setText(.textManager.editor.iCloudSyncHudTitle.text + "...")
-        } progressHandler: { [weak self] _, progress in
-            if progress > 0 {
+        assetRequestID = photoAsset.requestImageData(
+            filterEditor: true,
+            iCloudHandler: { [weak self] _, requestID in
+                guard let self else { return }
+                assetRequestID = requestID
+                assetLoadingView?.setText(.textManager.editor.iCloudSyncHudTitle.text + "...")
+            },
+            progressHandler: { [weak self] _, progress in
+                if progress > 0 {
+                    DispatchQueue.main.async {
+                        self?.assetLoadingView?.setProgress(CGFloat(progress))
+                    }
+                }
+            },
+            resultHandler: { [weak self] asset, result in
+                guard let self else { return }
+                self.assetLoadingView = nil
                 DispatchQueue.main.async {
-                    self?.assetLoadingView?.setProgress(CGFloat(progress))
-                }
-            }
-        } resultHandler: { [weak self] _, image, info in
-            guard let self else { return }
-            self.assetLoadingView = nil
-            DispatchQueue.main.async {
-                guard let image, !AssetManager.assetDownloadError(for: info) else {
-                    if !self.isTransitionCompletion {
-                        self.loadAssetStatus = .failure
+                    switch result {
+                    case .success(let dataResult):
+                        if AssetManager.assetDownloadFinined(for: dataResult.info) || AssetManager.assetCancelDownload(for: dataResult.info) {
+                            let image: UIImage?
+                            if asset.isHDRPhotoAsset {
+                                image = .hdrDecoded(dataResult.imageData)
+                            } else {
+                                image = UIImage(data: dataResult.imageData)
+                            }
+                            guard let image else {
+                                self.loadAssetStatus = .failure
+                                PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                                return
+                            }
+                            if !self.isTransitionCompletion {
+                                self.loadAssetStatus = .succeed(.image(image))
+                                return
+                            }
+                            self.editorView.setImage(image)
+                            self.loadCompletion()
+                            self.loadLastEditedData()
+                            let viewSize = UIDevice.screenSize
+                            DispatchQueue.global().async {
+                                self.loadThumbnailImage(image, viewSize: viewSize)
+                            }
+                            PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                        }
+                    case .failure(let error):
+                        if !self.isTransitionCompletion {
+                            self.loadAssetStatus = .failure
+                            return
+                        }
+                        PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
+                        if let inICloud = error.info?.inICloud {
+                            self.loadFailure(message: inICloud ? .textManager.editor.iCloudSyncFailedAlertMessage.text : .textManager.editor.photoLoadFailedAlertMessage.text)
+                        } else {
+                            self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
+                        }
                         return
                     }
-                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
-                    if let inICloud = info?.inICloud {
-                        self.loadFailure(message: inICloud ? .textManager.editor.iCloudSyncFailedAlertMessage.text : .textManager.editor.photoLoadFailedAlertMessage.text)
-                    }else {
-                        self.loadFailure(message: .textManager.editor.photoLoadFailedAlertMessage.text)
-                    }
-                    return
-                }
-                if AssetManager.assetDownloadFinined(for: info) || AssetManager.assetCancelDownload(for: info) {
-                    if !self.isTransitionCompletion {
-                        self.loadAssetStatus = .succeed(.image(image))
-                        return
-                    }
-                    self.editorView.setImage(image)
-                    self.loadCompletion()
-                    self.loadLastEditedData()
-                    let viewSize = UIDevice.screenSize
-                    DispatchQueue.global().async {
-                        self.loadThumbnailImage(image, viewSize: viewSize)
-                    }
-                    PhotoManager.HUDView.dismiss(delay: 0, animated: true, for: self.view)
                 }
             }
-        }
+        )
     }
     
     func requestAssetURL() {
@@ -819,8 +836,7 @@ extension EditorViewController {
                 DispatchQueue.global().async {
                     let imageURL = response.url
                     #if canImport(Kingfisher)
-                    if photoAsset.isGifAsset == true,
-                       let imageData = try? Data(contentsOf: imageURL) {
+                    if photoAsset.isGIFPhotoAsset, let imageData = try? Data(contentsOf: imageURL) {
                         DispatchQueue.main.async {
                             if !self.isTransitionCompletion {
                                 self.loadAssetStatus = .succeed(.imageData(imageData))

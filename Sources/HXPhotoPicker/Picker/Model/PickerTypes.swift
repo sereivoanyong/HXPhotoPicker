@@ -16,11 +16,13 @@ public struct PickerAssetOptions: OptionSet {
     public static let video = PickerAssetOptions(rawValue: 1 << 1)
     /// Gif 动图（包括静态图）
     public static let gifPhoto = PickerAssetOptions(rawValue: 1 << 2)
+    /// HDR 照片
+    public static let hdrPhoto = PickerAssetOptions(rawValue: 1 << 3)
     /// LivePhoto 实况照片
-    public static let livePhoto = PickerAssetOptions(rawValue: 1 << 3)
+    public static let livePhoto = PickerAssetOptions(rawValue: 1 << 4)
     
     public var isPhoto: Bool {
-        contains(.photo) || contains(.gifPhoto) || contains(.livePhoto)
+        contains(.photo) || contains(.gifPhoto) || contains(.hdrPhoto) || contains(.livePhoto)
     }
     public var isVideo: Bool {
         contains(.video)
@@ -115,29 +117,35 @@ public extension PhotoAsset {
 
     enum MediaSubType: Equatable, Codable {
         /// 手机相册里的图片
-        case image
+        case photo
         /// 手机相册里的动图
-        case imageAnimated
+        case gifPhoto
+        /// 手机相册里的HDRPhoto
+        case hdrPhoto
         /// 手机相册里的LivePhoto
         case livePhoto
         /// 手机相册里的视频
         case video
+
         /// 本地图片
-        case localImage
-        /// 本地视频
-        case localVideo
+        case localPhoto
+        /// 本地动图
+        case localGIFPhoto
+        /// 本地HDRPhoto
+        case localHDRPhoto
         /// 本地LivePhoto
         case localLivePhoto
-        /// 本地动图
-        case localGifImage
+        /// 本地视频
+        case localVideo
+
         /// 网络图片
-        case networkImage(Bool)
+        case networkPhoto(isGIF: Bool)
         /// 网络视频
         case networkVideo
         
         public var isLocal: Bool {
             switch self {
-            case .localImage, .localGifImage, .localVideo, .localLivePhoto:
+            case .localPhoto, .localGIFPhoto, .localHDRPhoto, .localLivePhoto, .localVideo:
                 return true
             default:
                 return false
@@ -146,7 +154,7 @@ public extension PhotoAsset {
         
         public var isPhoto: Bool {
             switch self {
-            case .image, .imageAnimated, .livePhoto, .localImage, .localLivePhoto, .localGifImage, .networkImage:
+            case .photo, .gifPhoto, .hdrPhoto, .livePhoto, .localPhoto, .localGIFPhoto, .localHDRPhoto, .localLivePhoto, .networkPhoto:
                 return true
             default:
                 return false
@@ -155,10 +163,10 @@ public extension PhotoAsset {
         
         public var isNormalPhoto: Bool {
             switch self {
-            case .image, .localImage:
+            case .photo, .localPhoto:
                 return true
-            case .networkImage(let isGif):
-                return !isGif
+            case .networkPhoto(let isGIF):
+                return !isGIF
             default:
                 return false
             }
@@ -173,17 +181,26 @@ public extension PhotoAsset {
             }
         }
         
-        public var isGif: Bool {
+        public var isGIFPhoto: Bool {
             switch self {
-            case .imageAnimated, .localGifImage:
+            case .gifPhoto, .localGIFPhoto:
                 return true
-            case .networkImage(let isGif):
-                return isGif
+            case .networkPhoto(let isGIF):
+                return isGIF
             default:
                 return false
             }
         }
-        
+
+        public var isHDRPhoto: Bool {
+            switch self {
+            case .hdrPhoto, .localHDRPhoto:
+                return true
+            default:
+                return false
+            }
+        }
+
         public var isLivePhoto: Bool {
             switch self {
             case .livePhoto, .localLivePhoto:
@@ -195,7 +212,7 @@ public extension PhotoAsset {
         
         public var isNetwork: Bool {
             switch self {
-            case .networkImage, .networkVideo:
+            case .networkPhoto, .networkVideo:
                 return true
             default:
                 return false
@@ -294,7 +311,7 @@ extension PickerAssetOptions {
     
     var mediaTypes: [PHAssetMediaType] {
         var result: [PHAssetMediaType] = []
-        if contains(.photo) || contains(.gifPhoto) || contains(.livePhoto) {
+        if contains(.photo) || contains(.gifPhoto) || contains(.hdrPhoto) || contains(.livePhoto) {
             result.append(.image)
         }
         if contains(.video) {

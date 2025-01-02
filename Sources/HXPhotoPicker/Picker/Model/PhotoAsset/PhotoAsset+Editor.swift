@@ -60,8 +60,7 @@ extension PhotoAsset {
                 )
             }
             let imageURL = photoEdit.url
-            if let compressionQuality = compressionQuality,
-               photoEdit.imageType != .gif {
+            if let compressionQuality, photoEdit.imageType != .gif {
                 DispatchQueue.global().async {
                     guard let imageData = try? Data(contentsOf: imageURL) else {
                         result(.failure(.imageCompressionFailed))

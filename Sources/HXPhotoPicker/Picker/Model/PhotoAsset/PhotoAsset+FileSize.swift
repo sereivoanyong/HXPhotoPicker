@@ -57,7 +57,7 @@ extension PhotoAsset {
             return 0
         }
         var fileSize = 0
-        if phAsset.isImageAnimated && mediaSubType != .imageAnimated {
+        if phAsset.isImageAnimated && mediaSubType != .gifPhoto {
             if let imageData = PhotoTools.getImageData(for: originalImage) {
                 fileSize = imageData.count
             }

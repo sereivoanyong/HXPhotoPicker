@@ -230,8 +230,14 @@ open class PhotoPickerListViewController:
                     return true
                 }
             }
-            if filterOptions.contains(.gif) {
-                if $0.mediaSubType.isGif {
+            if filterOptions.contains(.gifPhoto) {
+                if $0.mediaSubType.isGIFPhoto {
+                    photoCount += 1
+                    return true
+                }
+            }
+            if filterOptions.contains(.hdrPhoto) {
+                if $0.mediaSubType.isHDRPhoto {
                     photoCount += 1
                     return true
                 }

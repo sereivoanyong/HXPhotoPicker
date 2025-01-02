@@ -64,7 +64,10 @@ class PhotoPickerFilterViewController: UITableViewController {
             }
             rows.append(.init(title: .textPhotoList.filter.photoTitle.text, options: .photo, isSelected: options.contains(.photo)))
             if selectOptions.contains(.gifPhoto) {
-                rows.append(.init(title: .textPhotoList.filter.gifTitle.text, options: .gif, isSelected: options.contains(.gif)))
+                rows.append(.init(title: .textPhotoList.filter.gifPhotoTitle.text, options: .gifPhoto, isSelected: options.contains(.gifPhoto)))
+            }
+            if selectOptions.contains(.hdrPhoto) {
+                rows.append(.init(title: .textPhotoList.filter.hdrPhotoTitle.text, options: .hdrPhoto, isSelected: options.contains(.hdrPhoto)))
             }
             if selectOptions.contains(.livePhoto) {
                 rows.append(.init(title: .textPhotoList.filter.livePhotoTitle.text, options: .livePhoto, isSelected: options.contains(.livePhoto)))
@@ -76,7 +79,10 @@ class PhotoPickerFilterViewController: UITableViewController {
             }
             rows.append(.init(title: .textPhotoList.filter.photoTitle.text, options: .photo, isSelected: options.contains(.photo)))
             if selectOptions.contains(.gifPhoto) {
-                rows.append(.init(title: .textPhotoList.filter.gifTitle.text, options: .gif, isSelected: options.contains(.gif)))
+                rows.append(.init(title: .textPhotoList.filter.gifPhotoTitle.text, options: .gifPhoto, isSelected: options.contains(.gifPhoto)))
+            }
+            if selectOptions.contains(.hdrPhoto) {
+                rows.append(.init(title: .textPhotoList.filter.hdrPhotoTitle.text, options: .hdrPhoto, isSelected: options.contains(.hdrPhoto)))
             }
             if selectOptions.contains(.livePhoto) {
                 rows.append(.init(title: .textPhotoList.filter.livePhotoTitle.text, options: .livePhoto, isSelected: options.contains(.livePhoto)))
@@ -166,8 +172,10 @@ class PhotoPickerFilterViewController: UITableViewController {
             cell.imageView?.image = .imageResource.picker.photoList.filter.edited.image?.withRenderingMode(.alwaysTemplate)
         case .photo:
             cell.imageView?.image = .imageResource.picker.photoList.filter.photo.image?.withRenderingMode(.alwaysTemplate)
-        case .gif:
-            cell.imageView?.image = .imageResource.picker.photoList.filter.gif.image?.withRenderingMode(.alwaysTemplate)
+        case .gifPhoto:
+            cell.imageView?.image = .imageResource.picker.photoList.filter.gifPhoto.image?.withRenderingMode(.alwaysTemplate)
+        case .hdrPhoto:
+            cell.imageView?.image = .imageResource.picker.photoList.filter.hdrPhoto.image?.withRenderingMode(.alwaysTemplate)
         case .livePhoto:
             cell.imageView?.image = .imageResource.picker.photoList.filter.livePhoto.image?.withRenderingMode(.alwaysTemplate)
         case .video:
@@ -287,11 +295,12 @@ public class PhotoPickerFilterSection {
     
     public struct Options: OptionSet {
         public static let photo = Options(rawValue: 1 << 1)
-        public static let gif = Options(rawValue: 1 << 2)
-        public static let livePhoto = Options(rawValue: 1 << 3)
-        public static let video = Options(rawValue: 1 << 4)
-        public static let edited = Options(rawValue: 1 << 5)
-        public static let any = Options(rawValue: 1 << 6)
+        public static let gifPhoto = Options(rawValue: 1 << 2)
+        public static let hdrPhoto = Options(rawValue: 1 << 3)
+        public static let livePhoto = Options(rawValue: 1 << 4)
+        public static let video = Options(rawValue: 1 << 5)
+        public static let edited = Options(rawValue: 1 << 6)
+        public static let any = Options(rawValue: 1 << 7)
         public let rawValue: Int
         
         public init(rawValue: Int) {

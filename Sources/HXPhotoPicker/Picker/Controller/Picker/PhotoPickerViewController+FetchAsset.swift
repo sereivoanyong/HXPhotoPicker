@@ -45,7 +45,7 @@ extension PhotoPickerViewController {
         if selectOptions.isVideo && !selectOptions.isPhoto {
             addFilter = false
         }else if selectOptions.isPhoto && !selectOptions.isVideo {
-            if !selectOptions.contains(.gifPhoto) && !selectOptions.contains(.livePhoto) {
+            if !selectOptions.contains(.gifPhoto) && !selectOptions.contains(.hdrPhoto) && !selectOptions.contains(.livePhoto) {
                 addFilter = false
             }
         }

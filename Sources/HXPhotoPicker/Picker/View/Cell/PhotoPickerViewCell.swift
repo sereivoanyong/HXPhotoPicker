@@ -297,13 +297,20 @@ extension PhotoPickerViewCell {
 extension PhotoPickerViewCell {
     
     private func setupState() {
+      print(photoAsset.mediaType, photoAsset.mediaSubType)
         if !didLoadCompletion {
             return
         }
-        if photoAsset.isGifAsset {
-            assetTypeLb.text = .textPhotoList.cell.gifTitle.text
+        if photoAsset.isGIFPhotoAsset {
+            assetTypeLb.text = .textPhotoList.cell.gifPhotoTitle.text
             assetTypeMaskView.isHidden = false
-        }else if photoAsset.mediaSubType.isVideo {
+        } else if photoAsset.isHDRPhotoAsset {
+            assetTypeLb.text = .textPhotoList.cell.hdrPhotoTitle.text
+            assetTypeMaskView.isHidden = false
+        }  else if photoAsset.isLivePhotoAsset {
+            assetTypeLb.text = .textPhotoList.cell.livePhotoTitle.text
+            assetTypeMaskView.isHidden = false
+        } else if photoAsset.mediaSubType.isVideo {
             if let videoTime = photoAsset.videoTime {
                 assetTypeLb.text = videoTime
             }else {
@@ -323,11 +330,7 @@ extension PhotoPickerViewCell {
 //                assetTypeIcon.image = .imageResource.picker.photoList.cell.videoEdited.image
 //            }
 //            #endif
-        }else if photoAsset.mediaSubType == .livePhoto ||
-                    photoAsset.mediaSubType == .localLivePhoto {
-            assetTypeLb.text = .textPhotoList.cell.LivePhotoTitle.text
-            assetTypeMaskView.isHidden = false
-        }else {
+        } else {
             assetTypeLb.text = nil
             assetTypeMaskView.isHidden = true
         }
@@ -337,7 +340,7 @@ extension PhotoPickerViewCell {
             if let editedResult = photoAsset.editedResult {
                 switch editedResult {
                 case .image(let result, _):
-                    assetTypeLb.text = result.imageType == .gif ? .textPhotoList.cell.gifTitle.text : nil
+                    assetTypeLb.text = result.imageType == .gif ? .textPhotoList.cell.gifPhotoTitle.text : nil
                     assetTypeMaskView.isHidden = false
                     assetEditMarkIcon.isHidden = false
                 default:

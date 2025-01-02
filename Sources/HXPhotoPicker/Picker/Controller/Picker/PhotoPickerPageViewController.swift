@@ -67,12 +67,20 @@ public class PhotoPickerPageViewController: HXBaseViewController, PhotoPickerLis
                 vc.assetResult = .init(assets: assets, normalAssets: assets, photoCount: assets.count)
                 contentVCs.append(vc)
             }
-            if !assetResult.gifAssets.isEmpty {
-                titles.append(.textPhotoList.pageGifTitle.text)
-                let assets = assetResult.gifAssets
+            if !assetResult.gifPhotoAssets.isEmpty {
+                titles.append(.textPhotoList.pageGIFPhotoTitle.text)
+                let assets = assetResult.gifPhotoAssets
                 let vc = PhotoPickerListViewController.init(config: pickerConfig)
                 vc.delegate = self
-                vc.assetResult = .init(assets: assets, gifAssets: assets, photoCount: assets.count)
+                vc.assetResult = .init(assets: assets, gifPhotoAssets: assets, photoCount: assets.count)
+                contentVCs.append(vc)
+            }
+            if !assetResult.hdrPhotoAssets.isEmpty {
+                titles.append(.textPhotoList.pageHDRPhotoTitle.text)
+                let assets = assetResult.hdrPhotoAssets
+                let vc = PhotoPickerListViewController.init(config: pickerConfig)
+                vc.delegate = self
+                vc.assetResult = .init(assets: assets, hdrPhotoAssets: assets, photoCount: assets.count)
                 contentVCs.append(vc)
             }
             if !assetResult.livePhotoAssets.isEmpty {

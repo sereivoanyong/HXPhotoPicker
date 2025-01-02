@@ -142,7 +142,9 @@ public extension HX.ImageResource {
                 /// 照片图标
                 public var photo: ImageType = .local("hx_photo_list_filter_photo")
                 /// 动图图标
-                public var gif: ImageType = .local("hx_photo_list_filter_gif")
+                public var gifPhoto: ImageType = .local("hx_photo_list_filter_gif")
+
+                public var hdrPhoto: ImageType = .local("hx_photo_list_filter_hdr")
                 /// 实况图标
                 public var livePhoto: ImageType = .local("hx_photo_list_filter_livePhoto")
                 /// 视频图标

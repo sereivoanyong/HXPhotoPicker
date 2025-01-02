@@ -47,7 +47,7 @@ class EditorChartletPreviewView: UIView {
         initViews()
         imageView.kf.indicatorType = .activity
         let options: KingfisherOptionsInfo
-        if imageURL.isGif && editorType == .video {
+        if imageURL.isGIF && editorType == .video {
             options = []
         }else {
             let processor = DownsamplingImageProcessor(

@@ -411,7 +411,7 @@ extension EditorChartletViewController: UICollectionViewDataSource,
                     PhotoManager.HUDView.show(with: nil, delay: 0, animated: true, addedTo: pickerController.view)
                     var completionCount = 0
                     for photoAsset in pickerResult.photoAssets {
-                        if photoAsset.isGifAsset {
+                        if photoAsset.isGIFPhotoAsset {
                             photoAsset.getImageURL { [weak self] in
                                 guard let self = self else { return }
                                 switch $0 {

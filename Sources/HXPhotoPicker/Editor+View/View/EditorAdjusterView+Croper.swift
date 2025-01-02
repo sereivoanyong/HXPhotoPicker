@@ -232,7 +232,7 @@ extension EditorAdjusterView {
                 if let config = self.urlConfig {
                     urlConfig = config
                 }else {
-                    let fileName = String.fileName(suffix: data.isGif ? "gif" : "png")
+                    let fileName = String.fileName(suffix: data.isGIF ? "gif" : "png")
                     urlConfig = .init(fileName: fileName, type: .temp)
                 }
                 if PhotoTools.write(toFile: urlConfig.url, imageData: data) == nil {
