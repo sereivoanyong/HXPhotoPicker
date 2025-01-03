@@ -9,6 +9,7 @@ import UIKit
 import MobileCoreServices
 import AVFoundation
 import Photos
+import UniformTypeIdentifiers
 
 // MARK: UIImagePickerControllerDelegate
 extension PhotoPickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -62,10 +63,10 @@ extension PhotoPickerViewController: UIImagePickerControllerDelegate, UINavigati
             mediaTypes = camerConfig.mediaTypes
         }else {
             if pickerController.config.selectOptions.isPhoto {
-                mediaTypes.append(kUTTypeImage as String)
+                mediaTypes.append(UTType.image.identifier)
             }
             if pickerController.config.selectOptions.isVideo {
-                mediaTypes.append(kUTTypeMovie as String)
+                mediaTypes.append(UTType.movie.identifier)
             }
         }
         imagePickerController.mediaTypes = mediaTypes
@@ -81,7 +82,7 @@ extension PhotoPickerViewController: UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true, completion: nil)
         DispatchQueue.global().async {
             let mediaType = info[.mediaType] as! String
-            if mediaType == kUTTypeImage as String {
+            if mediaType == UTType.image.identifier {
                 self.pickingImage(info: info)
             }else {
                 self.pickingVideo(info: info)

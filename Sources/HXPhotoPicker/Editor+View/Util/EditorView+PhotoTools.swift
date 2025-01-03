@@ -9,6 +9,7 @@ import UIKit
 import ImageIO
 import CoreImage
 import CoreServices
+import UniformTypeIdentifiers
 
 extension PhotoTools {
     
@@ -47,7 +48,7 @@ extension PhotoTools {
         let imageURL = filePath == nil ? getImageTmpURL(.gif) : filePath!
         guard let destination = CGImageDestinationCreateWithURL(
                 imageURL as CFURL,
-                kUTTypeGIF as CFString,
+                UTType.gif.identifier as CFString,
                 frameCount, nil
         ) else {
             return nil

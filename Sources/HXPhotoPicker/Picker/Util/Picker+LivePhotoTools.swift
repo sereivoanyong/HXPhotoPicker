@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 extension PhotoTools {
     
@@ -65,7 +66,7 @@ extension PhotoTools {
         }
         guard let origianData = try? Data(contentsOf: origianURL),
               let imageSourceRef = CGImageSourceCreateWithData(origianData as CFData, nil),
-              let dest = CGImageDestinationCreateWithURL(jpgURL as CFURL, kUTTypeJPEG, 1, nil),
+              let dest = CGImageDestinationCreateWithURL(jpgURL as CFURL, UTType.jpeg.identifier as CFString, 1, nil),
               var metaData = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, nil) as? [String: Any] else {
             completion(nil)
             return

@@ -8,6 +8,7 @@
 import UIKit
 import CoreVideo
 import MobileCoreServices
+import UniformTypeIdentifiers
 
 extension PhotoTools {
     
@@ -52,7 +53,7 @@ extension PhotoTools {
             return nil
         }
         
-        guard let cgImageDestination = CGImageDestinationCreateWithData(data, kUTTypeJPEG, 1, nil) else {
+        guard let cgImageDestination = CGImageDestinationCreateWithData(data, UTType.jpeg.identifier as CFString, 1, nil) else {
             HXLog("Create CGImageDestination error!")
             return nil
         }
