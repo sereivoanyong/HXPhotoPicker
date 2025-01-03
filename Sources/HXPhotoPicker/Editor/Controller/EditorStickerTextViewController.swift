@@ -18,7 +18,7 @@ protocol EditorStickerTextViewControllerDelegate: AnyObject {
     )
 }
 
-class EditorStickerTextController: UINavigationController {
+class EditorStickerTextController: HXBaseNavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
