@@ -62,7 +62,17 @@ extension EditorViewController {
     }
     
     func imageProcessing() {
-        if editorView.isCropedImage || imageFilter != nil || filterEditFator.isApply {
+        var isSelectMusic: Bool = false
+        if selectedMusicURL != nil {
+            isSelectMusic = true
+        }
+        if !isSelectedOriginalSound {
+            isSelectMusic = true
+        }
+        if videoVolume < 1 {
+            isSelectMusic = true
+        }
+        if editorView.isCropedImage || imageFilter != nil || filterEditFator.isApply || isSelectMusic {
             PhotoManager.HUDView.show(with: .textManager.editor.processingHUDTitle.text, delay: 0, animated: true, addedTo: view)
             if editorView.isCropedImage {
                 editorView.cropImage { [weak self] result in
@@ -172,6 +182,14 @@ extension EditorViewController {
             filterEdit = filterEditFator
         }
         imageEditedResult = .init(
+            music: .init(
+                hasOriginalSound: isSelectedOriginalSound,
+                videoSoundVolume: videoVolume,
+                backgroundMusicURL: selectedMusicURL,
+                backgroundMusicVolume: musicVolume,
+                musicIdentifier: musicPlayer?.audio?.identifier,
+                music: musicPlayer?.music
+            ),
             filter: filter,
             filterEdit: filterEdit,
             cropSize: .init(

@@ -35,6 +35,10 @@ public enum EditedResult {
 
 public struct ImageEditedData: Codable {
     
+    /// audio parameters
+    /// 音频参数
+    public let music: VideoEditedMusic?
+    
     /// Last filter parameters
     /// The corresponding filter will be obtained internally through the delegate
     /// 上一次滤镜参数
@@ -50,10 +54,12 @@ public struct ImageEditedData: Codable {
     let cropSize: EditorCropSizeFator?
     
     public init(
+        music: VideoEditedMusic? = nil,
         filter: PhotoEditorFilter? = nil,
         filterEdit: EditorFilterEditFator? = nil,
         cropSize: EditorCropSizeFator?
     ) {
+        self.music = music
         self.filter = filter
         self.filterEdit = filterEdit
         self.cropSize = cropSize
