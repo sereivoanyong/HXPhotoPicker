@@ -148,9 +148,8 @@ public extension CameraController {
         
         public let localtion: CLLocation?
     }
-    
-    @MainActor
-    static func capture(
+
+    @MainActor static func capture(
         _ config: CameraConfiguration = .init(),
         type: CameraController.CaptureType = .all,
         delegate: CameraControllerDelegate? = nil,
@@ -159,9 +158,8 @@ public extension CameraController {
         let vc = show(config, type: type, delegate: delegate, fromVC: fromVC)
         return try await vc.takePhotograph()
     }
-    
-    @MainActor
-    static func show(
+
+    @MainActor static func show(
         _ config: CameraConfiguration = .init(),
         type: CameraController.CaptureType = .all,
         delegate: CameraControllerDelegate? = nil,

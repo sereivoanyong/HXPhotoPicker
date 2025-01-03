@@ -721,8 +721,7 @@ public extension PhotoPickerController {
     ///   - fromVC: 来源控制器
     ///   - fileConfig: 指定获取URL的路径
     /// - Returns: 获取对应的对象数组
-    @MainActor
-    static func picker<T: PhotoAssetObject>(
+    @MainActor static func picker<T: PhotoAssetObject>(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -734,9 +733,8 @@ public extension PhotoPickerController {
         vc.isAsyncPicker = true
         return try await vc.pickerAsset(compression, toFile: fileConfig)
     }
-    
-    @MainActor
-    static func picker(
+
+    @MainActor static func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -746,9 +744,8 @@ public extension PhotoPickerController {
         vc.isAsyncPicker = true
         return try await vc.picker()
     }
-    
-    @MainActor
-    static func picker(
+
+    @MainActor static func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -761,9 +758,8 @@ public extension PhotoPickerController {
         vc.isAsyncPicker = true
         return try await vc.pickerImage(targetSize: targetSize, targetMode: targetMode, toFile: fileConfig)
     }
-    
-    @MainActor
-    static func show(
+
+    @MainActor static func show(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         isSplit: Bool = false,

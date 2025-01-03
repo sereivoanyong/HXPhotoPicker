@@ -14,8 +14,7 @@ class HXPhotoPicker {}
 public enum Photo {
     
     #if HXPICKER_ENABLE_PICKER
-    @MainActor
-    public static func picker<T: PhotoAssetObject>(
+    @MainActor public static func picker<T: PhotoAssetObject>(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -33,8 +32,7 @@ public enum Photo {
         )
     }
 
-    @MainActor
-    public static func picker(
+    @MainActor public static func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -53,9 +51,8 @@ public enum Photo {
             toFile: fileConfig
         )
     }
-    
-    @MainActor
-    public static func picker(
+
+    @MainActor public static func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -101,8 +98,7 @@ public enum Photo {
     
     #if HXPICKER_ENABLE_EDITOR
     @discardableResult
-    @MainActor
-    public static func edit(
+    @MainActor public static func edit(
         _ asset: EditorAsset,
         config: EditorConfiguration = .init(),
         delegate: EditorViewControllerDelegate? = nil,
@@ -140,8 +136,7 @@ public enum Photo {
     #endif
     
     #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-    @MainActor
-    public static func capture(
+    @MainActor public static func capture(
         _ config: CameraConfiguration = .init(),
         type: CameraController.CaptureType = .all,
         delegate: CameraControllerDelegate? = nil,
@@ -172,8 +167,7 @@ public enum Photo {
 public enum HX {
     
     #if HXPICKER_ENABLE_PICKER
-    @MainActor
-    public static func picker<T: PhotoAssetObject>(
+    @MainActor public static func picker<T: PhotoAssetObject>(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -191,8 +185,7 @@ public enum HX {
         )
     }
 
-    @MainActor
-    public func picker(
+    @MainActor public func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -212,8 +205,7 @@ public enum HX {
         )
     }
 
-    @MainActor
-    public static func picker(
+    @MainActor public static func picker(
         _ config: PickerConfiguration,
         selectedAssets: [PhotoAsset] = [],
         delegate: PhotoPickerControllerDelegate? = nil,
@@ -230,8 +222,7 @@ public enum HX {
     
     #if HXPICKER_ENABLE_EDITOR
     @discardableResult
-    @MainActor
-    public static func edit(
+    @MainActor public static func edit(
         _ asset: EditorAsset,
         config: EditorConfiguration = .init(),
         delegate: EditorViewControllerDelegate? = nil,
@@ -242,8 +233,7 @@ public enum HX {
     #endif
     
     #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-    @MainActor
-    public static func capture(
+    @MainActor public static func capture(
         _ config: CameraConfiguration = .init(),
         type: CameraController.CaptureType = .all,
         delegate: CameraControllerDelegate? = nil,

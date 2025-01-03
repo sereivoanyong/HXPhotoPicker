@@ -9,9 +9,8 @@
 import UIKit
 
 public extension EditorViewController {
-    
-    @MainActor
-    static func edit(
+
+    @MainActor static func edit(
         _ asset: EditorAsset,
         config: EditorConfiguration = .init(),
         delegate: EditorViewControllerDelegate? = nil,
@@ -20,10 +19,9 @@ public extension EditorViewController {
         let vc = show(asset, config: config, delegate: delegate, fromVC: fromVC)
         return try await vc.edit()
     }
-    
-    @MainActor
+
     @discardableResult
-    static func show(
+    @MainActor static func show(
         _ asset: EditorAsset,
         config: EditorConfiguration = .init(),
         delegate: EditorViewControllerDelegate? = nil,
