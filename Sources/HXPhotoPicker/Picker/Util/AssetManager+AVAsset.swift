@@ -17,7 +17,7 @@ public extension AssetManager {
         public let info: [AnyHashable: Any]?
     }
     
-    struct AVAssetError: Error {
+    struct AVAssetError: Error, @unchecked Sendable {
         public let info: [AnyHashable: Any]?
         public let error: AssetError
     }

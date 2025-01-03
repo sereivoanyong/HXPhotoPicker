@@ -14,7 +14,7 @@ public extension AssetManager {
     
     typealias PlayerItemResultHandler = (Result<AVPlayerItem, PlayerItemError>) -> Void
     
-    struct PlayerItemError: Error {
+    struct PlayerItemError: Error, @unchecked Sendable {
         public let info: [AnyHashable: Any]?
         public let error: AssetError
     }

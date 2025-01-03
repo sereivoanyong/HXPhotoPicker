@@ -115,7 +115,7 @@ public extension AssetManager {
         public let info: [AnyHashable: Any]?
     }
     
-    struct ExportSessionError: Error {
+    struct ExportSessionError: Error, @unchecked Sendable {
         public let info: [AnyHashable: Any]?
         public let error: AssetError
     }

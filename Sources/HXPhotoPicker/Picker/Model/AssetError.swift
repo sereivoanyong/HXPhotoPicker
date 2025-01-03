@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AssetError: Error {
+public enum AssetError: Error, @unchecked Sendable {
     /// 写入文件失败
     case fileWriteFailed
     /// 导出失败
