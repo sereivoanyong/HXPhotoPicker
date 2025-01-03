@@ -479,6 +479,20 @@ extension EditorViewController: EditorToolsViewDelegate {
            !shouldClick {
             return
         }
+        var isPickingHandled: Bool = false
+        let pickingCompletion: (VideoEditorMusicInfo, Bool, Float) -> Void = { [weak self] info, includeOriginalSound, volume in
+            guard let self else { return }
+            musicView.reloadDataThenSelectFirst(infos: [info])
+            if !includeOriginalSound {
+                assert(volume == 0)
+            }
+            isSelectedOriginalSound = includeOriginalSound
+            editorView.videoVolume = CGFloat(volume)
+        }
+        delegate?.editorViewController(self, isPickingHandled: &isPickingHandled, music: nil, includeOriginalSound: isSelectedOriginalSound, volume: Float(editorView.videoVolume), completion: pickingCompletion)
+        if isPickingHandled {
+            return
+        }
         editorView.isStickerEnabled = false
         hideToolsView()
         if musicView.musics.isEmpty {
