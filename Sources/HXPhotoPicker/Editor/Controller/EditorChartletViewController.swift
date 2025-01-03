@@ -68,7 +68,7 @@ public class EditorChartletViewController: HXBaseViewController, EditorChartletL
     }
     
     private func initViews() {
-        loadingView = UIActivityIndicatorView(style: .white)
+        loadingView = UIActivityIndicatorView(style: .medium)
         loadingView.hidesWhenStopped = true
         
         let effect = UIBlurEffect(style: .dark)

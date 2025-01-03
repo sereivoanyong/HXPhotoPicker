@@ -60,7 +60,7 @@ class EditorChartletViewListCell: UICollectionViewCell,
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(EditorChartletViewCell.self, forCellWithReuseIdentifier: "EditorChartletViewListCellID")
         contentView.addSubview(collectionView)
-        loadingView = UIActivityIndicatorView(style: .white)
+        loadingView = UIActivityIndicatorView(style: .medium)
         loadingView.hidesWhenStopped = true
         contentView.addSubview(loadingView)
     }

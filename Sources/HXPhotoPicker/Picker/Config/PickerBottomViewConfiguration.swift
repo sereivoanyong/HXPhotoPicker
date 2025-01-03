@@ -65,11 +65,11 @@ public struct PickerBottomViewConfiguration {
     
     /// Original image loading chrysanthemum type
     /// 原图加载菊花类型
-    public var originalLoadingStyle: UIActivityIndicatorView.Style = .gray
-    
+    public var originalLoadingStyle: UIActivityIndicatorView.Style = .medium
+
     /// Load the chrysanthemum type in the original image under the dark style
     /// 暗黑风格下原图加载菊花类型
-    public var originalLoadingDarkStyle: UIActivityIndicatorView.Style = .white
+    public var originalLoadingDarkStyle: UIActivityIndicatorView.Style = .medium
     
     /// Original image button selection box related configuration
     /// 原图按钮选择框相关配置

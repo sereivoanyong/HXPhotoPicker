@@ -112,7 +112,7 @@ class EditorMusicViewCell: UICollectionViewCell {
         shadeView.layer.mask = maskLayer
         contentView.addSubview(shadeView)
         
-        loadingView = UIActivityIndicatorView(style: .white)
+        loadingView = UIActivityIndicatorView(style: .medium)
         loadingView.isHidden = true
         contentView.addSubview(loadingView)
         
@@ -188,7 +188,7 @@ class EditorMusicViewCell: UICollectionViewCell {
         }
     }
     func showLoading() {
-        loadingView.style = .gray
+        loadingView.style = .medium
         loadingView.startAnimating()
         loadingView.isHidden = false
         let visualEffect = UIBlurEffect(style: .extraLight)

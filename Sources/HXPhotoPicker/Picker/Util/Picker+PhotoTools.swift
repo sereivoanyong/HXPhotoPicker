@@ -314,8 +314,8 @@ extension PhotoTools {
         config.photoList.bottomView.originalSelectBox.borderColor = .white
         config.photoList.bottomView.originalSelectBox.tickColor = .white
         config.photoList.bottomView.originalSelectBox.selectedBackgroundColor = wxColor
-        config.photoList.bottomView.originalLoadingStyle = .white
-        
+        config.photoList.bottomView.originalLoadingStyle = .medium
+
         config.photoList.bottomView.finishButtonTitleColor = .white
         config.photoList.bottomView.finishButtonBackgroundColor = wxColor
         config.photoList.bottomView.finishButtonDisableBackgroundColor = "#666666".color.withAlphaComponent(0.3)
@@ -341,11 +341,7 @@ extension PhotoTools {
         config.previewView.bottomView.originalSelectBox.borderColor = .white
         config.previewView.bottomView.originalSelectBox.tickColor = .white
         config.previewView.bottomView.originalSelectBox.selectedBackgroundColor = wxColor
-        #if targetEnvironment(macCatalyst)
-        config.previewView.bottomView.originalLoadingStyle = UIActivityIndicatorView.Style.medium
-        #else
-        config.previewView.bottomView.originalLoadingStyle = .white
-        #endif
+        config.previewView.bottomView.originalLoadingStyle = .medium
         config.previewView.bottomView.finishButtonTitleColor = .white
         config.previewView.bottomView.finishButtonBackgroundColor = wxColor
         config.previewView.bottomView.finishButtonDisableBackgroundColor = "#666666".color.withAlphaComponent(0.3)

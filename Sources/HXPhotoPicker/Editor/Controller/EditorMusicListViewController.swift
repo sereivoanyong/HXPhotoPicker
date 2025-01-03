@@ -116,7 +116,7 @@ class EditorMusicListViewController: HXBaseViewController {
     }
     
     private func initViews() {
-        loadingView = UIActivityIndicatorView(style: .white)
+        loadingView = UIActivityIndicatorView(style: .medium)
         loadingView.hidesWhenStopped = true
         loadBgView = UIView()
         loadBgView.addSubview(loadingView)

@@ -54,7 +54,7 @@ class EditorFiltersView: UIView {
             forCellWithReuseIdentifier: "EditorFiltersViewCellID"
         )
         addSubview(collectionView)
-        loaddingView = UIActivityIndicatorView(style: .white)
+        loaddingView = UIActivityIndicatorView(style: .medium)
         loaddingView.hidesWhenStopped = true
         loadQueue = OperationQueue()
         loadQueue.maxConcurrentOperationCount = 1

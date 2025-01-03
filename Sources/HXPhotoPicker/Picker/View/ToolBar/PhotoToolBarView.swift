@@ -218,7 +218,7 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
             originalBox.isUserInteractionEnabled = false
             originalView.addSubview(originalBox)
             
-            originalLoadingView = UIActivityIndicatorView(style: .white)
+            originalLoadingView = UIActivityIndicatorView(style: .medium)
             originalLoadingView.hidesWhenStopped = true
             originalView.addSubview(originalLoadingView)
             
