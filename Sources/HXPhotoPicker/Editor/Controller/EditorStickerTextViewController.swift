@@ -62,7 +62,7 @@ final class EditorStickerTextViewController: HXBaseViewController {
         
         cancelButton = UIButton(type: .system)
         cancelButton.setTitle(.textManager.editor.text.cancelTitle.text, for: .normal)
-        cancelButton.setTitleColor(.white, for: .normal)
+        cancelButton.setTitleColor(config.cancelTitleColor, for: .normal)
         cancelButton.titleLabel?.font = .textManager.editor.text.cancelTitleFont
         cancelButton.size = CGSize(width: 60, height: 30)
         cancelButton.addTarget(self, action: #selector(didCancelButtonClick), for: .touchUpInside)
