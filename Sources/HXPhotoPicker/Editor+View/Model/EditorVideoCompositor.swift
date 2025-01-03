@@ -132,29 +132,17 @@ class EditorVideoCompositor: NSObject, AVVideoCompositing {
         var isFixOrientation: Bool = false
         switch videoOrientation {
         case .portrait:
-            if #available(iOS 11.0, *) {
-                ciImage = ciImage.oriented(.right)
-            } else {
-                ciImage = ciImage.oriented(forExifOrientation: 6)
-            }
+            ciImage = ciImage.oriented(.right)
             size = .init(width: size.height, height: size.width)
             isFixOrientation = true
         case .portraitUpsideDown:
-            if #available(iOS 11.0, *) {
-                ciImage = ciImage.oriented(.left)
-            } else {
-                ciImage = ciImage.oriented(forExifOrientation: 8)
-            }
+            ciImage = ciImage.oriented(.left)
             size = .init(width: size.height, height: size.width)
             isFixOrientation = true
         case .landscapeRight:
             break
         case .landscapeLeft:
-            if #available(iOS 11.0, *) {
-                ciImage = ciImage.oriented(.down)
-            } else {
-                ciImage = ciImage.oriented(forExifOrientation: 3)
-            }
+            ciImage = ciImage.oriented(.down)
             isFixOrientation = true
         }
         if cropFactor.allowCroped {

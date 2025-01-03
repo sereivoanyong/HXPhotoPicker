@@ -313,70 +313,70 @@ open class EditorViewController: HXBaseViewController {
         scaleSwitchView.addSubview(scaleSwitchRightBtn)
         
         editorView = EditorView()
-        if #available(iOS 13.0, *) {
-            backgroundView = UIScrollView()
-            backgroundView.maximumZoomScale = 1
-            backgroundView.showsVerticalScrollIndicator = false
-            backgroundView.showsHorizontalScrollIndicator = false
-            backgroundView.clipsToBounds = false
-            backgroundView.scrollsToTop = false
-            backgroundView.isScrollEnabled = false
-            backgroundView.bouncesZoom = false
-            backgroundView.delegate = self
-            backgroundView.contentInsetAdjustmentBehavior = .never
-            editorView.drawType = .canvas
-            
-            drawCancelButton = UIButton(type: .custom)
-            drawCancelButton.setTitle(.textManager.editor.brush.cancelTitle.text, for: .normal)
-            drawCancelButton.setTitleColor(config.cancelButtonTitleColor, for: .normal)
-            drawCancelButton.setTitleColor(config.cancelButtonTitleColor.withAlphaComponent(0.5), for: .highlighted)
-            drawCancelButton.titleLabel?.font = .textManager.editor.brush.cancelTitleFont
-            drawCancelButton.contentHorizontalAlignment = .left
-            drawCancelButton.alpha = 0
-            drawCancelButton.isHidden = true
-            drawCancelButton.addTarget(self, action: #selector(didCancelButtonClick(button:)), for: .touchUpInside)
-            
-            drawFinishButton = UIButton(type: .custom)
-            drawFinishButton.setTitle(.textManager.editor.brush.finishTitle.text, for: .normal)
-            drawFinishButton.setTitleColor(config.finishButtonTitleNormalColor, for: .normal)
-            drawFinishButton.setTitleColor(config.finishButtonTitleNormalColor.withAlphaComponent(0.5), for: .highlighted)
-            drawFinishButton.setTitleColor(config.finishButtonTitleDisableColor.withAlphaComponent(0.5), for: .disabled)
-            drawFinishButton.titleLabel?.font = .textManager.editor.brush.finishTitleFont
-            drawFinishButton.contentHorizontalAlignment = .right
-            drawFinishButton.alpha = 0
-            drawFinishButton.isHidden = true
-            drawFinishButton.addTarget(self, action: #selector(didFinishButtonClick(button:)), for: .touchUpInside)
-            
-            drawUndoBtn = ExpandButton(type: .custom)
-            drawUndoBtn.setImage(.imageResource.editor.brush.canvasUndo.image, for: .normal)
-            if let btnSize = drawUndoBtn.currentImage?.size {
-                drawUndoBtn.size = btnSize
-            }
-            drawUndoBtn.isEnabled = false
-            drawUndoBtn.alpha = 0
-            drawUndoBtn.isHidden = true
-            drawUndoBtn.addTarget(self, action: #selector(didDrawUndoBtn(button:)), for: .touchUpInside)
-            
-            drawUndoAllBtn = ExpandButton(type: .custom)
-            drawUndoAllBtn.setImage(.imageResource.editor.brush.canvasUndoAll.image, for: .normal)
-            if let btnSize = drawUndoAllBtn.currentImage?.size {
-                drawUndoAllBtn.size = btnSize
-            }
-            drawUndoAllBtn.isEnabled = false
-            drawUndoAllBtn.alpha = 0
-            drawUndoAllBtn.isHidden = true
-            drawUndoAllBtn.addTarget(self, action: #selector(didDrawUndoAllBtn(button:)), for: .touchUpInside)
-            
-            drawRedoBtn = ExpandButton(type: .custom)
-            drawRedoBtn.setImage(.imageResource.editor.brush.canvasRedo.image, for: .normal)
-            if let btnSize = drawRedoBtn.currentImage?.size {
-                drawRedoBtn.size = btnSize
-            }
-            drawRedoBtn.isEnabled = false
-            drawRedoBtn.alpha = 0
-            drawRedoBtn.isHidden = true
-            drawRedoBtn.addTarget(self, action: #selector(didDrawRedoBtn(button:)), for: .touchUpInside)
+
+        backgroundView = UIScrollView()
+        backgroundView.maximumZoomScale = 1
+        backgroundView.showsVerticalScrollIndicator = false
+        backgroundView.showsHorizontalScrollIndicator = false
+        backgroundView.clipsToBounds = false
+        backgroundView.scrollsToTop = false
+        backgroundView.isScrollEnabled = false
+        backgroundView.bouncesZoom = false
+        backgroundView.delegate = self
+        backgroundView.contentInsetAdjustmentBehavior = .never
+        editorView.drawType = .canvas
+
+        drawCancelButton = UIButton(type: .custom)
+        drawCancelButton.setTitle(.textManager.editor.brush.cancelTitle.text, for: .normal)
+        drawCancelButton.setTitleColor(config.cancelButtonTitleColor, for: .normal)
+        drawCancelButton.setTitleColor(config.cancelButtonTitleColor.withAlphaComponent(0.5), for: .highlighted)
+        drawCancelButton.titleLabel?.font = .textManager.editor.brush.cancelTitleFont
+        drawCancelButton.contentHorizontalAlignment = .left
+        drawCancelButton.alpha = 0
+        drawCancelButton.isHidden = true
+        drawCancelButton.addTarget(self, action: #selector(didCancelButtonClick(button:)), for: .touchUpInside)
+
+        drawFinishButton = UIButton(type: .custom)
+        drawFinishButton.setTitle(.textManager.editor.brush.finishTitle.text, for: .normal)
+        drawFinishButton.setTitleColor(config.finishButtonTitleNormalColor, for: .normal)
+        drawFinishButton.setTitleColor(config.finishButtonTitleNormalColor.withAlphaComponent(0.5), for: .highlighted)
+        drawFinishButton.setTitleColor(config.finishButtonTitleDisableColor.withAlphaComponent(0.5), for: .disabled)
+        drawFinishButton.titleLabel?.font = .textManager.editor.brush.finishTitleFont
+        drawFinishButton.contentHorizontalAlignment = .right
+        drawFinishButton.alpha = 0
+        drawFinishButton.isHidden = true
+        drawFinishButton.addTarget(self, action: #selector(didFinishButtonClick(button:)), for: .touchUpInside)
+
+        drawUndoBtn = ExpandButton(type: .custom)
+        drawUndoBtn.setImage(.imageResource.editor.brush.canvasUndo.image, for: .normal)
+        if let btnSize = drawUndoBtn.currentImage?.size {
+            drawUndoBtn.size = btnSize
         }
+        drawUndoBtn.isEnabled = false
+        drawUndoBtn.alpha = 0
+        drawUndoBtn.isHidden = true
+        drawUndoBtn.addTarget(self, action: #selector(didDrawUndoBtn(button:)), for: .touchUpInside)
+
+        drawUndoAllBtn = ExpandButton(type: .custom)
+        drawUndoAllBtn.setImage(.imageResource.editor.brush.canvasUndoAll.image, for: .normal)
+        if let btnSize = drawUndoAllBtn.currentImage?.size {
+            drawUndoAllBtn.size = btnSize
+        }
+        drawUndoAllBtn.isEnabled = false
+        drawUndoAllBtn.alpha = 0
+        drawUndoAllBtn.isHidden = true
+        drawUndoAllBtn.addTarget(self, action: #selector(didDrawUndoAllBtn(button:)), for: .touchUpInside)
+
+        drawRedoBtn = ExpandButton(type: .custom)
+        drawRedoBtn.setImage(.imageResource.editor.brush.canvasRedo.image, for: .normal)
+        if let btnSize = drawRedoBtn.currentImage?.size {
+            drawRedoBtn.size = btnSize
+        }
+        drawRedoBtn.isEnabled = false
+        drawRedoBtn.alpha = 0
+        drawRedoBtn.isHidden = true
+        drawRedoBtn.addTarget(self, action: #selector(didDrawRedoBtn(button:)), for: .touchUpInside)
+
         editorView.editContentInset = { [weak self] _ in
             guard let self = self else {
                 return .zero
@@ -473,12 +473,8 @@ open class EditorViewController: HXBaseViewController {
     private func addViews() {
         view.clipsToBounds = true
         view.backgroundColor = .black
-        if #available(iOS 13.0, *) {
-            view.addSubview(backgroundView)
-            backgroundView.addSubview(editorView)
-        }else {
-            view.addSubview(editorView)
-        }
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(editorView)
         view.addSubview(bottomMaskView)
         view.addSubview(topMaskView)
         view.addSubview(videoControlView)
@@ -502,14 +498,12 @@ open class EditorViewController: HXBaseViewController {
         view.addSubview(resetButton)
         view.addSubview(cancelButton)
         view.addSubview(finishButton)
-        
-        if #available(iOS 13.0, *) {
-            view.addSubview(drawUndoBtn)
-            view.addSubview(drawRedoBtn)
-            view.addSubview(drawUndoAllBtn)
-            view.addSubview(drawCancelButton)
-            view.addSubview(drawFinishButton)
-        }
+
+        view.addSubview(drawUndoBtn)
+        view.addSubview(drawRedoBtn)
+        view.addSubview(drawUndoAllBtn)
+        view.addSubview(drawCancelButton)
+        view.addSubview(drawFinishButton)
         
         view.addSubview(leftRotateButton)
         view.addSubview(rightRotateButton)
@@ -625,7 +619,7 @@ open class EditorViewController: HXBaseViewController {
     public override func deviceOrientationWillChanged(notify: Notification) {
         orientationDidChange = true
         if editorView.type == .video {
-            if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac, editorView.isVideoPlaying {
+            if ProcessInfo.processInfo.isiOSAppOnMac, editorView.isVideoPlaying {
                 stopPlayVideo()
                 editorView.pauseVideo()
             }
@@ -633,14 +627,14 @@ open class EditorViewController: HXBaseViewController {
             videoControlView.stopLineAnimation()
             videoControlInfo = videoControlView.controlInfo
         }
-        if #available(iOS 13.0, *), editorView.drawType == .canvas, selectedTool?.type == .graffiti {
+        if editorView.drawType == .canvas, selectedTool?.type == .graffiti {
             hideCanvasViews(true, animated: false)
             editorView.quitCanvasDrawing()
         }
     }
     
     open override func deviceOrientationDidChanged(notify: Notification) {
-        if #available(iOS 13.0, *), editorView.drawType == .canvas, selectedTool?.type == .graffiti {
+        if editorView.drawType == .canvas, selectedTool?.type == .graffiti {
             showCanvasViews()
             startCanvasDrawing(true)
         }
@@ -705,30 +699,28 @@ open class EditorViewController: HXBaseViewController {
         finishButton.width = finishWidth + 10
         
         let buttonMargin: CGFloat
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             buttonMargin = 12
         }else {
             buttonMargin = UIDevice.isPad ? 20 : 12
         }
         cancelButton.x = UIDevice.leftMargin + buttonMargin
         finishButton.x = view.width - finishButton.width - buttonMargin - UIDevice.rightMargin
-        
-        if #available(iOS 13.0, *) {
-            if selectedTool?.type != .graffiti || orientationDidChange {
-                backgroundView.frame = view.bounds
-                backgroundView.contentSize = view.size
-            }
-            let padding: CGFloat = UIDevice.isPad ? 20 : 15
-            
-            drawCancelButton.size = cancelButton.size
-            drawFinishButton.size = finishButton.size
-            drawCancelButton.x = UIDevice.leftMargin + buttonMargin
-            drawFinishButton.x = view.width - drawFinishButton.width - buttonMargin - UIDevice.rightMargin
-            
-            drawUndoBtn.x = drawCancelButton.frame.maxX + padding
-            drawRedoBtn.x = drawUndoBtn.frame.maxX + padding
-            drawUndoAllBtn.x = drawFinishButton.x - padding - drawUndoAllBtn.width
+
+        if selectedTool?.type != .graffiti || orientationDidChange {
+            backgroundView.frame = view.bounds
+            backgroundView.contentSize = view.size
         }
+        let padding: CGFloat = UIDevice.isPad ? 20 : 15
+
+        drawCancelButton.size = cancelButton.size
+        drawFinishButton.size = finishButton.size
+        drawCancelButton.x = UIDevice.leftMargin + buttonMargin
+        drawFinishButton.x = view.width - drawFinishButton.width - buttonMargin - UIDevice.rightMargin
+
+        drawUndoBtn.x = drawCancelButton.frame.maxX + padding
+        drawRedoBtn.x = drawUndoBtn.frame.maxX + padding
+        drawUndoAllBtn.x = drawFinishButton.x - padding - drawUndoAllBtn.width
         
         resetButton.size = .init(width: resetWidth, height: buttonHeight)
         resetButton.centerX = view.width * 0.5
@@ -880,7 +872,7 @@ open class EditorViewController: HXBaseViewController {
                 height: toolsHeight + bottomMargin
             )
             let rotateBottom: CGFloat
-            if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+            if ProcessInfo.processInfo.isiOSAppOnMac {
                 rotateBottom = bottomMargin + 5
             }else {
                 rotateBottom = UIDevice.isPad ? bottomMargin + 10 : bottomMargin
@@ -916,18 +908,16 @@ open class EditorViewController: HXBaseViewController {
                 maskListButton.centerX = view.width / 2
             }
         }
-        
-        if #available(iOS 13.0, *) {
-            if isFullScreen {
-                drawCancelButton.centerY = navY + navHeight / 2
-            }else {
-                drawCancelButton.centerY = navHeight / 2
-            }
-            drawUndoBtn.centerY = drawCancelButton.centerY
-            drawRedoBtn.centerY = drawCancelButton.centerY
-            drawUndoAllBtn.centerY = drawCancelButton.centerY
-            drawFinishButton.centerY = drawCancelButton.centerY
+
+        if isFullScreen {
+            drawCancelButton.centerY = navY + navHeight / 2
+        }else {
+            drawCancelButton.centerY = navHeight / 2
         }
+        drawUndoBtn.centerY = drawCancelButton.centerY
+        drawRedoBtn.centerY = drawCancelButton.centerY
+        drawUndoAllBtn.centerY = drawCancelButton.centerY
+        drawFinishButton.centerY = drawCancelButton.centerY
         
         filtersView.frame = .init(x: 0, y: toolsView.y - 120, width: view.width, height: 120)
         brushColorView.frame = .init(x: 0, y: toolsView.y - 65, width: view.width, height: 65)
@@ -1006,14 +996,12 @@ open class EditorViewController: HXBaseViewController {
         cancelButton.y = UIDevice.topMargin
         finishButton.centerY = cancelButton.centerY
         resetButton.centerY = cancelButton.centerY
-        
-        if #available(iOS 13.0, *) {
-            drawCancelButton.y = UIDevice.topMargin
-            drawUndoBtn.centerY = drawCancelButton.centerY
-            drawRedoBtn.centerY = drawCancelButton.centerY
-            drawUndoAllBtn.centerY = drawCancelButton.centerY
-            drawFinishButton.centerY = drawCancelButton.centerY
-        }
+
+        drawCancelButton.y = UIDevice.topMargin
+        drawUndoBtn.centerY = drawCancelButton.centerY
+        drawRedoBtn.centerY = drawCancelButton.centerY
+        drawUndoAllBtn.centerY = drawCancelButton.centerY
+        drawFinishButton.centerY = drawCancelButton.centerY
         
         leftRotateButton.centerY = cancelButton.centerY
         leftRotateButton.x = cancelButton.frame.maxX + 15
@@ -1103,7 +1091,7 @@ open class EditorViewController: HXBaseViewController {
         if let videoControlInfo = videoControlInfo {
             videoControlView.reloadVideo()
             videoControlView.layoutIfNeeded()
-            if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+            if ProcessInfo.processInfo.isiOSAppOnMac {
                 videoControlView.setControlInfo(videoControlInfo)
                 videoControlView.resetLineViewFrsme(at: editorView.videoPlayTime)
                 updateVideoTimeRange()
@@ -1170,7 +1158,7 @@ open class EditorViewController: HXBaseViewController {
         let musicY: CGFloat
         let musicHeight: CGFloat
         let bottomMargin: CGFloat
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             bottomMargin = UIDevice.bottomMargin + 5
         }else {
             bottomMargin = UIDevice.bottomMargin

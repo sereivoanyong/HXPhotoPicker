@@ -28,19 +28,13 @@ open class PhotoSplitViewController: UISplitViewController, UISplitViewControlle
         picker: PhotoPickerController
     ) {
         photoController = picker
-        if #available(iOS 14.0, *) {
-            super.init(style: .doubleColumn)
-            if !UIDevice.isPad, picker.config.modalPresentationStyle == .fullScreen {
-                preferredSplitBehavior = .tile
-                if #available(iOS 14.5, *) {
-                    displayModeButtonVisibility = .never
-                }
-                if !UIDevice.isPortrait {
-                    preferredDisplayMode = .oneBesideSecondary
-                }
+        super.init(style: .doubleColumn)
+        if !UIDevice.isPad, picker.config.modalPresentationStyle == .fullScreen {
+            preferredSplitBehavior = .tile
+            displayModeButtonVisibility = .never
+            if !UIDevice.isPortrait {
+                preferredDisplayMode = .oneBesideSecondary
             }
-        } else {
-            super.init(nibName: nil, bundle: nil)
         }
         let album = PhotoPickerController(splitAlbum: picker.config)
         modalPresentationStyle = picker.config.modalPresentationStyle
@@ -87,26 +81,18 @@ open class PhotoSplitViewController: UISplitViewController, UISplitViewControlle
             view.backgroundColor = splitSeparatorLineDarkColor
             return
         }else {
-            if #available(iOS 12.0, *), traitCollection.userInterfaceStyle != .dark, PhotoManager.isDark {
-                if #available(iOS 13.0, *) {
-                    view.backgroundColor = .systemGroupedBackground.resolvedColor(with: .init(userInterfaceStyle: .dark))
-                    return
-                }
+            if traitCollection.userInterfaceStyle != .dark, PhotoManager.isDark {
+                view.backgroundColor = .systemGroupedBackground.resolvedColor(with: .init(userInterfaceStyle: .dark))
+                return
             }
         }
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .groupTableViewBackground
-        }
+        view.backgroundColor = .systemBackground
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                configColor()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configColor()
         }
     }
     
@@ -115,9 +101,6 @@ open class PhotoSplitViewController: UISplitViewController, UISplitViewControlle
         with coordinator: UIViewControllerTransitionCoordinator
     ) {
         super.viewWillTransition(to: size, with: coordinator)
-        guard #available(iOS 14.5, *) else {
-            return
-        }
         if !UIDevice.isPad, !UIDevice.isPortrait,
            !isCollapsed,
            modalPresentationStyle == .fullScreen,

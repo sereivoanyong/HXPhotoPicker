@@ -60,9 +60,7 @@ class EditorVolumeView: UIView {
         
         bgColorView = UIView()
         bgColorView.backgroundColor = .black.withAlphaComponent(0.2)
-        if #available(iOS 11.0, *) {
-            bgColorView.cornersRound(radius: 12, corner: .allCorners)
-        }
+        bgColorView.cornersRound(radius: 12, corner: .allCorners)
         addSubview(bgColorView)
         
         bgView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -170,10 +168,6 @@ class EditorVolumeView: UIView {
         
         if originalTitleLb.frame.maxX > originalVolumeSlider.x {
             originalTitleLb.width = originalVolumeSlider.x - originalTitleLb.x - 5
-        }
-        guard #available(iOS 11.0, *) else {
-            bgColorView.cornersRound(radius: 12, corner: .allCorners)
-            return
         }
     }
     

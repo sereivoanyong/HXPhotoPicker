@@ -47,19 +47,13 @@ public class PhotoPickerFilterItemView: UIView, PhotoNavigationItem {
     
     @objc
     func didFilterClick() {
-        if #available(iOS 13.0, *) {
-            itemDelegate?.photoItem(presentFilterAssets: self, modalPresentationStyle: .automatic)
-        } else {
-            itemDelegate?.photoItem(presentFilterAssets: self, modalPresentationStyle: .fullScreen)
-        }
+        itemDelegate?.photoItem(presentFilterAssets: self, modalPresentationStyle: .automatic)
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                setColor()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            setColor()
         }
     }
     

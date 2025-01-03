@@ -151,11 +151,9 @@ public class PhotoPickerBottomNumberView: UICollectionReusableView {
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                configData()
-                updateFilter()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configData()
+            updateFilter()
         }
     }
     

@@ -222,11 +222,7 @@ extension NetworkVideoAsset: Codable {
         videoURL = try container.decode(URL.self, forKey: .videoURL)
         duration = try container.decode(TimeInterval.self, forKey: .duration)
         if let imageData = try container.decodeIfPresent(Data.self, forKey: .coverImage) {
-            if #available(iOS 11.0, *) {
-                coverImage = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: imageData)
-            }else {
-                coverImage = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(imageData) as? UIImage
-            }
+            coverImage = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: imageData)
         }else {
             coverImage = nil
         }
@@ -241,13 +237,8 @@ extension NetworkVideoAsset: Codable {
         try container.encode(videoURL, forKey: .videoURL)
         try container.encode(duration, forKey: .duration)
         if let image = coverImage {
-            if #available(iOS 11.0, *) {
-                let imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
-                try container.encode(imageData, forKey: .coverImage)
-            } else {
-                let imageData = NSKeyedArchiver.archivedData(withRootObject: image)
-                try container.encode(imageData, forKey: .coverImage)
-            }
+            let imageData = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
+            try container.encode(imageData, forKey: .coverImage)
         }
         try container.encode(fileSize, forKey: .fileSize)
         try container.encode(videoSize, forKey: .videoSize)

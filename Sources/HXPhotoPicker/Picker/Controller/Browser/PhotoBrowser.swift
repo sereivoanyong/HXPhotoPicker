@@ -383,16 +383,6 @@ open class PhotoBrowser: PhotoPickerController {
                 view.addSubview(pageIndicator)
             }
         }
-        
-        if #available(iOS 13.0, *) {
-            return
-        }
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(deviceOrientationDidChanged(notify:)),
-            name: UIApplication.didChangeStatusBarOrientationNotification,
-            object: nil
-        )
     }
     
     func setupViews() {
@@ -429,9 +419,6 @@ open class PhotoBrowser: PhotoPickerController {
         with coordinator: UIViewControllerTransitionCoordinator
     ) {
         super.viewWillTransition(to: size, with: coordinator)
-        guard #available(iOS 13.0, *) else {
-            return
-        }
         coordinator.animate(alongsideTransition: nil) { [weak self] _ in
             self?.deviceOrientationDidChanged(
                 notify: .init(

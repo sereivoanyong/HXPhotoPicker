@@ -48,9 +48,7 @@ class EditorFiltersView: UIView {
         collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(
             EditorFiltersViewCell.self,
             forCellWithReuseIdentifier: "EditorFiltersViewCellID"

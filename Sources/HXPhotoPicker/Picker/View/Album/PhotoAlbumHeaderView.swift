@@ -55,21 +55,15 @@ public class PhotoAlbumHeaderView: UITableViewHeaderFooterView {
     }
     
     func updateColors() {
-        if #available(iOS 14.0, *) {
-            backgroundConfiguration?.backgroundColor = PhotoManager.isDark ? config.cellBackgroundDarkColor : config.cellBackgroundColor
-        } else {
-            backgroundColor = PhotoManager.isDark ? config.cellBackgroundDarkColor : config.cellBackgroundColor
-        }
+        backgroundConfiguration?.backgroundColor = PhotoManager.isDark ? config.cellBackgroundDarkColor : config.cellBackgroundColor
         allBtn.setTitleColor(PhotoManager.isDark ? config.headerButtonTitleDarkColor : config.headerButtonTitleColor, for: .normal)
         titleLb.textColor = PhotoManager.isDark ? config.headerTitleDarkColor : config.headerTitleColor
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateColors()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
         }
     }
     

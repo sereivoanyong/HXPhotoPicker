@@ -162,9 +162,7 @@ class EditorContentView: UIView {
     /// 缩放比例
     var zoomScale: CGFloat = 1 {
         didSet {
-            if #available(iOS 13.0, *), let canvasView = canvasView as? EditorCanvasView {
-                canvasView.scale = zoomScale
-            }
+            canvasView.scale = zoomScale
             drawView.scale = zoomScale
             mosaicView.scale = zoomScale
             stickerView.scale = zoomScale
@@ -176,14 +174,10 @@ class EditorContentView: UIView {
             switch drawType {
             case .normal:
                 drawView.isHidden = false
-                if #available(iOS 13.0, *) {
-                    canvasView.isHidden = true
-                }
+                canvasView.isHidden = true
             case .canvas:
-                if #available(iOS 13.0, *) {
-                    drawView.isHidden = true
-                    canvasView.isHidden = false
-                }
+                drawView.isHidden = true
+                canvasView.isHidden = false
             }
         }
     }
@@ -353,9 +347,7 @@ class EditorContentView: UIView {
                 videoView.frame = bounds
             }
         }
-        if #available(iOS 13.0, *) {
-            canvasView.frame = bounds
-        }
+        canvasView.frame = bounds
         drawView.frame = bounds
         stickerView.frame = bounds
     }
@@ -363,7 +355,7 @@ class EditorContentView: UIView {
     // MARK: SubViews
     var imageView: ImageView!
     var videoView: EditorVideoPlayerView!
-    var canvasView: UIView!
+    var canvasView: EditorCanvasView!
     var drawView: EditorDrawView!
     var mosaicView: EditorMosaicView!
     var stickerView: EditorStickersView!
@@ -388,14 +380,11 @@ class EditorContentView: UIView {
         videoView.delegate = self
         videoView.isHidden = true
         addSubview(videoView)
-        
-        if #available(iOS 13.0, *) {
-            let canvasView = EditorCanvasView()
-            canvasView.delegate = self
-            canvasView.isHidden = true
-            addSubview(canvasView)
-            self.canvasView = canvasView
-        }
+
+        canvasView = EditorCanvasView()
+        canvasView.delegate = self
+        canvasView.isHidden = true
+        addSubview(canvasView)
         
         drawView = EditorDrawView()
         drawView.delegate = self
@@ -526,97 +515,22 @@ extension EditorContentView: EditorVideoPlayerViewDelegate {
 extension EditorContentView: EditorCanvasViewDelegate {
     
     var canvasImage: UIImage {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return .init()
-        }
         return canvasView.image
     }
-    
-    var isCanvasEmpty: Bool {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return true
-        }
-        return canvasView.isEmpty
-    }
-    
-    var isCanvasCanUndo: Bool {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return false
-        }
-        return canvasView.isCanUndo
-    }
-    
-    var isCanvasCanRedo: Bool {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return false
-        }
-        return canvasView.isCanRedo
-    }
-    
-    func canvasRedo() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
-        canvasView.redo()
-    }
-    
-    func canvasUndo() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
-        canvasView.undo()
-    }
-    
-    func canvasUndoCurrentAll() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
-        canvasView.undoCurrentAll()
-    }
-    
-    func canvasUndoAll() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
-        canvasView.undoAll()
-    }
-    
+
     func startCanvasDrawing() -> PKToolPicker? {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return nil
-        }
         stickerView.deselectedSticker()
         return canvasView.startDrawing()
     }
     
     func finishCanvasDrawing() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
         canvasView.finishDrawing()
         stickerView.deselectedSticker()
     }
      
     func cancelCanvasDrawing() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
         canvasView.cancelDrawing()
         stickerView.deselectedSticker()
-    }
-    
-    func enterCanvasDrawing() -> PKToolPicker? {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return nil
-        }
-        return canvasView.enterDrawing()
-    }
-    
-    func quitCanvasDrawing() {
-        guard let canvasView = canvasView as? EditorCanvasView else {
-            return
-        }
-        canvasView.quitDrawing()
     }
     
     func canvasView(beginDraw canvasView: EditorCanvasView) {

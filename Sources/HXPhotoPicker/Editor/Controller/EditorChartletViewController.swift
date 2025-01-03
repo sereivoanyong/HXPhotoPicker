@@ -91,9 +91,7 @@ public class EditorChartletViewController: HXBaseViewController, EditorChartletL
         titleView.delegate = self
         titleView.showsVerticalScrollIndicator = false
         titleView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            titleView.contentInsetAdjustmentBehavior = .never
-        }
+        titleView.contentInsetAdjustmentBehavior = .never
         titleView.register(EditorChartletViewCell.self, forCellWithReuseIdentifier: "EditorChartletViewCellTitleID")
         
         listFlowLayout = UICollectionViewFlowLayout()
@@ -108,9 +106,7 @@ public class EditorChartletViewController: HXBaseViewController, EditorChartletL
         listView.showsVerticalScrollIndicator = false
         listView.showsHorizontalScrollIndicator = false
         listView.isPagingEnabled = true
-        if #available(iOS 11.0, *) {
-            listView.contentInsetAdjustmentBehavior = .never
-        }
+        listView.contentInsetAdjustmentBehavior = .never
         listView.register(EditorChartletViewListCell.self, forCellWithReuseIdentifier: "EditorChartletViewListCell_ID")
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressClick(longPress:)))

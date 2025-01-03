@@ -226,64 +226,32 @@ extension PhotoManager: URLSessionDownloadDelegate {
     }
     
     func getURLType(for url: URL) -> FileType {
-        if #available(iOS 14.0, *) {
-            if let utType = UTType(
-                tag: url.pathExtension,
-                tagClass: .filenameExtension,
-                conformingTo: nil
-            ) {
-                switch utType {
-                case .video,
-                     .mpeg2Video,
-                     .appleProtectedMPEG4Video,
-                     .mpeg4Movie,
-                     .quickTimeMovie,
-                     .movie:
-                    return .video
-                case .audio,
-                     .mp3:
-                    return .auido
-                case .livePhoto,
-                     .image,
-                     .rawImage,
-                     .diskImage,
-                     .gif,
-                     .png,
-                     .jpeg:
-                    return .image
-                default:
-                    break
-                }
-            }
-        } else {
-            let utType = UTTypeCreatePreferredIdentifierForTag(
-                kUTTagClassFilenameExtension,
-                url.pathExtension as CFString,
-                nil
-            )
-            if let utType = utType {
-                switch utType.takeRetainedValue() {
-                case kUTTypeMovie,
-                     kUTTypeVideo,
-                     kUTTypeQuickTimeMovie,
-                     kUTTypeMPEG,
-                     kUTTypeMPEG4:
-                    return .video
-                case kUTTypeMP3,
-                     kUTTypeAudio:
-                    return .auido
-                case kUTTypeImage,
-                     kUTTypeRawImage,
-                     kUTTypeDiskImage,
-                     kUTTypeLivePhoto,
-                     kUTTypeGIF,
-                     kUTTypePNG,
-                     kUTTypeJPEG,
-                     kUTTypeJPEG2000:
-                    return .image
-                default:
-                    break
-                }
+        if let utType = UTType(
+            tag: url.pathExtension,
+            tagClass: .filenameExtension,
+            conformingTo: nil
+        ) {
+            switch utType {
+            case .video,
+                 .mpeg2Video,
+                 .appleProtectedMPEG4Video,
+                 .mpeg4Movie,
+                 .quickTimeMovie,
+                 .movie:
+                return .video
+            case .audio,
+                 .mp3:
+                return .auido
+            case .livePhoto,
+                 .image,
+                 .rawImage,
+                 .diskImage,
+                 .gif,
+                 .png,
+                 .jpeg:
+                return .image
+            default:
+                break
             }
         }
         return .unknown

@@ -518,11 +518,9 @@ public class PhotoToolBarView: UIToolbar, PhotoToolBar {
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        guard #available(iOS 13.0, *),
-              traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else {
-            return
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configColor()
         }
-        configColor()
     }
     
     required init?(coder: NSCoder) {

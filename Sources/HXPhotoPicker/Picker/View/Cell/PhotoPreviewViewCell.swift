@@ -62,9 +62,7 @@ open class PhotoPreviewViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollView.canCancelContentTouches = true
         scrollView.alwaysBounceVertical = false
         scrollView.autoresizingMask = UIView.AutoresizingMask.init(arrayLiteral: .flexibleWidth, .flexibleHeight)
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
         let singleTap = UITapGestureRecognizer.init(target: self, action: #selector(singleTap(tap:)))
         scrollView.addGestureRecognizer(singleTap)
         let doubleTap = UITapGestureRecognizer.init(target: self, action: #selector(doubleTap(tap:)))

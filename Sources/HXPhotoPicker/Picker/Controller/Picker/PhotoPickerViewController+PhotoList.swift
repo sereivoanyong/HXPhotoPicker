@@ -46,9 +46,7 @@ extension PhotoPickerViewController: PhotoPickerListDelegate {
     }
     
     public func photoList(didLimitCell photoList: PhotoPickerList) {
-        if #available(iOS 14, *) {
-            PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: pickerController)
-        }
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: pickerController)
     }
     
     public func photoList(_ photoList: PhotoPickerList, didSelectedAsset asset: PhotoAsset) {

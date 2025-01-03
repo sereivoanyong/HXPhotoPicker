@@ -44,11 +44,7 @@ public extension HX.ImageResource {
             case .local(let name):
                 return name.image
             case .system(let name):
-                if #available(iOS 13.0, *) {
-                    return .init(systemName: name)
-                } else {
-                    return name.image
-                }
+                return .init(systemName: name)
             }
         }
         
@@ -92,12 +88,7 @@ public extension HX.ImageResource {
             
             struct Cell {
                 /// cell箭头
-                var arrow: ImageType = {
-                    if #available(iOS 13.0, *) {
-                        return .system("chevron.right")
-                    }
-                    return .local("hx_picker_photolist_bottom_prompt_arrow")
-                }()
+                var arrow: ImageType = .system("chevron.right")
             }
         }
         
@@ -155,12 +146,7 @@ public extension HX.ImageResource {
                 /// 相册权限提示图标
                 public var permissionsPrompt: ImageType = .local("hx_picker_photolist_bottom_prompt")
                 /// 相册权限跳转箭头图标
-                public var permissionsArrow: ImageType = {
-                    if #available(iOS 13.0, *) {
-                        return .system("chevron.right")
-                    }
-                    return .local("hx_picker_photolist_bottom_prompt_arrow")
-                }()
+                public var permissionsArrow: ImageType = .system("chevron.right")
                 
                 /// 已选列表删除图标
                 public var delete: ImageType = .local("hx_picker_toolbar_select_cell_delete")

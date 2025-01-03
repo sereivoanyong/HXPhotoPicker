@@ -121,9 +121,7 @@ class PhotoPreviewListView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(PhotoPreviewListViewCell.self)
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         addSubview(collectionView)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -489,18 +487,10 @@ extension PhotoPreviewListView: UICollectionViewDelegate {
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ) {
-        let targetPoint: CGPoint
-        if #available(iOS 11.0, *) {
-            targetPoint = .init(
-                x: targetContentOffset.pointee.x + collectionView.adjustedContentInset.left,
-                y: 0
-            )
-        } else {
-            targetPoint = .init(
-                x: targetContentOffset.pointee.x + collectionView.contentInset.left,
-                y: 0
-            )
-        }
+        let targetPoint = CGPoint(
+            x: targetContentOffset.pointee.x + collectionView.adjustedContentInset.left,
+            y: 0
+        )
         let targetIndexPath = collectionView.indexPathForItem(at: targetPoint)
         state = .collapsed(
             indexPathForFinalDestinationItem: targetIndexPath

@@ -196,9 +196,7 @@ extension EditorView {
         showsHorizontalScrollIndicator = false
         clipsToBounds = false
         scrollsToTop = false
-        if #available(iOS 11.0, *) {
-            contentInsetAdjustmentBehavior = .never
-        }
+        contentInsetAdjustmentBehavior = .never
         adjusterView = EditorAdjusterView(maskColor: maskColor)
         adjusterView.delegate = self
         adjusterView.setContentInsets = { [weak self] in

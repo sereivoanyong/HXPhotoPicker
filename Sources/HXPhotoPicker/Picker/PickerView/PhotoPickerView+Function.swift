@@ -72,9 +72,7 @@ extension PhotoPickerView {
                     NSStringFromClass(PhotoPickerLimitCell.classForCoder())
             )
         }
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         
         emptyView = PhotoPickerEmptyView(config: config.emptyView)
         

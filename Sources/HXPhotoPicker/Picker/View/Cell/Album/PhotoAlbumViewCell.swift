@@ -27,9 +27,7 @@ public class PhotoAlbumViewCell: UITableViewCell {
     
     public var assetCollection: PhotoAssetCollection! {
         didSet {
-            if #available(iOS 13.0, *) {
-                iconView.image = assetCollection.assetTypeimage?.withRenderingMode(.alwaysTemplate)
-            }
+            iconView.image = assetCollection.assetTypeimage?.withRenderingMode(.alwaysTemplate)
             titleLb.text = assetCollection.albumName
             countLb.text = "\(assetCollection.count)"
         }
@@ -102,10 +100,8 @@ public class PhotoAlbumViewCell: UITableViewCell {
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateColors()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
         }
     }
     

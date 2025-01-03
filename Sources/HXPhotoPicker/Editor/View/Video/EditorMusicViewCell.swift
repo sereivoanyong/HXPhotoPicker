@@ -101,9 +101,7 @@ class EditorMusicViewCell: UICollectionViewCell {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isUserInteractionEnabled = false
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(
             EditorMusicLyricViewCell.self,
             forCellWithReuseIdentifier: "EditorMusicLyricViewCellID"

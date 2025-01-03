@@ -31,11 +31,7 @@ public class EditorBrushColorView: UIView {
         }
     }
     var canAddCustom: Bool {
-        if #available(iOS 14.0, *), config.addCustomColor {
-            return true
-        }else {
-            return false
-        }
+        return config.addCustomColor
     }
     
     private var shadeView: UIView!
@@ -78,9 +74,7 @@ public class EditorBrushColorView: UIView {
         collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(
             EditorBrushColorViewCell.self,
             forCellWithReuseIdentifier: "EditorBrushColorViewCellID"
@@ -241,19 +235,17 @@ extension EditorBrushColorView: UICollectionViewDataSource, UICollectionViewDele
         )
         if canAddCustom {
             if indexPath.item == brushColors.count {
-                if #available(iOS 14.0, *) {
-                    didSelectCustomColor(customColor.color)
-                    if !customColor.isFirst && !customColor.isSelected {
-                        customColor.isSelected = true
-                        return
-                    }
-                    let vc = UIColorPickerViewController()
-                    vc.delegate = self
-                    vc.selectedColor = customColor.color
-                    viewController?.present(vc, animated: true, completion: nil)
-                    customColor.isFirst = false
+                didSelectCustomColor(customColor.color)
+                if !customColor.isFirst && !customColor.isSelected {
                     customColor.isSelected = true
+                    return
                 }
+                let vc = UIColorPickerViewController()
+                vc.delegate = self
+                vc.selectedColor = customColor.color
+                viewController?.present(vc, animated: true, completion: nil)
+                customColor.isFirst = false
+                customColor.isSelected = true
                 return
             }
             customColor.isSelected = false
@@ -266,14 +258,6 @@ extension EditorBrushColorView: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension EditorBrushColorView: UIColorPickerViewControllerDelegate {
-    public func colorPickerViewControllerDidSelectColor(
-        _ viewController: UIColorPickerViewController
-    ) {
-        if #available(iOS 15.0, *) {
-            return
-        }
-        didSelectCustomColor(viewController.selectedColor)
-    }
   
     public func colorPickerViewController(
         _ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool

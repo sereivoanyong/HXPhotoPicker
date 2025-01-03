@@ -123,11 +123,7 @@ extension LocalImageAsset: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let data = try container.decodeIfPresent(Data.self, forKey: .image) {
-            if #available(iOS 11.0, *) {
-                image = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: data)
-            }else {
-                image = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIImage
-            }
+            image = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: data)
         }else {
             image = nil
         }
@@ -137,13 +133,8 @@ extension LocalImageAsset: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         if let image = image {
-            if #available(iOS 11.0, *) {
-                let data = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
-                try container.encode(data, forKey: .image)
-            } else {
-                let data = NSKeyedArchiver.archivedData(withRootObject: image)
-                try container.encode(data, forKey: .image)
-            }
+            let data = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
+            try container.encode(data, forKey: .image)
         }
         try container.encode(imageURL, forKey: .imageURL)
         try container.encode(imageData, forKey: .imageData)
@@ -161,11 +152,7 @@ extension LocalVideoAsset: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         videoURL = try container.decode(URL.self, forKey: .videoURL)
         if let data = try container.decodeIfPresent(Data.self, forKey: .image) {
-            if #available(iOS 11.0, *) {
-                image = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: data)
-            }else {
-                image = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIImage
-            }
+            image = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIImage.self, from: data)
         }else {
            image = nil
         }
@@ -176,13 +163,8 @@ extension LocalVideoAsset: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(videoURL, forKey: .videoURL)
         if let image = image {
-            if #available(iOS 11.0, *) {
-                let data = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
-                try container.encode(data, forKey: .image)
-            } else {
-                let data = NSKeyedArchiver.archivedData(withRootObject: image)
-                try container.encode(data, forKey: .image)
-            }
+            let data = try NSKeyedArchiver.archivedData(withRootObject: image, requiringSecureCoding: false)
+            try container.encode(data, forKey: .image)
         }
         try container.encode(duration, forKey: .duration)
         try container.encode(videoSize, forKey: .videoSize)

@@ -190,7 +190,7 @@ public struct PhotoListConfiguration {
     
     public init() {
         #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             cameraType = .system(.init())
         }else {
             cameraType = .custom(.init())

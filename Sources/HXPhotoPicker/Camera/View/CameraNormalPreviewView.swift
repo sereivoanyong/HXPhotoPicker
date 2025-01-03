@@ -61,23 +61,21 @@ class CameraNormalPreviewView: UIView {
     private func initViews() {
         previewLayer = layer as? AVCaptureVideoPreviewLayer
         previewLayer?.videoGravity = .resizeAspectFill
-        
-        if #available(iOS 13.0, *) {
-            isPreviewingOvserve = previewLayer?.observe(\.isPreviewing, changeHandler: { [weak self] layer, value in
-                guard let self = self, layer.isPreviewing else {
-                    return
-                }
-                self.removeMask()
-                self.delegate?.previewView(didPreviewing: self)
-            })
-            imageMaskView = UIImageView(image: PhotoManager.shared.cameraPreviewImage)
-            imageMaskView.contentMode = .scaleAspectFill
-            imageMaskView.clipsToBounds = true
-            addSubview(imageMaskView)
-            
-            shadeView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-            addSubview(shadeView)
-        }
+
+        isPreviewingOvserve = previewLayer?.observe(\.isPreviewing, changeHandler: { [weak self] layer, value in
+            guard let self = self, layer.isPreviewing else {
+                return
+            }
+            self.removeMask()
+            self.delegate?.previewView(didPreviewing: self)
+        })
+        imageMaskView = UIImageView(image: PhotoManager.shared.cameraPreviewImage)
+        imageMaskView.contentMode = .scaleAspectFill
+        imageMaskView.clipsToBounds = true
+        addSubview(imageMaskView)
+
+        shadeView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        addSubview(shadeView)
         
         focusView = CameraFocusView(
             size: CGSize(width: 80, height: 80),
@@ -128,23 +126,18 @@ class CameraNormalPreviewView: UIView {
     }
     
     func resetMask(_ image: UIImage?) {
-        if #available(iOS 13.0, *) {
-            if let image = image {
-                imageMaskView.image = image
-            }
-            imageMaskView.alpha = 1
-            addSubview(imageMaskView)
-            shadeView.viewWithTag(1)?.alpha = 1
-            let effect = UIBlurEffect(style: .light)
-            shadeView.effect = effect
-            addSubview(shadeView)
+        if let image = image {
+            imageMaskView.image = image
         }
+        imageMaskView.alpha = 1
+        addSubview(imageMaskView)
+        shadeView.viewWithTag(1)?.alpha = 1
+        let effect = UIBlurEffect(style: .light)
+        shadeView.effect = effect
+        addSubview(shadeView)
     }
     
     func removeMask(_ animation: Bool = true) {
-        guard #available(iOS 13.0, *) else {
-            return
-        }
         if shadeView.superview == nil {
             return
         }
@@ -195,10 +188,8 @@ class CameraNormalPreviewView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if #available(iOS 13.0, *) {
-            imageMaskView.frame = bounds
-            shadeView.frame = bounds
-        }
+        imageMaskView.frame = bounds
+        shadeView.frame = bounds
     }
     
     required init?(coder: NSCoder) {

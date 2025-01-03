@@ -52,7 +52,7 @@ extension EditorViewController {
                 checkFinishButtonState()
                 return
             case .graffiti:
-                if #available(iOS 13.0, *), editorView.drawType == .canvas {
+                if editorView.drawType == .canvas {
                     self.selectedTool = nil
                     self.lastSelectedTool = nil
                     hideCanvasViews()
@@ -107,7 +107,7 @@ extension EditorViewController {
                 checkFinishButtonState()
                 return
             case .graffiti:
-                if #available(iOS 13.0, *), editorView.drawType == .canvas {
+                if editorView.drawType == .canvas {
                     self.selectedTool = nil
                     self.lastSelectedTool = nil
                     hideCanvasViews()
@@ -223,31 +223,23 @@ extension EditorViewController {
     
     @objc
     func didDrawUndoBtn(button: UIButton) {
-        if #available(iOS 13.0, *) {
-            editorView.canvasUndo()
-        }
+        editorView.canvasUndo()
     }
     
     @objc
     func didDrawUndoAllBtn(button: UIButton) {
-        if #available(iOS 13.0, *) {
-            editorView.canvasUndoAll()
-        }
+        editorView.canvasUndoAll()
     }
     
     @objc
     func didDrawRedoBtn(button: UIButton) {
-        if #available(iOS 13.0, *) {
-            editorView.canvasRedo()
-        }
+        editorView.canvasRedo()
     }
     
     func checkCanvasButtons() {
-        if #available(iOS 13.0, *) {
-            drawUndoBtn.isEnabled = editorView.isCanvasCanUndo
-            drawRedoBtn.isEnabled = editorView.isCanvasCanRedo
-            drawUndoAllBtn.isEnabled = !editorView.isCanvasEmpty
-        }
+        drawUndoBtn.isEnabled = editorView.isCanvasCanUndo
+        drawRedoBtn.isEnabled = editorView.isCanvasCanRedo
+        drawUndoAllBtn.isEnabled = !editorView.isCanvasEmpty
     }
     
 }

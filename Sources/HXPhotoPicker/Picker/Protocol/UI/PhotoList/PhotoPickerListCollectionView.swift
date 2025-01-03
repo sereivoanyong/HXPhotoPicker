@@ -33,7 +33,7 @@ public extension PhotopickerListRegisterClass {
             collectionView.register(PickerCameraViewCell.self)
             #endif
         }
-        if #available(iOS 14.0, *), config.allowAddLimit {
+        if config.allowAddLimit {
             collectionView.register(PhotoPickerLimitCell.self)
         }
         if config.isShowAssetNumber {

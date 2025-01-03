@@ -65,9 +65,7 @@ public class PhotoPickerViewController: PhotoBaseViewController {
     }
     
     public override func deviceOrientationDidChanged(notify: Notification) {
-        if #available(iOS 14.5, *) {
-            initNavItems()
-        }
+        initNavItems()
         photoToolbar.deviceOrientationDidChanged()
     }
     
@@ -298,12 +296,7 @@ extension PhotoPickerViewController {
     }
     
     func didFilterItemClick(modalPresentationStyle: UIModalPresentationStyle) {
-        let vc: PhotoPickerFilterViewController
-        if #available(iOS 13.0, *) {
-            vc = PhotoPickerFilterViewController(style: .insetGrouped)
-        } else {
-            vc = PhotoPickerFilterViewController(style: .grouped)
-        }
+        let vc = PhotoPickerFilterViewController(style: .insetGrouped)
         vc.themeColor = config.filterThemeColor
         vc.themeDarkColor = config.filterThemeDarkColor
         vc.selectOptions = pickerConfig.selectOptions

@@ -36,17 +36,15 @@ extension EditorStickerTextView: UICollectionViewDataSource,
         let color: UIColor
         if isShowCustomColor, indexPath.item == config.colors.count - 1 {
             color = customColor.color
-            if #available(iOS 14.0, *) {
-                if !customColor.isFirst && !customColor.isSelected {
-                    customColor.isSelected = true
-                }else {
-                    let vc = UIColorPickerViewController()
-                    vc.delegate = self
-                    vc.selectedColor = customColor.color
-                    viewController?.present(vc, animated: true, completion: nil)
-                    customColor.isFirst = false
-                    customColor.isSelected = true
-                }
+            if !customColor.isFirst && !customColor.isSelected {
+                customColor.isSelected = true
+            }else {
+                let vc = UIColorPickerViewController()
+                vc.delegate = self
+                vc.selectedColor = customColor.color
+                viewController?.present(vc, animated: true, completion: nil)
+                customColor.isFirst = false
+                customColor.isSelected = true
             }
         }else {
             color = colorHex.color
@@ -73,14 +71,6 @@ extension EditorStickerTextView: UICollectionViewDataSource,
 }
 
 extension EditorStickerTextView: UIColorPickerViewControllerDelegate {
-    public func colorPickerViewControllerDidSelectColor(
-        _ viewController: UIColorPickerViewController
-    ) {
-        if #available(iOS 15.0, *) {
-            return
-        }
-        didSelectCustomColor(viewController.selectedColor)
-    }
 
     public func colorPickerViewController(
         _ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool

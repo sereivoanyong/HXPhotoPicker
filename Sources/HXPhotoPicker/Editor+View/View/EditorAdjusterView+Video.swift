@@ -20,10 +20,7 @@ extension EditorAdjusterView {
         if contentView.stickerView.count > 0 {
             stickersLayer = contentView.stickerView.layer
         }
-        var canvasImage: UIImage?
-        if #available(iOS 13.0, *) {
-            canvasImage = contentView.isCanvasEmpty ? nil : contentView.canvasImage
-        }
+        let canvasImage = contentView.canvasView.isEmpty ? nil : contentView.canvasImage
         let cropFactor = CropFactor(
             drawLayer: drawLayer,
             canvasImage: canvasImage,
@@ -185,10 +182,8 @@ extension EditorAdjusterView {
             }
         }
         var watermarkImages: [UIImage] = []
-        if #available(iOS 13.0, *) {
-            if let canvasImage = contentView.isCanvasEmpty ? nil : contentView.canvasImage {
-                watermarkImages.append(canvasImage)
-            }
+        if let canvasImage = contentView.canvasView.isEmpty ? nil : contentView.canvasImage {
+            watermarkImages.append(canvasImage)
         }
         let watermark: EditorVideoTool.Watermark = .init(layers: layers, images: watermarkImages)
         exportVideo(

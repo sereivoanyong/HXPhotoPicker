@@ -89,13 +89,7 @@ public struct CameraConfiguration: IndicatorTypeConfig, PhotoHUDConfig {
     
     /// 录制视频时设置的 `AVVideoCodecType`
     /// iPhone7 以下为 `.h264`
-    public var videoCodecType: AVVideoCodecType = {
-        if #available(iOS 11.0, *) {
-            return .h264
-        } else {
-            return .init(rawValue: AVVideoCodecH264)
-        }
-    }()
+    public var videoCodecType: AVVideoCodecType = .h264
     
     /// 视频最大录制时长
     /// takePhotoMode = .click 支持不限制最大时长 (0 - 不限制)
@@ -162,12 +156,7 @@ public struct CameraConfiguration: IndicatorTypeConfig, PhotoHUDConfig {
         editor.languageType = languageType
         editor.indicatorType = indicatorType
         #endif
-        
-        if #available(iOS 13.0, *) {
-            modalPresentationStyle = .automatic
-        } else {
-            modalPresentationStyle = .fullScreen
-        }
+        modalPresentationStyle = .automatic
     }
 }
 

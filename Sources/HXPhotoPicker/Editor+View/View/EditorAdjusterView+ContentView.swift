@@ -307,31 +307,31 @@ extension EditorAdjusterView {
     }
     
     var isCanvasEmpty: Bool {
-        contentView.isCanvasEmpty
+        contentView.canvasView.isEmpty
     }
     
     var isCanvasCanUndo: Bool {
-        contentView.isCanvasCanUndo
+        contentView.canvasView.isCanUndo
     }
     
     var isCanvasCanRedo: Bool {
-        contentView.isCanvasCanRedo
+        contentView.canvasView.isCanRedo
     }
     
     func canvasRedo() {
-        contentView.canvasRedo()
+        contentView.canvasView.redo()
     }
     
     func canvasUndo() {
-        contentView.canvasUndo()
+        contentView.canvasView.undo()
     }
     
     func canvasUndoCurrentAll() {
-        contentView.canvasUndoCurrentAll()
+        contentView.canvasView.undoCurrentAll()
     }
     
     func canvasUndoAll() {
-        contentView.canvasUndoAll()
+        contentView.canvasView.undoAll()
     }
     
     func startCanvasDrawing() -> PKToolPicker? {
@@ -347,11 +347,11 @@ extension EditorAdjusterView {
     }
     
     func enterCanvasDrawing() -> PKToolPicker? {
-        contentView.enterCanvasDrawing()
+        contentView.canvasView.enterDrawing()
     }
     
     func quitCanvasDrawing() {
-        contentView.quitCanvasDrawing()
+        contentView.canvasView.quitDrawing()
     }
 }
 

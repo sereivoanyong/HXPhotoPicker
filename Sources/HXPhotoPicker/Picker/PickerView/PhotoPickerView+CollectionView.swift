@@ -218,9 +218,7 @@ extension PhotoPickerView: UICollectionViewDelegate {
             guard let vc = UIViewController.topViewController else {
                 return
             }
-            if #available(iOS 14, *) {
-                PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: vc)
-            }
+            PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: vc)
         }else if let myCell = cell as? PhotoPickerBaseViewCell,
                  let photoAsset = myCell.photoAsset {
             if !myCell.canSelect {

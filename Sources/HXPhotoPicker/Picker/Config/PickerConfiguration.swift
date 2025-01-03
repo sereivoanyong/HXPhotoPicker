@@ -284,11 +284,7 @@ public struct PickerConfiguration: IndicatorTypeConfig, PhotoDebugLogsConfig, Ph
     public var pickerData: PhotoPickerData.Type = PhotoPickerData.self
     
     public init() {
-        if #available(iOS 13.0, *) {
-            modalPresentationStyle = .automatic
-        } else {
-            modalPresentationStyle = .fullScreen
-        }
+        modalPresentationStyle = .automatic
         PhotoManager.shared.isCacheCameraAlbum = isCacheCameraAlbum
     }
     

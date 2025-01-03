@@ -68,40 +68,20 @@ public class EditorVideoTool {
     ) {
         self.progressHandler = progressHandler
         self.completionHandler = completionHandler
-        if #available(iOS 15, *) {
-            Task {
-                do {
-                    _ = try await avAsset.load(.duration)
-                    await MainActor.run {
-                        exprotHandler()
-                    }
-                } catch {
-                    await MainActor.run {
-                        self.completionHandler?(
-                            .failure(EditorError.error(
-                                type: .exportFailed,
-                                message: "导出失败：" + error.localizedDescription
-                            ))
-                        )
-                    }
+        Task {
+            do {
+                _ = try await avAsset.load(.duration)
+                await MainActor.run {
+                    exprotHandler()
                 }
-            }
-        } else {
-            avAsset.loadValuesAsynchronously(forKeys: ["duration"]) { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    if self.avAsset.statusOfValue(forKey: "duration", error: nil) != .loaded {
-                        self.completionHandler?(
-                            .failure(EditorError.error(
-                                type: .exportFailed,
-                                message: "导出失败：时长获取失败"
-                            ))
-                        )
-                        return
-                    }
-                    self.exprotHandler()
+            } catch {
+                await MainActor.run {
+                    self.completionHandler?(
+                        .failure(EditorError.error(
+                            type: .exportFailed,
+                            message: "导出失败：" + error.localizedDescription
+                        ))
+                    )
                 }
             }
         }

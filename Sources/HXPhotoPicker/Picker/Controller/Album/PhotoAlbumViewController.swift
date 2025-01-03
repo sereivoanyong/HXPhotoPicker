@@ -34,11 +34,7 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
             title = .textManager.picker.albumList.navigationTitle.text
         }
         navigationController?.navigationBar.isTranslucent = config.navigationBarIsTranslucent
-//        if #available(iOS 11.0, *) {
-//            navigationItem.backButtonTitle = ""
-//        }else {
-//            navigationItem.backBarButtonItem = .init(title: "", style: .plain, target: self, action: #selector(didBackClick))
-//        }
+//        navigationItem.backButtonTitle = ""
         initItems()
         tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
@@ -48,9 +44,7 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
         tableView.register(PhotoAlbumCollectionCell.self)
         tableView.register(PhotoAlbumViewCell.self)
         tableView.register(PhotoAlbumHeaderView.self, forHeaderFooterViewReuseIdentifier: PhotoAlbumHeaderView.className)
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
+        tableView.sectionHeaderTopPadding = 0
         view.addSubview(tableView)
         reloadData()
         updateColors()
@@ -104,9 +98,7 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
     
     func updateColors() {
         if config.appearanceStyle == .normal {
-            if #available(iOS 13.0, *) {
-                overrideUserInterfaceStyle = .light
-            }
+            overrideUserInterfaceStyle = .light
         }
         let isDark = PhotoManager.isDark
         let titleTextAttributes: [NSAttributedString.Key : Any] = [
@@ -120,19 +112,17 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
         navigationController?.navigationBar.titleTextAttributes = titleTextAttributes
         let barStyle = isDark ? config.navigationBarDarkStyle : config.navigationBarStyle
         navigationController?.navigationBar.barStyle = barStyle
-        
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.titleTextAttributes = titleTextAttributes
-            switch barStyle {
-            case .`default`:
-                appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
-            default:
-                appearance.backgroundEffect = UIBlurEffect(style: .dark)
-            }
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = titleTextAttributes
+        switch barStyle {
+        case .`default`:
+            appearance.backgroundEffect = UIBlurEffect(style: .extraLight)
+        default:
+            appearance.backgroundEffect = UIBlurEffect(style: .dark)
         }
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -159,10 +149,8 @@ public class PhotoAlbumViewController: UIViewController, PhotoAlbumController {
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateColors()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
         }
     }
     

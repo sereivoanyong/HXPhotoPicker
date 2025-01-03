@@ -103,11 +103,7 @@ open class PhotoPickerListViewController:
         if !config.allowSwipeToSelect {
             collectionView.delaysContentTouches = false
         }
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         registerClass()
         view.addSubview(collectionView)
         if pickerConfig.isMultipleSelect, config.allowSwipeToSelect {
@@ -700,11 +696,7 @@ extension PhotoPickerListViewController: UICollectionViewDelegate {
             view.filterOptions = filterOptions
             view.didFilterHandler = { [weak self] in
                 guard let self = self else { return }
-                if #available(iOS 13.0, *) {
-                    self.delegate?.photoList(presentFilter: self, modalPresentationStyle: .automatic)
-                } else {
-                    self.delegate?.photoList(presentFilter: self, modalPresentationStyle: .fullScreen)
-                }
+                self.delegate?.photoList(presentFilter: self, modalPresentationStyle: .automatic)
             }
             return view
         }

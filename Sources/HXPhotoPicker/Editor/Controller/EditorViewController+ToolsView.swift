@@ -16,7 +16,7 @@ extension EditorViewController: EditorToolsViewDelegate {
         editorView.deselectedSticker()
         switch model.type {
         case .graffiti:
-            if #available(iOS 13.0, *), editorView.drawType == .canvas {
+            if editorView.drawType == .canvas {
                 hideLastToolView()
                 hideToolsView(isCanvasGraffiti: true)
                 selectedTool = model

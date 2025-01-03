@@ -509,10 +509,8 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
             kCVPixelBufferHeightKey as String: imageHeight
         ]
         // Catpure Heif when available.
-//        if #available(iOS 11.0, *) {
-//            if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
-//                settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
-//            }
+//        if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
+//            settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
 //        }
         
         // Catpure Highest Quality possible.
@@ -552,39 +550,7 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
     ) {
         photoWillCapture?()
     }
-    
-    func photoOutput(
-        _ output: AVCapturePhotoOutput,
-        didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?,
-        previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?,
-        resolvedSettings: AVCaptureResolvedPhotoSettings,
-        bracketSettings: AVCaptureBracketedStillImageSettings?,
-        error: Error?
-    ) {
-        if #available(iOS 11.0, *) {
-            return
-        }
-        let sampleBuffer: CMSampleBuffer
-        if let previewPhotoSampleBuffer = previewPhotoSampleBuffer {
-            sampleBuffer = previewPhotoSampleBuffer
-        }else if let photoSampleBuffer = photoSampleBuffer {
-            sampleBuffer = photoSampleBuffer
-        }else {
-            photoCompletion?(nil)
-            return
-        }
-        guard let photoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            photoCompletion?(nil)
-            return
-        }
-        let metaData = CMCopyDictionaryOfAttachments(
-            allocator: kCFAllocatorDefault,
-            target: sampleBuffer,
-            attachmentMode: kCMAttachmentMode_ShouldPropagate
-        )
-        finishProcessingPhoto(cropPhotoPixelBuffer(photoPixelBuffer), metaData)
-    }
-    
+
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let photoPixelBuffer = photo.previewPixelBuffer else {
             photoCompletion?(nil)
@@ -937,21 +903,11 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate,
 //            AVVideoExpectedSourceFrameRateKey: 30,
 //            AVVideoMaxKeyFrameIntervalKey: 30
 //        ]
-        let videoCodecType: Any
-        let videoH264Type: Any
-        if #available(iOS 11.0, *) {
-            videoH264Type = AVVideoCodecType.h264
-        } else {
-            videoH264Type = AVVideoCodecH264
-        }
+        let videoCodecType: AVVideoCodecType
         if UIDevice.belowIphone7 {
-            videoCodecType = videoH264Type
+            videoCodecType = .h264
         }else {
-            if #available(iOS 11.0, *) {
-                videoCodecType = config.videoCodecType
-            } else {
-                videoCodecType = AVVideoCodecH264
-            }
+            videoCodecType = config.videoCodecType
         }
         let videoInput = AVAssetWriterInput(
             mediaType: .video,

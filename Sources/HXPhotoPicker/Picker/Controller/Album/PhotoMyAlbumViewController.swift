@@ -43,11 +43,7 @@ public class PhotoMyAlbumViewController: UIViewController, UICollectionViewDataS
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delaysContentTouches = false
         collectionView.register(PhotoAlbumCollectionViewCell.self)
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         view.addSubview(collectionView)
         updateColors()
     }
@@ -101,10 +97,8 @@ public class PhotoMyAlbumViewController: UIViewController, UICollectionViewDataS
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateColors()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
         }
     }
 }

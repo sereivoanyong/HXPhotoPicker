@@ -30,8 +30,6 @@ open class HXBaseNavigationController: UINavigationController {
     }
 
     func commonInit() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .dark
-        }
+        overrideUserInterfaceStyle = .dark
     }
 }

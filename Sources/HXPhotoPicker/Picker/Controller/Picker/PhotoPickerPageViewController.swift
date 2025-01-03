@@ -162,11 +162,7 @@ public class PhotoPickerPageViewController: HXBaseViewController, PhotoPickerLis
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
-        }else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
         if let gesture = pickerController.dismissPanGestureRecognizer {
             scrollView.panGestureRecognizer.require(toFail: gesture)
         }

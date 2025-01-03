@@ -296,10 +296,8 @@ open class PhotoPickerController: HXBaseNavigationController {
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                setupColor()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            setupColor()
         }
     }
     
@@ -521,7 +519,7 @@ extension PhotoPickerController {
     }
     
     func setupColor() {
-        if #available(iOS 13.0, *), config.appearanceStyle == .normal {
+        if config.appearanceStyle == .normal {
             overrideUserInterfaceStyle = .light
         }
         if modalPresentationStyle != .custom {
@@ -547,7 +545,7 @@ extension PhotoPickerController {
         if let color = navigationBackgroundColor {
             navigationBar.backgroundColor = color
         }
-        if #available(iOS 15.0, *), config.adaptiveBarAppearance {
+        if config.adaptiveBarAppearance {
             let appearance = UINavigationBarAppearance()
             appearance.titleTextAttributes = titleTextAttributes
             switch barStyle {
@@ -657,11 +655,9 @@ extension PhotoPickerController {
         return nil
     }
     private func didDismiss() {
-        if #available(iOS 13.0, *) {
-            if let task = pickerTask as? Task<(), Never> {
-                task.cancel()
-                pickerTask = nil
-            }
+        if let task = pickerTask as? Task<(), Never> {
+            task.cancel()
+            pickerTask = nil
         }
         #if HXPICKER_ENABLE_EDITOR
         pickerData.removeAllEditedPhotoAsset()

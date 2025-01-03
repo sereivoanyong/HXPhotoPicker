@@ -131,9 +131,7 @@ public class PhotoPreviewViewController: PhotoBaseViewController {
         if let cell = getCell(for: currentPreviewIndex) {
             if cell.photoAsset.mediaSubType == .livePhoto ||
                 cell.photoAsset.mediaSubType == .localLivePhoto {
-                if #available(iOS 9.1, *) {
-                    cell.scrollContentView.livePhotoView.stopPlayback()
-                }
+                cell.scrollContentView.livePhotoView.stopPlayback()
             }
         }
     }
@@ -166,7 +164,7 @@ public class PhotoPreviewViewController: PhotoBaseViewController {
         
         let isFullscreen = pickerController.modalPresentationStyle == .fullScreen || (splitViewController?.modalPresentationStyle == .fullScreen)
         let isMacApp: Bool
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             isMacApp = true
         }else {
             isMacApp = false
@@ -243,11 +241,7 @@ extension PhotoPreviewViewController {
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(PreviewPhotoViewCell.self)
         collectionView.register(PreviewLivePhotoViewCell.self)
         if let customVideoCell = config.customVideoCellClass {

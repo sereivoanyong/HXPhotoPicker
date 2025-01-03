@@ -28,17 +28,15 @@ class PhotoPickerFilterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            switch PhotoManager.shared.appearanceStyle {
-            case .normal:
-                overrideUserInterfaceStyle = .light
-                navigationController?.overrideUserInterfaceStyle = .light
-            case .dark:
-                overrideUserInterfaceStyle = .dark
-                navigationController?.overrideUserInterfaceStyle = .dark
-            default:
-                break
-            }
+        switch PhotoManager.shared.appearanceStyle {
+        case .normal:
+            overrideUserInterfaceStyle = .light
+            navigationController?.overrideUserInterfaceStyle = .light
+        case .dark:
+            overrideUserInterfaceStyle = .dark
+            navigationController?.overrideUserInterfaceStyle = .dark
+        default:
+            break
         }
         navigationItem.title = .textPhotoList.filter.title.text
         navigationItem.rightBarButtonItem = .init(
@@ -107,13 +105,9 @@ class PhotoPickerFilterViewController: UITableViewController {
         filterLb = UILabel()
         filterLb.text = options == .any ? .textPhotoList.filter.bottomEmptyTitle.text : .textPhotoList.filter.bottomTitle.text
         filterLb.font = .textPhotoList.filter.bottomTitleFont
-        if #available(iOS 13.0, *) {
-            filterLb.textColor = UIColor(dynamicProvider: {
-                $0.userInterfaceStyle == .dark ? .white : .black
-            })
-        } else {
-            filterLb.textColor = .black
-        }
+        filterLb.textColor = UIColor(dynamicProvider: {
+            $0.userInterfaceStyle == .dark ? .white : .black
+        })
         filterLb.textAlignment = .center
         
         bottomView = UIView()
@@ -241,14 +235,10 @@ class PhotoPickerFilterViewController: UITableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let contentHeight = tableView.contentSize.height
-        if #available(iOS 11.0, *) {
-            if contentHeight < view.height - tableView.adjustedContentInset.top {
-                bottomView.y = view.height - bottomView.height - UIDevice.bottomMargin
-            }else {
-                bottomView.y = contentHeight - bottomView.height + 20
-            }
-        }else {
+        if contentHeight < view.height - tableView.adjustedContentInset.top {
             bottomView.y = view.height - bottomView.height - UIDevice.bottomMargin
+        }else {
+            bottomView.y = contentHeight - bottomView.height + 20
         }
         numberView.frame = .init(x: 0, y: 0, width: view.width, height: 20)
         filterLb.frame = .init(x: 0, y: 20, width: view.width, height: 20)
@@ -256,11 +246,9 @@ class PhotoPickerFilterViewController: UITableViewController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                tableView.reloadData()
-                updateColors()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            tableView.reloadData()
+            updateColors()
         }
     }
 }

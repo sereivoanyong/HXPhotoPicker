@@ -361,7 +361,7 @@ extension PhotoTools {
         #endif
         
         #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
         }else {
             var cameraConfig = CameraConfiguration()
             cameraConfig.videoMaximumDuration = 60
@@ -445,7 +445,7 @@ extension PhotoTools {
         #endif
         
         #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
         }else {
             var cameraConfig = CameraConfiguration()
             cameraConfig.tintColor = redColor

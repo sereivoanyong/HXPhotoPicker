@@ -13,13 +13,7 @@ public struct AssetPermissionsUtil {
     /// 获取当前相册权限状态
     /// - Returns: 权限状态
     public static var authorizationStatus: PHAuthorizationStatus {
-        let status: PHAuthorizationStatus
-        if #available(iOS 14, *) {
-            status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-        } else {
-            status = PHPhotoLibrary.authorizationStatus()
-        }
-        return status
+        return PHPhotoLibrary.authorizationStatus(for: .readWrite)
     }
     
     /// 获取相机权限
@@ -50,12 +44,11 @@ public struct AssetPermissionsUtil {
     
     /// 当前相册权限状态是否是Limited
     public static var isLimitedAuthorizationStatus:  Bool {
-        #if !targetEnvironment(macCatalyst)
-        if #available(iOS 14, *), authorizationStatus == .limited  {
-            return true
-        }
-        #endif
+        #if targetEnvironment(macCatalyst)
         return false
+        #else
+        return authorizationStatus == .limited
+        #endif
     }
     
     /// 请求获取相册权限
@@ -66,19 +59,11 @@ public struct AssetPermissionsUtil {
     ) {
         let status = authorizationStatus
         if status == PHAuthorizationStatus.notDetermined {
-            if #available(iOS 14, *) {
-                PHPhotoLibrary.requestAuthorization(
-                    for: .readWrite
-                ) { (authorizationStatus) in
-                    DispatchQueue.main.async {
-                        handler(authorizationStatus)
-                    }
-                }
-            } else {
-                PHPhotoLibrary.requestAuthorization { (authorizationStatus) in
-                    DispatchQueue.main.async {
-                        handler(authorizationStatus)
-                    }
+            PHPhotoLibrary.requestAuthorization(
+                for: .readWrite
+            ) { (authorizationStatus) in
+                DispatchQueue.main.async {
+                    handler(authorizationStatus)
                 }
             }
         }else {

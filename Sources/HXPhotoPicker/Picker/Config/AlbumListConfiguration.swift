@@ -33,13 +33,7 @@ public struct AlbumListConfiguration {
     /// 暗黑风格下列表背景颜色
     public var backgroundDarkColor: UIColor = "#2E2F30".hx.color
     
-    public var splitBackgroundColor: UIColor = {
-        if #available(iOS 13.0, *) {
-            return .systemGroupedBackground
-        } else {
-            return .groupTableViewBackground
-        }
-    }()
+    public var splitBackgroundColor: UIColor = .systemGroupedBackground
     
     public var splitBackgroundDarkColor: UIColor = "#2E2F30".hx.color
     

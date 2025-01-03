@@ -186,9 +186,7 @@ class EditorMusicListViewController: HXBaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.register(EditorMusicViewCell.self, forCellWithReuseIdentifier: "EditorMusicViewCellID")
         
         noMoreLine = CAShapeLayer()

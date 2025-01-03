@@ -79,12 +79,8 @@ open class AlbumListView: UIView, PhotoAlbumList, UITableViewDataSource, UITable
         }else {
             tableView.register(AlbumViewCell.self, forCellReuseIdentifier: AlbumViewBaseCell.className)
         }
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        }
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.sectionHeaderTopPadding = 0
         addSubview(tableView)
     }
     
@@ -186,10 +182,8 @@ open class AlbumListView: UIView, PhotoAlbumList, UITableViewDataSource, UITable
     
     open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                configColor()
-            }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            configColor()
         }
     }
     

@@ -56,14 +56,10 @@ class PhotoPreviewSelectedView: UIView,
         collectionView.delegate = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        if #available(iOS 11.0, *) {
-            collectionView.dragDelegate = self
-            collectionView.dropDelegate = self
-            collectionView.dragInteractionEnabled = true
-        }
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        }
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+        collectionView.dragInteractionEnabled = true
+        collectionView.contentInsetAdjustmentBehavior = .never
         reloadSectionInset()
         addSubview(collectionView)
     }

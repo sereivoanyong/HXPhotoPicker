@@ -16,10 +16,8 @@ extension PHAsset {
         if fileName != nil {
             isAnimated = fileName!.hasSuffix("GIF")
         }
-        if #available(iOS 11, *) {
-            if playbackStyle == .imageAnimated {
-                isAnimated = true
-            }
+        if playbackStyle == .imageAnimated {
+            isAnimated = true
         }
         return isAnimated
     }
@@ -29,14 +27,9 @@ extension PHAsset {
     }
 
     var isLivePhoto: Bool {
-        var isLivePhoto: Bool = false
-        if #available(iOS 9.1, *) {
-            isLivePhoto = mediaSubtypes == .photoLive
-            if #available(iOS 11, *) {
-                if playbackStyle == .livePhoto {
-                    isLivePhoto = true
-                }
-            }
+        var isLivePhoto = mediaSubtypes == .photoLive
+        if playbackStyle == .livePhoto {
+            isLivePhoto = true
         }
         return isLivePhoto
     }

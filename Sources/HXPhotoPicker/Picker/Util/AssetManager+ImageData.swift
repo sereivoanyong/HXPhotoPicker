@@ -149,53 +149,28 @@ public extension AssetManager {
                 resultHandler(.failure(.requestFailed(info)))
             }
         }
-        if #available(iOS 13, *) {
-            return PHImageManager.default().requestImageDataAndOrientation(
-                for: asset,
-                options: options
-            ) { (imageData, dataUTI, imageOrientation, info) in
-                let sureOrientation = self.transformImageOrientation(
-                    orientation: imageOrientation
+        return PHImageManager.default().requestImageDataAndOrientation(
+            for: asset,
+            options: options
+        ) { (imageData, dataUTI, imageOrientation, info) in
+            let sureOrientation = self.transformImageOrientation(
+                orientation: imageOrientation
+            )
+            if Thread.isMainThread || options.isSynchronous {
+                result(
+                    imageData: imageData,
+                    dataUTI: dataUTI,
+                    imageOrientation: sureOrientation,
+                    info: info
                 )
-                if Thread.isMainThread || options.isSynchronous {
+            }else {
+                DispatchQueue.main.async {
                     result(
                         imageData: imageData,
                         dataUTI: dataUTI,
                         imageOrientation: sureOrientation,
                         info: info
                     )
-                }else {
-                    DispatchQueue.main.async {
-                        result(
-                            imageData: imageData,
-                            dataUTI: dataUTI,
-                            imageOrientation: sureOrientation,
-                            info: info
-                        )
-                    }
-                }
-            }
-        } else {
-            return PHImageManager.default().requestImageData(
-                for: asset,
-                options: options
-            ) { (imageData, dataUTI, imageOrientation, info) in
-                if Thread.isMainThread || options.isSynchronous {
-                    result(
-                        imageData: imageData,
-                        dataUTI: dataUTI,
-                        imageOrientation: imageOrientation,
-                        info: info
-                    )
-                }else {
-                    DispatchQueue.main.async {
-                        result(
-                            imageData: imageData,
-                            dataUTI: dataUTI,
-                            imageOrientation: imageOrientation,
-                            info: info
-                        )
-                    }
                 }
             }
         }

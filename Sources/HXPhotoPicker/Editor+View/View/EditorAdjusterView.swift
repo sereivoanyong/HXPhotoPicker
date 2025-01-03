@@ -22,9 +22,7 @@ class EditorAdjusterView: UIView {
     var maximumZoomScale: CGFloat = 20
     var exportScale: CGFloat = UIScreen._scale {
         didSet {
-            if #available(iOS 13.0, *), let canvasView = contentView.canvasView as? EditorCanvasView {
-                canvasView.exportScale = exportScale
-            }
+            contentView.canvasView.exportScale = exportScale
         }
     }
     
@@ -150,9 +148,7 @@ class EditorAdjusterView: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.clipsToBounds = false
         scrollView.scrollsToTop = false
-        if #available(iOS 11.0, *) {
-            scrollView.contentInsetAdjustmentBehavior = .never
-        }
+        scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.addSubview(contentView)
         
         mirrorView = UIView()
@@ -925,10 +921,7 @@ extension EditorAdjusterView {
         }else {
             maskImage = oldMaskImage
         }
-        var canvasData: EditorCanvasData?
-        if #available(iOS 13.0, *), let canvasView = contentView.canvasView as? EditorCanvasView {
-            canvasData = canvasView.data
-        }
+        let canvasData = contentView.canvasView.data
         return .init(
             content: .init(
                 editSize: adjustedData.1,
@@ -1034,9 +1027,7 @@ extension EditorAdjusterView {
         }
         contentView.zoomScale = zoomScale * scrollView.zoomScale
         contentView.drawView.setBrushData(factor.drawView, viewSize: contentView.bounds.size)
-        if #available(iOS 13.0, *), let canvasView = contentView.canvasView as? EditorCanvasView {
-            canvasView.setData(data: factor.canvasData, viewSize: contentView.bounds.size)
-        }
+        contentView.canvasView.setData(data: factor.canvasData, viewSize: contentView.bounds.size)
         contentView.mosaicView.setMosaicData(mosaicDatas: factor.mosaicView, viewSize: contentView.bounds.size)
         contentView.stickerView.setStickerItem(factor.stickersView, viewSize: contentView.bounds.size)
     }

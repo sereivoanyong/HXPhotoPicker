@@ -117,10 +117,8 @@ public class AlbumViewController: PhotoBaseViewController, PhotoAlbumListDelegat
             if let splitVC = splitViewController as? PhotoSplitViewController, !UIDevice.isPortrait {
                 title = nil
                 if splitVC.modalPresentationStyle == .fullScreen {
-                    if #available(iOS 14.5, *) {
-                        leftItems.append(contentsOf: rightItems)
-                        rightItems = []
-                    }
+                    leftItems.append(contentsOf: rightItems)
+                    rightItems = []
                 }else {
                     rightItems = []
                 }
@@ -166,17 +164,9 @@ public class AlbumViewController: PhotoBaseViewController, PhotoAlbumListDelegat
         animated: Bool
     ) {
         if let splitViewController = splitViewController as? PhotoSplitViewController {
-            let pickerController: PhotoPickerController?
-            if #available(iOS 14.0, *) {
-                pickerController = splitViewController.viewController(for: .secondary) as? PhotoPickerController
-                if !UIDevice.isPad, !splitViewController.isSplitShowColumn {
-                    splitViewController.show(.secondary)
-                }
-            } else {
-                pickerController = splitViewController.viewControllers.last as? PhotoPickerController
-                if let photoVC = pickerController?.pickerViewController, !UIDevice.isPad, !splitViewController.isSplitShowColumn {
-                    splitViewController.showDetailViewController(photoVC, sender: pickerController)
-                }
+            let pickerController = splitViewController.viewController(for: .secondary) as? PhotoPickerController
+            if !UIDevice.isPad, !splitViewController.isSplitShowColumn {
+                splitViewController.show(.secondary)
             }
             pickerController?.reloadData(assetCollection: assetCollection)
             return

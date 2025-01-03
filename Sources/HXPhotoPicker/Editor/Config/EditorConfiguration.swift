@@ -115,11 +115,7 @@ public struct EditorConfiguration: IndicatorTypeConfig, PhotoHUDConfig {
     public var toolsView: ToolsView = .default
     
     public init() {
-        if #available(iOS 13.0, *) {
-            modalPresentationStyle = .automatic
-        } else {
-            modalPresentationStyle = .fullScreen
-        }
+        modalPresentationStyle = .automatic
         if UIDevice.isPad {
             buttonType = .top
         }else {
@@ -391,11 +387,7 @@ public extension EditorConfiguration {
         public var modalPresentationStyle: UIModalPresentationStyle
         
         public init() {
-            if #available(iOS 13.0, *) {
-                self.modalPresentationStyle = .automatic
-            }else {
-                self.modalPresentationStyle = .fullScreen
-            }
+            modalPresentationStyle = .automatic
         }
     }
     
@@ -537,11 +529,7 @@ public extension EditorConfiguration {
         public var listHandler: ((Int, @escaping EditorChartletListResponse) -> Void)?
         
         public init() {
-            if #available(iOS 13.0, *) {
-                modalPresentationStyle = .automatic
-            } else {
-                modalPresentationStyle = .fullScreen
-            }
+            modalPresentationStyle = .automatic
         }
     }
 

@@ -146,12 +146,8 @@ class EditorCanvasView: UIView {
         do {
             let draws = try data.historyDrawings(viewSize)
             isClear = true
-            if #available(iOS 14.0, *) {
-                if data.index < draws.count, data.index >= 0 {
-                    canvasView.drawing = draws[data.index]
-                }
-            }else {
-                canvasView.drawing = try PKDrawing(data: data.data)
+            if data.index < draws.count, data.index >= 0 {
+                canvasView.drawing = draws[data.index]
             }
             drawingCurrentHistory = draws
             currentIndex = data.index
@@ -207,14 +203,8 @@ class EditorCanvasView: UIView {
             let draws = try data.historyDrawings(viewSize)
             isClear = true
             if isDrawing {
-                if #available(iOS 14.0, *) {
-                    if data.index < draws.count, data.index >= 0 {
-                        canvasView.drawing = draws[data.index]
-                    }
-                }else {
-                    if !data.data.isEmpty {
-                        canvasView.drawing = try PKDrawing(data: data.data)
-                    }
+                if data.index < draws.count, data.index >= 0 {
+                    canvasView.drawing = draws[data.index]
                 }
             }
             drawingCurrentHistory = draws
@@ -233,14 +223,8 @@ class EditorCanvasView: UIView {
             let draws = try data.historyDrawings(viewSize)
             isClear = true
             if !isDrawing {
-                if #available(iOS 14.0, *) {
-                    if data.index < draws.count, data.index >= 0 {
-                        canvasView.drawing = draws[data.index]
-                    }
-                }else {
-                    if !data.data.isEmpty {
-                        canvasView.drawing = try PKDrawing(data: data.data)
-                    }
+                if data.index < draws.count, data.index >= 0 {
+                    canvasView.drawing = draws[data.index]
                 }
             }
             drawingHistory = draws
@@ -266,11 +250,7 @@ class EditorCanvasView: UIView {
             currentIndex += 1
             isClear = true
             let nextDrawing = drawingCurrentHistory[currentIndex]
-            if #available(iOS 14.0, *) {
-                canvasView.drawing = .init(strokes: nextDrawing.strokes)
-            } else {
-                canvasView.drawing = .init().appending(nextDrawing)
-            }
+            canvasView.drawing = .init(strokes: nextDrawing.strokes)
             isClear = false
             delegate?.canvasView(endDraw: self)
         }
@@ -282,11 +262,7 @@ class EditorCanvasView: UIView {
             isClear = true
             if currentIndex >= 0 {
                 let previousDrawing = drawingCurrentHistory[currentIndex]
-                if #available(iOS 14.0, *) {
-                    canvasView.drawing = .init(strokes: previousDrawing.strokes)
-                } else {
-                    canvasView.drawing = .init().appending(previousDrawing)
-                }
+                canvasView.drawing = .init(strokes: previousDrawing.strokes)
             }else {
                 canvasView.drawing = .init()
             }
@@ -299,11 +275,7 @@ class EditorCanvasView: UIView {
         currentIndex = drawingCurrentHistory.count - 1
         isClear = true
         if let drawing = drawingCurrentHistory.last {
-            if #available(iOS 14.0, *) {
-                canvasView.drawing = .init(strokes: drawing.strokes)
-            } else {
-                canvasView.drawing = .init().appending(drawing)
-            }
+            canvasView.drawing = .init(strokes: drawing.strokes)
         }else {
             canvasView.drawing = .init()
         }
@@ -398,85 +370,83 @@ struct EditorCanvasData: Codable {
         var draws: [PKDrawing] = []
         for historyData in historyDatas {
             var drawing = try PKDrawing(data: historyData)
-            if #available(iOS 14.0, *) {
-                var newStrokes: [PKStroke] = []
-                for stroke in drawing.strokes {
-                    let path = stroke.path
-                    let startIndex = path.startIndex
-                    let endIndex = path.endIndex
-                    let points = path[startIndex..<endIndex]
-                    var newPoints: [PKStrokePoint] = []
-                    for point in points {
-                        let xScale = point.location.x / size.width
-                        let yScale = point.location.y / size.height
-                        let newPoint: PKStrokePoint
-                        if #available(iOS 17.0, *) {
-                            #if swift(>=5.9)
-                            newPoint = PKStrokePoint(
-                                location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
-                                timeOffset: point.timeOffset,
-                                size: point.size,
-                                opacity: point.opacity,
-                                force: point.force,
-                                azimuth: point.azimuth,
-                                altitude: point.altitude,
-                                secondaryScale: point.secondaryScale
-                            )
-                            #else
-                            newPoint = PKStrokePoint(
-                                location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
-                                timeOffset: point.timeOffset,
-                                size: point.size,
-                                opacity: point.opacity,
-                                force: point.force,
-                                azimuth: point.azimuth,
-                                altitude: point.altitude
-                            )
-                            #endif
-                        }else {
-                            newPoint = PKStrokePoint(
-                                location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
-                                timeOffset: point.timeOffset,
-                                size: point.size,
-                                opacity: point.opacity,
-                                force: point.force,
-                                azimuth: point.azimuth,
-                                altitude: point.altitude
-                            )
-                        }
-                        newPoints.append(newPoint)
-                    }
-                    let newPath = PKStrokePath(controlPoints: newPoints, creationDate: path.creationDate)
-                    let newStroke: PKStroke
-                    if #available(iOS 16.2, *) {
-                        #if swift(>=5.8)
-                        newStroke = PKStroke(
-                            ink: stroke.ink,
-                            path: newPath,
-                            transform: stroke.transform,
-                            mask: stroke.mask,
-                            randomSeed: stroke.randomSeed
+            var newStrokes: [PKStroke] = []
+            for stroke in drawing.strokes {
+                let path = stroke.path
+                let startIndex = path.startIndex
+                let endIndex = path.endIndex
+                let points = path[startIndex..<endIndex]
+                var newPoints: [PKStrokePoint] = []
+                for point in points {
+                    let xScale = point.location.x / size.width
+                    let yScale = point.location.y / size.height
+                    let newPoint: PKStrokePoint
+                    if #available(iOS 17.0, *) {
+                        #if swift(>=5.9)
+                        newPoint = PKStrokePoint(
+                            location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
+                            timeOffset: point.timeOffset,
+                            size: point.size,
+                            opacity: point.opacity,
+                            force: point.force,
+                            azimuth: point.azimuth,
+                            altitude: point.altitude,
+                            secondaryScale: point.secondaryScale
                         )
                         #else
-                        newStroke = PKStroke(
-                            ink: stroke.ink,
-                            path: newPath,
-                            transform: stroke.transform,
-                            mask: stroke.mask
+                        newPoint = PKStrokePoint(
+                            location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
+                            timeOffset: point.timeOffset,
+                            size: point.size,
+                            opacity: point.opacity,
+                            force: point.force,
+                            azimuth: point.azimuth,
+                            altitude: point.altitude
                         )
                         #endif
-                    } else {
-                        newStroke = PKStroke(
-                            ink: stroke.ink,
-                            path: newPath,
-                            transform: stroke.transform,
-                            mask: stroke.mask
+                    }else {
+                        newPoint = PKStrokePoint(
+                            location: .init(x: viewSize.width * xScale, y: viewSize.height * yScale),
+                            timeOffset: point.timeOffset,
+                            size: point.size,
+                            opacity: point.opacity,
+                            force: point.force,
+                            azimuth: point.azimuth,
+                            altitude: point.altitude
                         )
                     }
-                    newStrokes.append(newStroke)
+                    newPoints.append(newPoint)
                 }
-                drawing = .init(strokes: newStrokes)
+                let newPath = PKStrokePath(controlPoints: newPoints, creationDate: path.creationDate)
+                let newStroke: PKStroke
+                if #available(iOS 16.2, *) {
+                    #if swift(>=5.8)
+                    newStroke = PKStroke(
+                        ink: stroke.ink,
+                        path: newPath,
+                        transform: stroke.transform,
+                        mask: stroke.mask,
+                        randomSeed: stroke.randomSeed
+                    )
+                    #else
+                    newStroke = PKStroke(
+                        ink: stroke.ink,
+                        path: newPath,
+                        transform: stroke.transform,
+                        mask: stroke.mask
+                    )
+                    #endif
+                } else {
+                    newStroke = PKStroke(
+                        ink: stroke.ink,
+                        path: newPath,
+                        transform: stroke.transform,
+                        mask: stroke.mask
+                    )
+                }
+                newStrokes.append(newStroke)
             }
+            drawing = .init(strokes: newStrokes)
             draws.append(drawing)
         }
         return draws

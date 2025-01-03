@@ -46,13 +46,7 @@ class EditorMaskView: UIView {
         }
     }
     
-    var maskType: EditorView.MaskType = {
-        if #available(iOS 13.0, *) {
-            return .blurEffect(style: .systemThickMaterialDark)
-        } else {
-            return .blurEffect(style: .dark)
-        }
-    }() {
+    var maskType: EditorView.MaskType = .blurEffect(style: .systemThickMaterialDark) {
         didSet {
             switch type {
             case .mask:

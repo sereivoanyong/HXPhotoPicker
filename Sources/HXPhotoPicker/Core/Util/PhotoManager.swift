@@ -28,10 +28,8 @@ public final class PhotoManager: NSObject {
         if shared.appearanceStyle == .dark {
             return true
         }
-        if #available(iOS 13.0, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark {
-                return true
-            }
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            return true
         }
         return false
     }

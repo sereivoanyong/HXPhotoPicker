@@ -71,12 +71,7 @@ extension PhotoPickerController: PhotoFetchDataDelegate {
         }
         if let splitViewController = splitViewController as? PhotoSplitViewController,
            let collection = fetchData.cameraAssetCollection {
-            let photoPickerController: PhotoPickerController?
-            if #available(iOS 14.0, *) {
-                photoPickerController = splitViewController.viewController(for: .primary) as? PhotoPickerController
-            } else {
-                photoPickerController = splitViewController.viewControllers.first as? PhotoPickerController
-            }
+            let photoPickerController = splitViewController.viewController(for: .primary) as? PhotoPickerController
             splitViewController.cameraAssetCollection = collection
             photoPickerController?.albumViewController?.reloadTableView(assetCollections: [collection])
         }
@@ -94,12 +89,7 @@ extension PhotoPickerController: PhotoFetchDataDelegate {
             pickerViewController?.updateAssetCollections(fetchData.assetCollections)
         }
         if let splitViewController = splitViewController as? PhotoSplitViewController {
-            let photoPickerController: PhotoPickerController?
-            if #available(iOS 14.0, *) {
-                photoPickerController = splitViewController.viewController(for: .primary) as? PhotoPickerController
-            } else {
-                photoPickerController = splitViewController.viewControllers.first as? PhotoPickerController
-            }
+            let photoPickerController = splitViewController.viewController(for: .primary) as? PhotoPickerController
             splitViewController.assetCollections = fetchData.assetCollections
             photoPickerController?.albumViewController?.reloadTableView(assetCollections: fetchData.assetCollections)
         }

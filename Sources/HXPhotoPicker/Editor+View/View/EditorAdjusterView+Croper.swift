@@ -33,10 +33,7 @@ extension EditorAdjusterView {
     
     var isCropedImage: Bool {
         let cropRatio = getCropOption()
-        var canvasImage: UIImage?
-        if #available(iOS 13.0, *) {
-            canvasImage = contentView.isCanvasEmpty ? nil : contentView.canvasImage
-        }
+        let canvasImage = contentView.canvasView.isEmpty ? nil : contentView.canvasImage
         let cropFactor = CropFactor(
             drawLayer: contentView.drawView.count > 0 ? contentView.drawView.layer : nil,
             canvasImage: canvasImage,
@@ -80,10 +77,7 @@ extension EditorAdjusterView {
         let image = self.image
         let cropRect = getCropRect()
         let cropRatio = getCropOption()
-        var canvasImage: UIImage?
-        if #available(iOS 13.0, *) {
-            canvasImage = contentView.isCanvasEmpty ? nil : contentView.canvasImage
-        }
+        let canvasImage = contentView.canvasView.isEmpty ? nil : contentView.canvasImage
         let cropFactor = CropFactor(
             drawLayer: contentView.drawView.count > 0 ? contentView.drawView.layer : nil,
             canvasImage: canvasImage,

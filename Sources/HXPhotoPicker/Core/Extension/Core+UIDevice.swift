@@ -10,7 +10,7 @@ import UIKit
 
 extension UIDevice {
     class var isPortrait: Bool {
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             return true
         }
         if isPad {
@@ -24,13 +24,13 @@ extension UIDevice {
         return true
     }
     class var navigationBarHeight: CGFloat {
-        if #available(iOS 12, *), isPad {
+        if isPad {
             return statusBarHeight + 50
         }
         return statusBarHeight + 44
     }
     class var navBarHeight: CGFloat {
-        if #available(iOS 12, *), isPad {
+        if isPad {
             return  50
         }
         return 44
@@ -58,8 +58,7 @@ extension UIDevice {
     class var statusBarHeight: CGFloat {
         let statusBarHeight: CGFloat
         let window = UIApplication.shared.windows.first
-        if #available(iOS 13.0, *),
-           let height = window?.windowScene?.statusBarManager?.statusBarFrame.size.height {
+        if let height = window?.windowScene?.statusBarManager?.statusBarFrame.size.height {
             statusBarHeight = height
         } else {
             statusBarHeight = UIApplication.shared.statusBarFrame.size.height
@@ -90,13 +89,13 @@ extension UIDevice {
         return safeAreaInsets.bottom
     }
     class var isPad: Bool {
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             return true
         }
         return current.userInterfaceIdiom == .pad
     }
     class var screenSize: CGSize {
-        if #available(iOS 14.0, *), ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac {
             if !Thread.isMainThread {
                 return UIScreen._size
             }
@@ -118,10 +117,8 @@ extension UIDevice {
     }
     
     class var safeAreaInsets: UIEdgeInsets {
-        if #available(iOS 11.0, *) {
-            if let safeAreaInsets = UIApplication._keyWindow?.safeAreaInsets {
-                return safeAreaInsets
-            }
+        if let safeAreaInsets = UIApplication._keyWindow?.safeAreaInsets {
+            return safeAreaInsets
         }
         return .zero
     }
