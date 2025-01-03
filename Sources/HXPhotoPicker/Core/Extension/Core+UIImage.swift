@@ -17,20 +17,24 @@ extension UIImage {
     var height: CGFloat { size.height }
     
     static func image(for named: String?) -> UIImage? {
-        if named == nil {
+        guard let named else {
             return nil
         }
-        let bundle = PhotoManager.shared.bundle
         var image: UIImage?
-        if bundle != nil {
-            var path = bundle?.path(forResource: "images", ofType: nil)
+        if let bundle = PhotoManager.shared.bundle {
+            if let image = UIImage(named: named, in: bundle, compatibleWith: nil) {
+                return image
+            } else {
+                assertionFailure()
+            }
+            var path = bundle.path(forResource: "images", ofType: nil)
             if path != nil {
-                path! += "/" + named!
+                path! += "/" + named
                 image = self.init(named: path!)
             }
         }
         if image == nil {
-            image = self.init(named: named!)
+            image = self.init(named: named)
         }
         return image
     }
