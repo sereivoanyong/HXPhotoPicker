@@ -9,7 +9,6 @@
 import UIKit
 import PencilKit
 
-@available(iOS 13.0, *)
 protocol EditorCanvasViewDelegate: AnyObject {
     func canvasView(beginDraw canvasView: EditorCanvasView)
     func canvasView(endDraw canvasView: EditorCanvasView)
@@ -17,7 +16,6 @@ protocol EditorCanvasViewDelegate: AnyObject {
     func canvasView(_ canvasView: EditorCanvasView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker)
 }
 
-@available(iOS 13.0, *)
 class EditorCanvasView: UIView {
     
     weak var delegate: EditorCanvasViewDelegate?
@@ -343,7 +341,6 @@ class EditorCanvasView: UIView {
     }
 }
 
-@available(iOS 13.0, *)
 extension EditorCanvasView: PKCanvasViewDelegate {
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
@@ -374,7 +371,6 @@ extension EditorCanvasView: PKCanvasViewDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension EditorCanvasView: PKToolPickerObserver {
     func toolPickerSelectedToolDidChange(_ toolPicker: PKToolPicker) {
         if let tool = toolPicker.selectedTool as? PKInkingTool {
@@ -397,8 +393,7 @@ struct EditorCanvasData: Codable {
     let historyDatas: [Data]
     let index: Int
     let size: CGSize
-    
-    @available(iOS 13.0, *)
+
     func historyDrawings(_ viewSize: CGSize) throws -> [PKDrawing] {
         var draws: [PKDrawing] = []
         for historyData in historyDatas {

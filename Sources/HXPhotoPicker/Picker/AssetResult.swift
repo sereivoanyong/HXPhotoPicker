@@ -13,7 +13,6 @@ public struct AssetResult {
     public let urlReuslt: AssetURLResult
 }
 
-@available(iOS 13.0, *)
 extension AssetResult: PhotoAssetObject {
     
     public static func fetchObject(

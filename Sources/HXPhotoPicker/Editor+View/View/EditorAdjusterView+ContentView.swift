@@ -295,13 +295,11 @@ extension EditorAdjusterView: EditorContentViewDelegate {
         return sourceImage
     }
     
-    @available(iOS 13.0, *)
     func contentView(_ contentView: EditorContentView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker) {
         delegate?.editorAdjusterView(self, toolPickerFramesObscuredDidChange: toolPicker)
     }
 }
 
-@available(iOS 13.0, *)
 extension EditorAdjusterView {
     
     var canvasImage: UIImage {

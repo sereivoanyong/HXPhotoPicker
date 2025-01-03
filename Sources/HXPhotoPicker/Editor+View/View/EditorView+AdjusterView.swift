@@ -112,7 +112,6 @@ extension EditorView: EditorAdjusterViewDelegate {
         return sourceImage
     }
     
-    @available(iOS 13.0, *)
     func editorAdjusterView(_ editorAdjusterView: EditorAdjusterView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker) {
         editDelegate?.editorView(self, toolPickerFramesObscuredDidChange: toolPicker)
     }

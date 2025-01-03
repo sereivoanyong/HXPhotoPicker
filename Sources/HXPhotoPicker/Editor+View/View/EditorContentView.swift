@@ -43,7 +43,6 @@ protocol EditorContentViewDelegate: AnyObject {
         at time: CMTime
     ) -> CIImage
     
-    @available(iOS 13.0, *)
     func contentView(_ contentView: EditorContentView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker)
     
 }
@@ -524,7 +523,6 @@ extension EditorContentView: EditorVideoPlayerViewDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension EditorContentView: EditorCanvasViewDelegate {
     
     var canvasImage: UIImage {

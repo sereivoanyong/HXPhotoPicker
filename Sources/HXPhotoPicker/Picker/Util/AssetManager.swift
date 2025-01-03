@@ -17,7 +17,6 @@ public struct AssetManager {
     ///   - albumType: 需要保存到自定义相册的类型
     ///   - creationDate: 创建时间，默认当前时间
     ///   - location: 位置信息
-    @available(iOS 13.0.0, *)
     @discardableResult
     public static func save(
         type: AssetSaveUtil.SaveType,

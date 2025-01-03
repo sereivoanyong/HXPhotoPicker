@@ -128,16 +128,14 @@ open class PhotoSplitViewController: UISplitViewController, UISplitViewControlle
         }
         coordinator.animate(alongsideTransition: nil)
     }
-    
-    @available(iOS 14.0, *)
+
     public func splitViewController(_ svc: UISplitViewController, displayModeForExpandingToProposedDisplayMode proposedDisplayMode: UISplitViewController.DisplayMode) -> UISplitViewController.DisplayMode {
         if !UIDevice.isPad, modalPresentationStyle == .fullScreen {
             return .oneBesideSecondary
         }
         return .automatic
     }
-    
-    @available(iOS 14.0, *)
+
     public func splitViewController(_ svc: UISplitViewController, willShow column: UISplitViewController.Column) {
         if UIDevice.isPad, displayMode == .secondaryOnly {
             if let preview = photoController.topViewController as? PhotoPreviewViewController {
@@ -149,7 +147,6 @@ open class PhotoSplitViewController: UISplitViewController, UISplitViewControlle
         }
     }
 
-    @available(iOS 14.0, *)
     public func splitViewController(_ svc: UISplitViewController, willHide column: UISplitViewController.Column) {
         if UIDevice.isPad, displayMode == .oneBesideSecondary {
             if let preview = photoController.topViewController as? PhotoPreviewViewController {

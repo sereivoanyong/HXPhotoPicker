@@ -392,7 +392,6 @@ public extension PhotoAsset {
     ///   - iCloudHandler: 下载iCloud上的资源时回调iCloud的请求ID
     ///   - progressHandler: iCloud下载进度
     /// - Returns: 请求ID
-    @available(iOS 9.1, *)
     @discardableResult
     func requestLivePhoto(
         targetSize: CGSize,
@@ -1173,8 +1172,6 @@ public extension PhotoAsset {
     }
 }
 
-
-@available(iOS 13.0, *)
 public extension PhotoAsset {
     
     func requesThumbnailImage(

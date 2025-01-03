@@ -8,7 +8,6 @@
 import UIKit
 import Photos
 
-@available(iOS 9.1, *)
 public typealias LivePhotoResultHandler = (PHLivePhoto?, [AnyHashable: Any]?) -> Void
 
 public extension AssetManager {
@@ -20,7 +19,6 @@ public extension AssetManager {
     ///   - progressHandler: iCloud下载进度
     ///   - resultHandler: 获取结果
     /// - Returns: 请求ID
-    @available(iOS 9.1, *)
     @discardableResult
     static func requestLivePhoto(
         for asset: PHAsset,
@@ -67,7 +65,6 @@ public extension AssetManager {
         }
     }
     
-    @available(iOS 9.1, *)
     @discardableResult
     static func requestLivePhoto(
         for asset: PHAsset,
@@ -87,8 +84,7 @@ public extension AssetManager {
             resultHandler: resultHandler
         )
     }
-    
-    @available(iOS 9.1, *)
+
     @discardableResult
     static func requestLivePhoto(
         for asset: PHAsset,

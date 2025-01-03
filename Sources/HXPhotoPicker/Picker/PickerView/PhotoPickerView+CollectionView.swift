@@ -358,7 +358,6 @@ extension PhotoPickerView: UICollectionViewDelegate {
         return false
     }
     
-    @available(iOS 13.0, *)
     public func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfigurationForItemAt indexPath: IndexPath,
@@ -471,7 +470,6 @@ extension PhotoPickerView: UICollectionViewDelegate {
         }
     }
     
-    @available(iOS 13.0, *)
     public func collectionView(
         _ collectionView: UICollectionView,
         willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,

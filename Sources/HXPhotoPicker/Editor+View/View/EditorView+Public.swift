@@ -247,7 +247,6 @@ public extension EditorView {
 }
 
 // MARK: 绘画
-@available(iOS 13.0, *)
 public extension EditorView {
     
     /// 画布内容是否为空

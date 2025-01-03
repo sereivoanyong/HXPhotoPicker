@@ -137,7 +137,6 @@ extension CameraController: CameraViewControllerDelegate {
     }
 }
 
-@available(iOS 13.0.0, *)
 public extension CameraController {
     
     struct CaptureResult {

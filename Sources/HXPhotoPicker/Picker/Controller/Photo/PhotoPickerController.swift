@@ -712,7 +712,6 @@ extension PhotoPickerController: UINavigationControllerDelegate, PhotoAlbumContr
     }
 }
 
-@available(iOS 13.0.0, *)
 public extension PhotoPickerController {
     /// 选择资源
     /// - Parameters:

@@ -14,8 +14,6 @@ class HXPhotoPicker {}
 public enum Photo {
     
     #if HXPICKER_ENABLE_PICKER
-    
-    @available(iOS 13.0, *)
     @MainActor
     public static func picker<T: PhotoAssetObject>(
         _ config: PickerConfiguration,
@@ -34,8 +32,7 @@ public enum Photo {
             toFile: fileConfig
         )
     }
-    
-    @available(iOS 13.0, *)
+
     @MainActor
     public static func picker(
         _ config: PickerConfiguration,
@@ -57,7 +54,6 @@ public enum Photo {
         )
     }
     
-    @available(iOS 13.0, *)
     @MainActor
     public static func picker(
         _ config: PickerConfiguration,
@@ -104,8 +100,6 @@ public enum Photo {
     #endif
     
     #if HXPICKER_ENABLE_EDITOR
-    
-    @available(iOS 13.0, *)
     @discardableResult
     @MainActor
     public static func edit(
@@ -146,8 +140,6 @@ public enum Photo {
     #endif
     
     #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-    
-    @available(iOS 13.0, *)
     @MainActor
     public static func capture(
         _ config: CameraConfiguration = .init(),
@@ -180,7 +172,6 @@ public enum Photo {
 public enum HX {
     
     #if HXPICKER_ENABLE_PICKER
-    @available(iOS 13.0, *)
     @MainActor
     public static func picker<T: PhotoAssetObject>(
         _ config: PickerConfiguration,
@@ -199,8 +190,7 @@ public enum HX {
             toFile: fileConfig
         )
     }
-    
-    @available(iOS 13.0, *)
+
     @MainActor
     public func picker(
         _ config: PickerConfiguration,
@@ -221,9 +211,7 @@ public enum HX {
             toFile: fileConfig
         )
     }
-    
-    
-    @available(iOS 13.0, *)
+
     @MainActor
     public static func picker(
         _ config: PickerConfiguration,
@@ -241,7 +229,6 @@ public enum HX {
     #endif
     
     #if HXPICKER_ENABLE_EDITOR
-    @available(iOS 13.0, *)
     @discardableResult
     @MainActor
     public static func edit(
@@ -255,7 +242,6 @@ public enum HX {
     #endif
     
     #if HXPICKER_ENABLE_CAMERA && !targetEnvironment(macCatalyst)
-    @available(iOS 13.0, *)
     @MainActor
     public static func capture(
         _ config: CameraConfiguration = .init(),

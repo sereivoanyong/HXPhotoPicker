@@ -284,7 +284,6 @@ extension PhotoPreviewSelectedView: PhotoPreviewSelectedViewCellDelegate {
     }
 }
 
-@available(iOS 11.0, *)
 extension PhotoPreviewSelectedView: UICollectionViewDragDelegate, UICollectionViewDropDelegate {
     
     func collectionView(

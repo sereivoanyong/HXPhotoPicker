@@ -336,7 +336,6 @@ public extension PhotoAsset {
     }
 }
 
-@available(iOS 13.0, *)
 public protocol PhotoAssetObject {
     static func fetchObject(
         _ photoAsset: PhotoAsset,
@@ -345,7 +344,6 @@ public protocol PhotoAssetObject {
     ) async throws -> Self
 }
 
-@available(iOS 13.0, *)
 extension URL: PhotoAssetObject {
     
     public static func fetchObject(
@@ -369,7 +367,6 @@ extension URL: PhotoAssetObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension UIImage: PhotoAssetObject {
     
     public static func fetchObject(
@@ -384,7 +381,6 @@ extension UIImage: PhotoAssetObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension Data: PhotoAssetObject {
     
     public static func fetchObject(
@@ -405,7 +401,6 @@ extension Data: PhotoAssetObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension AssetURLResult: PhotoAssetObject {
     public static func fetchObject(
         _ photoAsset: PhotoAsset,
@@ -428,7 +423,6 @@ extension AssetURLResult: PhotoAssetObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension PhotoAsset {
     
     /// 获取 UIImage

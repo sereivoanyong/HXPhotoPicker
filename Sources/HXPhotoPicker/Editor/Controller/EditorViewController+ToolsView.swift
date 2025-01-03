@@ -263,7 +263,6 @@ extension EditorViewController: EditorToolsViewDelegate {
         }
     }
     
-    @available(iOS 13.0, *)
     func startCanvasDrawing(_ isRotate: Bool = false) {
         let toolPicker: PKToolPicker
         if isRotate {

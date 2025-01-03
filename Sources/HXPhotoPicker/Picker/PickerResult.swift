@@ -175,7 +175,6 @@ extension PickerResult {
     public typealias FileConfigHandler = (PhotoAsset, Int) -> PhotoAsset.FileConfig
 }
 
-@available(iOS 13.0.0, *)
 public extension PickerResult {
     
     /// 获取 UIImage 对象数组

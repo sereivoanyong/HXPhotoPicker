@@ -585,7 +585,6 @@ extension CameraManager: AVCapturePhotoCaptureDelegate {
         finishProcessingPhoto(cropPhotoPixelBuffer(photoPixelBuffer), metaData)
     }
     
-    @available(iOS 11.0, *)
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let photoPixelBuffer = photo.previewPixelBuffer else {
             photoCompletion?(nil)

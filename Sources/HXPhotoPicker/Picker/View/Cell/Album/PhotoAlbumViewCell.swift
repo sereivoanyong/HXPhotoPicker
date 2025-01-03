@@ -117,7 +117,6 @@ public class PhotoAlbumViewCell: UITableViewCell {
 
 fileprivate extension PhotoAssetCollection {
     
-    @available(iOS 13.0, *)
     var assetTypeimage: UIImage? {
         guard let collection = collection else {
             return nil

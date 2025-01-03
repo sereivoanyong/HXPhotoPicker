@@ -243,7 +243,6 @@ public extension PhotoAsset {
     }
 }
 
-@available(iOS 13.0, *)
 public extension PhotoAsset {
     
     /// 保存到系统相册

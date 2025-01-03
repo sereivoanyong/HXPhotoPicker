@@ -62,7 +62,6 @@ public protocol EditorViewDelegate: AnyObject {
     /// 视频添加滤镜
     func editorView(_ editorView: EditorView, videoApplyFilter sourceImage: CIImage, at time: CMTime) -> CIImage
     
-    @available(iOS 13.0, *)
     func editorView(_ editorView: EditorView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker)
 }
 
@@ -98,8 +97,6 @@ public extension EditorViewDelegate {
         videoApplyFilter sourceImage: CIImage,
         at time: CMTime
     ) -> CIImage { sourceImage }
-    
-    
-    @available(iOS 13.0, *)
+
     func editorView(_ editorView: EditorView, toolPickerFramesObscuredDidChange toolPicker: PKToolPicker) { }
 }

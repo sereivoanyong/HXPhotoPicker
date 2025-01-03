@@ -505,8 +505,7 @@ extension PhotoPickerListViewController: UICollectionViewDelegate {
             delegate?.photoList(self, didSelectCell: photoAsset, at: item, animated: animated)
         }
     }
-    
-    @available(iOS 13.0, *)
+
     public func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfiguration configuration: UIContextMenuConfiguration,
@@ -518,8 +517,7 @@ extension PhotoPickerListViewController: UICollectionViewDelegate {
         }
         return .init(view: cell)
     }
-    
-    @available(iOS 13.0, *)
+
     public func collectionView(
         _ collectionView: UICollectionView,
         contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
@@ -666,7 +664,6 @@ extension PhotoPickerListViewController: UICollectionViewDelegate {
         }
     }
     
-    @available(iOS 13.0, *)
     public func collectionView(
         _ collectionView: UICollectionView,
         willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,

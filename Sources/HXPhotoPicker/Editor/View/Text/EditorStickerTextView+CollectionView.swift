@@ -72,7 +72,6 @@ extension EditorStickerTextView: UICollectionViewDataSource,
     }
 }
 
-@available(iOS 14.0, *)
 extension EditorStickerTextView: UIColorPickerViewControllerDelegate {
     public func colorPickerViewControllerDidSelectColor(
         _ viewController: UIColorPickerViewController
@@ -82,8 +81,7 @@ extension EditorStickerTextView: UIColorPickerViewControllerDelegate {
         }
         didSelectCustomColor(viewController.selectedColor)
     }
-    
-    @available(iOS 15.0, *)
+
     public func colorPickerViewController(
         _ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool
     ) {

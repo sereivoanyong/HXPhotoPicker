@@ -265,7 +265,6 @@ extension EditorBrushColorView: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
-@available(iOS 14.0, *)
 extension EditorBrushColorView: UIColorPickerViewControllerDelegate {
     public func colorPickerViewControllerDidSelectColor(
         _ viewController: UIColorPickerViewController
@@ -275,7 +274,7 @@ extension EditorBrushColorView: UIColorPickerViewControllerDelegate {
         }
         didSelectCustomColor(viewController.selectedColor)
     }
-    @available(iOS 15.0, *)
+  
     public func colorPickerViewController(
         _ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool
     ) {
