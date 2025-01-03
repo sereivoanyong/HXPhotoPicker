@@ -140,6 +140,10 @@ public extension EditorConfiguration {
         /// 默认选中指定工具
         public var defaultSelectedToolOption: ToolsView.Options.`Type`?
         
+        /// music configuration
+        /// 音乐配置
+        public var music: Music = .init()
+        
         /// Filter image compression ratio
         /// 滤镜图片压缩比例
         public var filterScale: CGFloat = 0.5

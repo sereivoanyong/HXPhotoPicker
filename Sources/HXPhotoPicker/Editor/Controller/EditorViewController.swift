@@ -202,10 +202,16 @@ open class EditorViewController: HXBaseViewController {
         mosaicToolView.alpha = 0
         mosaicToolView.isHidden = true
         
-        musicView = EditorMusicView(config: config.video.music)
+        let musicConfig: EditorConfiguration.Music
+        if selectedAsset.contentType == .image {
+            musicConfig = config.photo.music
+        } else {
+            musicConfig = config.video.music
+        }
+        musicView = EditorMusicView(config: musicConfig)
         musicView.delegate = self
         
-        volumeView = EditorVolumeView(config.video.music.tintColor)
+        volumeView = EditorVolumeView(musicConfig.tintColor)
         volumeView.hasMusic = false
         volumeView.delegate = self
         
