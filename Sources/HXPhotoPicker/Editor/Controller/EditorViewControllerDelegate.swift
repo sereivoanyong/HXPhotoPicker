@@ -76,6 +76,14 @@ public protocol EditorViewControllerDelegate: AnyObject {
         shouldClickMusicTool editorViewController: EditorViewController
     ) -> Bool
     
+    func editorViewController(
+        _ editorViewController: EditorViewController,
+        handlePicking music: VideoEditorMusicInfo?,
+        includeOriginalSound: Bool,
+        volume: Float,
+        completionHandler: @escaping (VideoEditorMusicInfo, Bool, Float) -> Void
+    ) -> Bool
+    
     /// 加载配乐信息，当music.infos为空时触发
     /// 返回 true 内部会显示加载状态，调用 completionHandler 后恢复
     /// - Parameters:
@@ -230,6 +238,16 @@ public extension EditorViewControllerDelegate {
         shouldClickMusicTool editorViewController: EditorViewController
     ) -> Bool {
         true
+    }
+    
+    func editorViewController(
+        _ editorViewController: EditorViewController,
+        handlePicking music: VideoEditorMusicInfo?,
+        includeOriginalSound: Bool,
+        volume: Float,
+        completionHandler: @escaping (VideoEditorMusicInfo, Bool, Float) -> Void
+    ) -> Bool {
+        return false
     }
     
     func editorViewController(
