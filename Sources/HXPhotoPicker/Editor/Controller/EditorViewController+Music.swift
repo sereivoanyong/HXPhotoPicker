@@ -61,6 +61,15 @@ extension EditorViewController: EditorMusicViewDelegate {
         }
     }
     func musicView(didSearchButton musicView: EditorMusicView) {
+        var isSearchHandled: Bool = false
+        let completion: ([VideoEditorMusicInfo]) -> Void = { [weak self] infos in
+            guard let self else { return }
+            musicView.reloadDataThenSelectFirst(infos: infos)
+        }
+        delegate?.editorViewController(self, isSearchHandled: &isSearchHandled, completion: completion)
+        if isSearchHandled {
+            return
+        }
         let vc = EditorMusicListViewController(config: config.video.music, defaultMusics: musicView.musics)
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)

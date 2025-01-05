@@ -86,6 +86,12 @@ public protocol EditorViewControllerDelegate: AnyObject {
         loadMusic completionHandler: @escaping ([VideoEditorMusicInfo]) -> Void
     ) -> Bool
     
+    func editorViewController(
+        _ editorViewController: EditorViewController,
+        isSearchHandled: inout Bool,
+        completion: @escaping ([VideoEditorMusicInfo]) -> Void
+    )
+    
     /// 重置了配乐搜索（SearchText 为 nil 时 Return）
     /// - Parameter editorViewController: 对应的`EditorViewController`
     func editorViewController(
@@ -239,6 +245,12 @@ public extension EditorViewControllerDelegate {
         completionHandler(PhotoTools.defaultMusicInfos())
         return false
     }
+    
+    func editorViewController(
+        _ editorViewController: EditorViewController,
+        isSearchHandled: inout Bool,
+        completion: @escaping ([VideoEditorMusicInfo]) -> Void
+    ) { }
     
     func editorViewController(
         didClearSearch editorViewController: EditorViewController
