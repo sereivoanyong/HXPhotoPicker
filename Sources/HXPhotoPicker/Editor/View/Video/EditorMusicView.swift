@@ -222,6 +222,8 @@ class EditorMusicView: UIView {
                 audioURL: musicInfo.audioURL,
                 lrc: musicInfo.lrc
             )
+            music.overrideTitle = musicInfo.overrideTitle
+            music.overrideArtistName = musicInfo.overrideArtistName
             musicArray.append(music)
         }
         musics = musicArray

@@ -18,12 +18,20 @@ public struct VideoEditorMusicInfo {
     /// 如果不包含的话那么显示歌词功能将会出错
     public let lrc: String
     
+    public let overrideTitle: String?
+    
+    public let overrideArtistName: String?
+    
     public init(
         audioURL: VideoEditorMusicURL,
-        lrc: String
+        lrc: String,
+        overrideTitle: String? = nil,
+        overrideArtistName: String? = nil
     ) {
         self.audioURL = audioURL
         self.lrc = lrc
+        self.overrideTitle = overrideTitle
+        self.overrideArtistName = overrideArtistName
     }
 }
 
@@ -51,8 +59,8 @@ public class VideoEditorMusic: Equatable, Codable {
     var metaData: [String: String] = [:]
     var lyrics: [VideoEditorLyric] = []
     var lyricIsEmpty = false
-    var songName: String? { metaData["ti"] }
-    var singer: String? { metaData["ar"] }
+    var songName: String? { overrideTitle ?? metaData["ti"] }
+    var singer: String? { overrideArtistName ?? metaData["ar"] }
     var time: TimeInterval? {
         if let time = metaData["t_time"]?.replacingOccurrences(
             of: "(",
@@ -66,6 +74,10 @@ public class VideoEditorMusic: Equatable, Codable {
         }
         return nil
     }
+    
+    var overrideTitle: String?
+    
+    var overrideArtistName: String?
     
     func parseLrc() {
         lyrics = []
