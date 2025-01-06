@@ -270,6 +270,16 @@ class EditorMusicView: UIView {
         }
 
     }
+    func reloadDataThenSelectFirst(infos: [VideoEditorMusicInfo]) {
+        reloadData(infos: infos)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            if !musics.isEmpty {
+                selectedIndex = 0
+                playMusic()
+            }
+        }
+    }
     func showLoading() {
         if !musics.isEmpty {
             return
