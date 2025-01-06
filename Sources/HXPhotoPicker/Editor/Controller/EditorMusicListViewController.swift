@@ -245,6 +245,8 @@ class EditorMusicListViewController: HXBaseViewController {
         for musicInfo in infos {
             let music = VideoEditorMusic(audioURL: musicInfo.audioURL,
                                          lrc: musicInfo.lrc)
+            music.overrideTitle = musicInfo.overrideTitle
+            music.overrideArtistName = musicInfo.overrideArtistName
             musicArray.append(music)
         }
         return musicArray
