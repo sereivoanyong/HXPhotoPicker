@@ -1282,34 +1282,41 @@ open class EditorViewController: HXBaseViewController {
     open override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         .all
     }
-    open override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if navigationController?.topViewController != self &&
-            navigationController?.viewControllers.contains(self) == false {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-    }
+    
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if navigationController?.viewControllers.count == 1 {
-            navigationController?.setNavigationBarHidden(true, animated: false)
-        }else {
-            navigationController?.setNavigationBarHidden(true, animated: true)
+        if let navigationController {
+            if navigationController.viewControllers.count == 1 {
+              navigationController.setNavigationBarHidden(true, animated: false)
+            } else {
+              navigationController.setNavigationBarHidden(true, animated: animated)
+            }
         }
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navModalStyle = navigationController?.modalPresentationStyle
-        if let isHidden = navigationController?.navigationBar.isHidden, !isHidden {
-            navigationController?.setNavigationBarHidden(true, animated: false)
+        if let navigationController {
+            if !navigationController.navigationBar.isHidden {
+                navigationController.setNavigationBarHidden(true, animated: false)
+            }
+        }
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let navigationController {
+            if navigationController.topViewController != self || !navigationController.viewControllers.contains(self) {
+                navigationController.setNavigationBarHidden(false, animated: animated)
+            }
         }
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if let vcs = navigationController?.viewControllers {
-            if !vcs.contains(self) {
+        if let navigationController {
+            if !navigationController.viewControllers.contains(self) {
                 if !isDismissed {
                     cancelHandler?(self)
                 }
